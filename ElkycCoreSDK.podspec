@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "ElkycCoreSDK"
-    s.version      = "1.0.0"
+    s.version      = "1.0.3"
     s.summary      = "A brief description of  project."
     s.description  = <<-DESC
     An extended description of  project.

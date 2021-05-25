@@ -1,0 +1,11 @@
+framework module ElkycCoreSDK {
+  umbrella header "ElkycCoreSDK.h"
+
+  export *
+  module * { export * }
+}
+
+module ElkycCoreSDK.Swift {
+    header "ElkycCoreSDK-Swift.h"
+    requires objc
+}
