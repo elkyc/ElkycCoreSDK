@@ -179,27 +179,27 @@ Config has predefined static variables:
 
 - startVerification
 
-![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Start_verification.jpg?raw=true)
+![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Start_verification.jpeg?raw=true)
 
 - rfid
 
-![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Rfid.jpg?raw=true)
+![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Rfid.jpeg?raw=true)
 
 - liveness
 
-![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Liveness.jpg?raw=true)
+![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Liveness.jpeg?raw=true)
 
-- ukrainian
+- world
 
-![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Ukrainian.jpg?raw=true)
+![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Ukrainian.jpeg?raw=true)
 
 - selfieWithDoc
 
-![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Selfie.png?raw=true)
+![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Selfie.jpeg?raw=true)
 
 - signature
 
-![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Signature.jpg?raw=true)
+![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/Intro_Signature.jpeg?raw=true)
 
 ### Confirm
 You can use this step in the end of the process.
