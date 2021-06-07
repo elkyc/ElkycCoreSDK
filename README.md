@@ -321,7 +321,7 @@ Config has predefined static variables:
 
 - worldwide
 
-![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/DocumentIntro_WorldWide.jpg?raw=true)
+![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/DocumentIntro_WorldWide.jpeg?raw=true)
 
 - worldwideBack
 
@@ -331,11 +331,11 @@ Config has predefined static variables:
 
 ![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/DocumentIntro_Utility.jpeg?raw=true)
 
-- ukrainianWorld
+- travelDocument
 
 ![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/DocumentIntro_UkrWorld.jpeg?raw=true)
 
-- ukrainianIDCard
+- idCard
 
 ![](https://github.com/elkyc/ElkycCoreSDK/blob/main/Images/DocumentIntro_UkrID.jpeg?raw=true)
 
