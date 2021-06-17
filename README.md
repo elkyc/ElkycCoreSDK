@@ -505,3 +505,9 @@ for result in results {
 	}
 }
 ```
+
+If you want to add your specific result to a flow use this method on a **ElkycSDK** shared instance.
+
+```swift
+public func addFlowResult(_ flowResult: FlowResult)
+```
