@@ -78,6 +78,20 @@ ElkycSDK.shared.config.workplaceHost = "https://example.com"
 ## ElkycStep Protocol
 All our frameworks contain many predefined steps which you can configure. Usually, you should not implement your step but you can, probably you will need this if you want to add your custom UI to the verification process. In this section, you can find a way how to do that, as well as what basic operations on steps you can perform.
 
+```swift
+public protocol ElkycStep: AnyObject {
+    associatedtype Output
+
+    var stepId: ElkycStepId { get set}
+    func start(from viewController: UIViewController, completion: @escaping ((Result<Output, Error>) -> Void))
+}
+
+public struct ElkycStepId {
+    public var id: String = UUID().uuidString
+    public var stepType: StepType
+}
+```
+
 ### Basic Operations
 All basic operations help you transform and connect all steps into one chain - flow.
 Below you can find the quick explanation about each function with an example.
