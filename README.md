@@ -460,4 +460,48 @@ This method take 4 parameters
 - **clientKey** - client key, this key could be obtained at
 - **flow** - flow variable, it should consist one or more steps
 - **viewController** - viewController from which flow will be presented
-- **completion** - completion handler, here you will receive error from any step or data from the last step
+- **completion** - completion handler, here you will receive error from any step or an array with FlowResult struct
+
+### FlowResult
+FlowResult is a struct where you can find the answer from a step, the array of FlowResult's will be received in the end of the flow.
+An array should be ordered by steps order.
+
+```swift
+public struct FlowResult {
+
+    public let id: String
+    public let type: FlowResultType
+    public let result: Any
+    
+    public init(id: String, type: FlowResultType, result: Any)
+    public func resultObject<T>(type: T.Type) -> T?
+}
+```
+
+The response result should be casted to a specific object. 
+For that the **type** field have typeHint variable which can help cast result to a right object.
+
+```swift
+for result in results {
+	switch result.type {
+	case .selfieWithDoc:
+		let object = result.resultObject(type: UIImage.self)
+	case .innScan:
+		let object = result.resultObject(type: InnDocumentScanResponse.self)
+	case .captureScan:
+		let object = result.resultObject(type: CaptureResponse.self)
+	case .documentScan:
+		let object = result.resultObject(type: DocumentResult.self)
+	case .signature:
+		let object = result.resultObject(type: UIImage.self)
+	case .faceLiveness:
+		let object = result.resultObject(type: FaceLiveness.Response.self)
+	case .faceMatching:
+		let object = result.resultObject(type: FaceMatching.Response.self)
+	case .faceCapturing:
+		let object = result.resultObject(type: UIImage.self)
+	default:
+		()
+	}
+}
+```
