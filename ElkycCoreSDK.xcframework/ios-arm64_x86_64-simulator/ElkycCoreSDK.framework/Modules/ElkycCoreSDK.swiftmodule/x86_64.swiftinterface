@@ -376,7 +376,7 @@ public struct HTTPMethod : Swift.RawRepresentable, Swift.Equatable, Swift.Hashab
   public typealias RawValue = Swift.String
 }
 public class SelfieWithDocConfirm : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
+  public var stepId: ElkycCoreSDK.ElkycStepId
   public init(selfieImg: UIKit.UIImage)
   public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.DocumentConfirm.StepResult, Swift.Error>) -> Swift.Void))
   public typealias Output = ElkycCoreSDK.DocumentConfirm.StepResult
@@ -444,8 +444,8 @@ extension Cryptors {
 public struct Registration {
   public static func servicesViewController(delegate: ElkycCoreSDK.ServicesDelegate?, logoutCompletion: (() -> Swift.Void)?) throws -> UIKit.UIViewController
   public static func enterViewController(completion: @escaping (ElkycCoreSDK.EnterResponse) -> Swift.Void) throws -> UIKit.UIViewController
-  public static func register(registrationData: ElkycCoreSDK.RegistrationData, email: Swift.String?, phone: Swift.String?, code: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
-  public static func signIn(login: Swift.String, password: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void)
+  public static func register(registrationData: ElkycCoreSDK.RegistrationData, email: Swift.String?, phone: Swift.String?, code: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) throws
+  public static func signIn(login: Swift.String, password: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) throws
   public static var isSignUpComplete: Swift.Bool {
     get
   }
@@ -483,18 +483,18 @@ public enum Padding : ElkycCoreSDK.PaddingProtocol {
     get
   }
 }
-public class ConfirmStep : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
-  public init(config: ElkycCoreSDK.ConfirmStep.Config = Config())
-  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.ConfirmStep.Response, Swift.Error>) -> Swift.Void))
-  public typealias Output = ElkycCoreSDK.ConfirmStep.Response
+public class Confirm : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(config: ElkycCoreSDK.Confirm.Config = Config())
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.Confirm.Response, Swift.Error>) -> Swift.Void))
+  public typealias Output = ElkycCoreSDK.Confirm.Response
   @objc deinit
 }
-extension ConfirmStep {
-  public enum Response {
+extension Confirm {
+  @frozen public enum Response {
     case mainAction
     case close
-    public static func == (a: ElkycCoreSDK.ConfirmStep.Response, b: ElkycCoreSDK.ConfirmStep.Response) -> Swift.Bool
+    public static func == (a: ElkycCoreSDK.Confirm.Response, b: ElkycCoreSDK.Confirm.Response) -> Swift.Bool
     public func hash(into hasher: inout Swift.Hasher)
     public var hashValue: Swift.Int {
       get
@@ -514,13 +514,13 @@ extension ConfirmStep {
     public var alertDestructiveBtnTitle: Swift.String
     public var alertMainBtnTitle: Swift.String
     public init()
-    public static var livenessSuccess: ElkycCoreSDK.ConfirmStep.Config {
+    public static var livenessSuccess: ElkycCoreSDK.Confirm.Config {
       get
     }
-    public static var livenessFail: ElkycCoreSDK.ConfirmStep.Config {
+    public static var livenessFail: ElkycCoreSDK.Confirm.Config {
       get
     }
-    public static var congrats: ElkycCoreSDK.ConfirmStep.Config {
+    public static var congrats: ElkycCoreSDK.Confirm.Config {
       get
     }
   }
@@ -616,8 +616,8 @@ public struct Digest {
   public static func sha2(_ bytes: Swift.Array<Swift.UInt8>, variant: ElkycCoreSDK.SHA2.Variant) -> Swift.Array<Swift.UInt8>
   public static func sha3(_ bytes: Swift.Array<Swift.UInt8>, variant: ElkycCoreSDK.SHA3.Variant) -> Swift.Array<Swift.UInt8>
 }
-public class AcceptTermsStep : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
+public class AcceptTerms : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
   public init()
   public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void))
   public typealias Output = ()
@@ -823,14 +823,14 @@ extension UIFont {
   @objc deinit
 }
 public class DocumentConfirm : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
+  public var stepId: ElkycCoreSDK.ElkycStepId
   public init(docImage: UIKit.UIImage?, config: ElkycCoreSDK.DocumentConfirm.Config = Config())
   public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.DocumentConfirm.StepResult, Swift.Error>) -> Swift.Void))
   public typealias Output = ElkycCoreSDK.DocumentConfirm.StepResult
   @objc deinit
 }
 extension DocumentConfirm {
-  public enum StepResult {
+  @frozen public enum StepResult {
     case retry
     case next
     public static func == (a: ElkycCoreSDK.DocumentConfirm.StepResult, b: ElkycCoreSDK.DocumentConfirm.StepResult) -> Swift.Bool
@@ -1068,13 +1068,6 @@ extension ZVIndicatorView {
   }
   @objc override dynamic public func layoutSubviews()
 }
-public class ElkycRetryStep<Step> : ElkycCoreSDK.ElkycStep where Step : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
-  public init(step: Step, after time: Foundation.TimeInterval = 0, when: @escaping (Step.Output) -> Swift.Bool)
-  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Step.Output, Swift.Error>) -> Swift.Void))
-  public typealias Output = Step.Output
-  @objc deinit
-}
 @available(*, deprecated, message: "Use ConstraintMakerPrioritizable instead.")
 public typealias ConstraintMakerPriortizable = ElkycCoreSDK.ConstraintMakerPrioritizable
 @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ConstraintMakerPrioritizable : ElkycCoreSDK.ConstraintMakerFinalizable {
@@ -1098,18 +1091,9 @@ public typealias ConstraintMakerPriortizable = ElkycCoreSDK.ConstraintMakerPrior
 }
 public enum PKCS5 {
 }
-public class ElkycCombineStep<First, Second> : ElkycCoreSDK.ElkycStep where First : ElkycCoreSDK.ElkycStep, Second : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
-  public init(firstStep: First, nextStep: @escaping (First.Output) -> Second, after time: Foundation.TimeInterval = 0)
-  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<(First.Output, Second.Output), Swift.Error>) -> Swift.Void))
-  public typealias Output = (First.Output, Second.Output)
-  @objc deinit
-}
 @objc @_inheritsConvenienceInitializers public class ElkycFlowViewController : UIKit.UINavigationController {
   @objc override dynamic public func viewDidLoad()
-  @objc override dynamic public func present(_ viewControllerToPresent: UIKit.UIViewController, animated flag: Swift.Bool, completion: (() -> Swift.Void)? = nil)
   public func updateCurrent(viewController: UIKit.UIViewController)
-  @objc override dynamic public func dismiss(animated flag: Swift.Bool, completion: (() -> Swift.Void)? = nil)
   @available(iOS 5.0, *)
   @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
   @objc override dynamic public init(rootViewController: UIKit.UIViewController)
@@ -1163,41 +1147,47 @@ extension UILayoutPriority : ElkycCoreSDK.ConstraintPriorityTarget {
     get
   }
 }
-public enum ElkycStepId : Swift.CaseIterable {
-  case creditCardScan
-  case barCodeScan
-  case captureDocScan
-  case selfieCapture
-  case rfidDocScan
-  case docScan
-  case docImageScan
-  case specificDocScan
-  case faceCapturing
-  case faceMatching
-  case faceLiveness
-  case signaturePad
-  case otpVerification
-  case intro
-  case acceptTerms
-  case documentSelection
-  case selfieIntro
-  case documentIntro
-  case documentConfirm
-  case selfieWithDocConfirm
-  case innConfirm
-  case confirmImage
-  case any
-  public var stringValue: Swift.String {
-    get
-  }
-  public static func == (a: ElkycCoreSDK.ElkycStepId, b: ElkycCoreSDK.ElkycStepId) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public typealias AllCases = [ElkycCoreSDK.ElkycStepId]
-  public static var allCases: [ElkycCoreSDK.ElkycStepId] {
-    get
-  }
-  public var hashValue: Swift.Int {
-    get
+public struct ElkycStepId {
+  public var id: Swift.String
+  public var stepType: ElkycCoreSDK.ElkycStepId.StepType
+  public init(id: Swift.String = UUID().uuidString, stepType: ElkycCoreSDK.ElkycStepId.StepType)
+  public enum StepType : Swift.CaseIterable {
+    case creditCardScan
+    case barCodeScan
+    case captureDocScan
+    case selfieCapture
+    case rfidDocScan
+    case docScan
+    case docImageScan
+    case specificDocScan
+    case faceCapturing
+    case faceMatching
+    case faceLiveness
+    case signaturePad
+    case otpVerification
+    case intro
+    case acceptTerms
+    case documentSelection
+    case selfieIntro
+    case documentIntro
+    case documentConfirm
+    case selfieWithDocConfirm
+    case innConfirm
+    case confirmImage
+    case any
+    case custom
+    public var stringValue: Swift.String {
+      get
+    }
+    public static func == (a: ElkycCoreSDK.ElkycStepId.StepType, b: ElkycCoreSDK.ElkycStepId.StepType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [ElkycCoreSDK.ElkycStepId.StepType]
+    public static var allCases: [ElkycCoreSDK.ElkycStepId.StepType] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
   }
 }
 @objc public enum BannerStyle : Swift.Int {
@@ -1574,7 +1564,7 @@ extension ChaCha20 : ElkycCoreSDK.Cryptors {
   final public func makeDecryptor() -> ElkycCoreSDK.Cryptor & ElkycCoreSDK.Updatable
 }
 public class SelfieIntro : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
+  public var stepId: ElkycCoreSDK.ElkycStepId
   public init(config: ElkycCoreSDK.SelfieIntro.Config = Config())
   public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void))
   public typealias Output = ()
@@ -1884,10 +1874,13 @@ extension MetadataPhoneNumberFormat {
   }
   public init(from decoder: Swift.Decoder) throws
 }
-public enum CoreSDKError : Swift.Error {
+public enum CoreSDKError : Foundation.LocalizedError {
   case unexpectedError
   case unknownBundle
   case stepIsUnavailable
+  public var errorDescription: Swift.String? {
+    get
+  }
   public static func == (a: ElkycCoreSDK.CoreSDKError, b: ElkycCoreSDK.CoreSDKError) -> Swift.Bool
   public func hash(into hasher: inout Swift.Hasher)
   public var hashValue: Swift.Int {
@@ -1962,14 +1955,14 @@ extension Checksum {
   public static func crc16(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt16? = nil) -> Swift.UInt16
 }
 public class DocumentIntro : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
+  public var stepId: ElkycCoreSDK.ElkycStepId
   public init(config: ElkycCoreSDK.DocumentIntro.Config = Config())
   public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.DocumentIntro.StepResult, Swift.Error>) -> Swift.Void))
   public typealias Output = ElkycCoreSDK.DocumentIntro.StepResult
   @objc deinit
 }
 extension DocumentIntro {
-  public enum StepResult {
+  @frozen public enum StepResult {
     case takePhoto
     case galleryImage(UIKit.UIImage)
   }
@@ -1996,10 +1989,10 @@ extension DocumentIntro {
     public static var utilityBill: ElkycCoreSDK.DocumentIntro.Config {
       get
     }
-    public static var ukrainianWorld: ElkycCoreSDK.DocumentIntro.Config {
+    public static var travelDocument: ElkycCoreSDK.DocumentIntro.Config {
       get
     }
-    public static var ukrainianIDCard: ElkycCoreSDK.DocumentIntro.Config {
+    public static var idCard: ElkycCoreSDK.DocumentIntro.Config {
       get
     }
     public static var inn: ElkycCoreSDK.DocumentIntro.Config {
@@ -2217,17 +2210,23 @@ extension PhoneNumberKit {
     public static var forceModalPresentation: Swift.Bool
   }
 }
+@objc final public class BindableGestureRecognizer : UIKit.UITapGestureRecognizer {
+  public init(action: @escaping () -> Swift.Void)
+  @objc override dynamic public init(target: Any?, action: ObjectiveC.Selector?)
+  @objc deinit
+}
 public protocol ElkycStep : AnyObject {
   associatedtype Output
-  var stepId: ElkycCoreSDK.ElkycStepId { get }
+  var stepId: ElkycCoreSDK.ElkycStepId { get set }
   func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Self.Output, Swift.Error>) -> Swift.Void))
 }
 extension ElkycStep {
-  public func next<Second>(after time: Foundation.TimeInterval = 0, _ next: @escaping (Self.Output) -> Second) -> ElkycCoreSDK.AnyElkycStep<Second.Output> where Second : ElkycCoreSDK.ElkycStep
-  public func combine<Second>(after time: Foundation.TimeInterval = 0.3, _ next: @escaping (Self.Output) -> Second) -> ElkycCoreSDK.AnyElkycStep<(Self.Output, Second.Output)> where Second : ElkycCoreSDK.ElkycStep
-  public func retry(after time: Foundation.TimeInterval = 0, when: @escaping (Self.Output) -> Swift.Bool) -> ElkycCoreSDK.AnyElkycStep<Self.Output>
+  public func next<Second>(_ next: @escaping (Self.Output) -> Second) -> ElkycCoreSDK.AnyElkycStep<Second.Output> where Second : ElkycCoreSDK.ElkycStep
+  public func combine<Second>(_ zipped: @escaping (Self.Output) -> Second) -> ElkycCoreSDK.AnyElkycStep<(Self.Output, Second.Output)> where Second : ElkycCoreSDK.ElkycStep
+  public func retry(when: @escaping (Self.Output) -> Swift.Bool) -> ElkycCoreSDK.AnyElkycStep<Self.Output>
   public func map<NewOutput>(_ map: @escaping (Self.Output) -> NewOutput) -> ElkycCoreSDK.AnyElkycStep<NewOutput>
   public func eraseToAnyStep() -> ElkycCoreSDK.AnyElkycStep<Self.Output>
+  public func setCurrent(step: UIKit.UIViewController, from viewController: UIKit.UIViewController)
 }
 extension AnyElkycStep where Output == Swift.Void {
   public static func just<Value>(_ value: Value) -> ElkycCoreSDK.AnyElkycStep<Value>
@@ -2541,12 +2540,15 @@ final public class KeyboardHandler {
   @objc deinit
 }
 extension UIColor {
-  public static let appBlack: UIKit.UIColor
-  public static let appWhite: UIKit.UIColor
-  public static let main: UIKit.UIColor
-  public static let secondaryGray: UIKit.UIColor
-  public static let mainRed: UIKit.UIColor
-  public static let borderColor: UIKit.UIColor
+  public static let elkycAppBlack: UIKit.UIColor
+  public static let elkycAppWhite: UIKit.UIColor
+  public static let elkycMain: UIKit.UIColor
+  public static let elkycSecondaryGray: UIKit.UIColor
+  public static let elkycRed: UIKit.UIColor
+  public static let elkycResultRed: UIKit.UIColor
+  public static let elkycResultOrange: UIKit.UIColor
+  public static let elkycResultGreen: UIKit.UIColor
+  public static let elkycBorderColor: UIKit.UIColor
 }
 @available(iOS 9.0, macOS 10.11, *)
 extension UILayoutGuide {
@@ -2592,9 +2594,7 @@ extension AES : ElkycCoreSDK.Cipher {
   final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
 }
 @_hasMissingDesignatedInitializers public class AnyElkycStep<Output> : ElkycCoreSDK.ElkycStep {
-  public var stepId: ElkycCoreSDK.ElkycStepId {
-    get
-  }
+  public var stepId: ElkycCoreSDK.ElkycStepId
   public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Output, Swift.Error>) -> Swift.Void))
   @objc deinit
 }
@@ -2672,13 +2672,6 @@ public struct Logger {
   public func requestLog(request: Foundation.URLRequest)
   public func responseLog(response: Foundation.HTTPURLResponse?, error: Swift.Error?, responseData: Foundation.Data?)
 }
-public class ElkycNextStep<First, Second> : ElkycCoreSDK.ElkycStep where First : ElkycCoreSDK.ElkycStep, Second : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
-  public init(firstStep: First, nextStep: @escaping (First.Output) -> Second, after time: Foundation.TimeInterval = 0)
-  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Second.Output, Swift.Error>) -> Swift.Void))
-  public typealias Output = Second.Output
-  @objc deinit
-}
 public protocol _UInt8Type {
 }
 extension UInt8 : ElkycCoreSDK._UInt8Type {
@@ -2733,7 +2726,7 @@ extension CGFloat : ElkycCoreSDK.ConstraintInsetTarget {
 }
 extension UIEdgeInsets : ElkycCoreSDK.ConstraintInsetTarget {
 }
-public enum EnterResponse {
+@frozen public enum EnterResponse {
   case signIn(login: Swift.String, password: Swift.String)
   case registration(ElkycCoreSDK.RegistrationData)
 }
@@ -2874,7 +2867,7 @@ public protocol ServicesDelegate : AnyObject {
 }
 @objc @_inheritsConvenienceInitializers public class ServicesViewController : UIKit.UIViewController {
   @objc override dynamic public func viewDidLoad()
-  public func run<Flow>(flow: Flow, completion: (() -> Swift.Void)?) where Flow : ElkycCoreSDK.ElkycStep
+  public func run<Flow>(flow: Flow, completion: (([ElkycCoreSDK.FlowResult]) -> Swift.Void)?) where Flow : ElkycCoreSDK.ElkycStep
   @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
   @objc required dynamic public init?(coder: Foundation.NSCoder)
   @objc deinit
@@ -3072,12 +3065,6 @@ public protocol FinalizingDecryptModeWorker : ElkycCoreSDK.CipherModeWorker {
   mutating func didDecryptLast(bytes plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
   mutating func finalize(decrypt plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
 }
-public class ElkycValueStep<Output> : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
-  public init(output: Output)
-  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Output, Swift.Error>) -> Swift.Void))
-  @objc deinit
-}
 public protocol ConstraintDirectionalInsetTarget : ElkycCoreSDK.ConstraintConstantTarget {
 }
 @available(iOS 11.0, tvOS 11.0, *)
@@ -3092,39 +3079,38 @@ public enum Bit : Swift.Int {
     get
   }
 }
-public class ElkycMapStep<Step, NewOutput> : ElkycCoreSDK.ElkycStep where Step : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
-  public init(step: Step, map: @escaping (Step.Output) -> NewOutput)
-  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<NewOutput, Swift.Error>) -> Swift.Void))
-  public typealias Output = NewOutput
-  @objc deinit
-}
-public class IntroStep : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
-  public init(config: ElkycCoreSDK.IntroStep.Config = Config())
+public class Intro : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(config: ElkycCoreSDK.Intro.Config = Config())
   public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void))
   public typealias Output = ()
   @objc deinit
 }
-extension IntroStep {
+extension Intro {
   public struct Config {
+    public var image: UIKit.UIImage?
+    public var title: Swift.String?
+    public var attributedTitle: Foundation.NSAttributedString?
+    public var description: Swift.String?
+    public var mainBtnTint: UIKit.UIColor
+    public var mainBtnTitle: Swift.String?
     public init()
-    public static var startVerification: ElkycCoreSDK.IntroStep.Config {
+    public static var startVerification: ElkycCoreSDK.Intro.Config {
       get
     }
-    public static var rfid: ElkycCoreSDK.IntroStep.Config {
+    public static var rfid: ElkycCoreSDK.Intro.Config {
       get
     }
-    public static var liveness: ElkycCoreSDK.IntroStep.Config {
+    public static var liveness: ElkycCoreSDK.Intro.Config {
       get
     }
-    public static var ukrainian: ElkycCoreSDK.IntroStep.Config {
+    public static var world: ElkycCoreSDK.Intro.Config {
       get
     }
-    public static var selfieWithDoc: ElkycCoreSDK.IntroStep.Config {
+    public static var selfieWithDoc: ElkycCoreSDK.Intro.Config {
       get
     }
-    public static var signature: ElkycCoreSDK.IntroStep.Config {
+    public static var signature: ElkycCoreSDK.Intro.Config {
       get
     }
   }
@@ -3144,7 +3130,7 @@ final public class Poly1305 : ElkycCoreSDK.Authenticator {
   @objc deinit
 }
 public class DocumentSelection : ElkycCoreSDK.ElkycStep {
-  final public let stepId: ElkycCoreSDK.ElkycStepId
+  public var stepId: ElkycCoreSDK.ElkycStepId
   public init(documents: [ElkycCoreSDK.DocumentTypeViewProtocol], config: ElkycCoreSDK.DocumentSelection.Config = Config())
   public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Swift.Int, Swift.Error>) -> Swift.Void))
   public typealias Output = Swift.Int
@@ -3206,17 +3192,43 @@ extension LayoutConstraint {
 public protocol Cryptor {
   mutating func seek(to: Swift.Int) throws
 }
+public struct FlowResult {
+  public let id: Swift.String
+  public let type: ElkycCoreSDK.FlowResultType
+  public let result: Any
+  public init(id: Swift.String, type: ElkycCoreSDK.FlowResultType, result: Any)
+  public func resultObject<T>(type: T.Type) -> T?
+}
+public enum FlowResultType {
+  case selfieWithDoc
+  case innScan
+  case captureScan
+  case documentScan
+  case signature
+  case faceLiveness
+  case faceMatching
+  case faceCapturing
+  case custom
+  public var typeHint: Swift.String {
+    get
+  }
+  public static func == (a: ElkycCoreSDK.FlowResultType, b: ElkycCoreSDK.FlowResultType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 @_hasMissingDesignatedInitializers public class ElkycSDK {
-  public static let shared: ElkycCoreSDK.ElkycSDK
-  public var config: ElkycCoreSDK.ElkycSDK.Config
   public struct Config {
     public var workplaceHost: Swift.String?
     public var sendToCRM: Swift.Bool
   }
-  public func configure(appKey: Swift.String, clientKey: Swift.String, completion: ((Swift.Error?) -> Swift.Void)?)
+  public static let shared: ElkycCoreSDK.ElkycSDK
+  public var config: ElkycCoreSDK.ElkycSDK.Config
   public func isStepAvailable(_ stepId: ElkycCoreSDK.ElkycStepId) -> Swift.Bool
   public func wrapStepCompletion<T>(stepId: ElkycCoreSDK.ElkycStepId, completion: @escaping ((Swift.Result<T, Swift.Error>) -> Swift.Void)) -> ((Swift.Result<T, Swift.Error>) -> Swift.Void)
-  public func startFlow<Step>(appKey: Swift.String, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Step.Output, Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
+  public func addFlowResult(_ flowResult: ElkycCoreSDK.FlowResult)
+  public func startFlow<Step>(appKey: Swift.String, clientKey: Swift.String, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<[ElkycCoreSDK.FlowResult], Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
   @objc deinit
 }
 @objc public enum BannerPosition : Swift.Int {
@@ -3337,8 +3349,8 @@ extension ElkycCoreSDK.PCBC.Error : Swift.Equatable {}
 extension ElkycCoreSDK.PCBC.Error : Swift.Hashable {}
 extension ElkycCoreSDK.Padding : Swift.Equatable {}
 extension ElkycCoreSDK.Padding : Swift.Hashable {}
-extension ElkycCoreSDK.ConfirmStep.Response : Swift.Equatable {}
-extension ElkycCoreSDK.ConfirmStep.Response : Swift.Hashable {}
+extension ElkycCoreSDK.Confirm.Response : Swift.Equatable {}
+extension ElkycCoreSDK.Confirm.Response : Swift.Hashable {}
 extension ElkycCoreSDK.PKCS5.PBKDF1.Error : Swift.Equatable {}
 extension ElkycCoreSDK.PKCS5.PBKDF1.Error : Swift.Hashable {}
 extension ElkycCoreSDK.PKCS5.PBKDF1.Variant : Swift.Equatable {}
@@ -3359,8 +3371,8 @@ extension ElkycCoreSDK.ZVIndicatorView.AnimationType : Swift.Hashable {}
 extension ElkycCoreSDK.CTR : ElkycCoreSDK.BlockMode {}
 extension ElkycCoreSDK.CTR.Error : Swift.Equatable {}
 extension ElkycCoreSDK.CTR.Error : Swift.Hashable {}
-extension ElkycCoreSDK.ElkycStepId : Swift.Equatable {}
-extension ElkycCoreSDK.ElkycStepId : Swift.Hashable {}
+extension ElkycCoreSDK.ElkycStepId.StepType : Swift.Equatable {}
+extension ElkycCoreSDK.ElkycStepId.StepType : Swift.Hashable {}
 extension ElkycCoreSDK.BannerStyle : Swift.Equatable {}
 extension ElkycCoreSDK.BannerStyle : Swift.Hashable {}
 extension ElkycCoreSDK.BannerStyle : Swift.RawRepresentable {}
@@ -3430,6 +3442,8 @@ extension ElkycCoreSDK.CBC.Error : Swift.Equatable {}
 extension ElkycCoreSDK.CBC.Error : Swift.Hashable {}
 extension ElkycCoreSDK.CipherError : Swift.Equatable {}
 extension ElkycCoreSDK.CipherError : Swift.Hashable {}
+extension ElkycCoreSDK.FlowResultType : Swift.Equatable {}
+extension ElkycCoreSDK.FlowResultType : Swift.Hashable {}
 extension ElkycCoreSDK.BannerPosition : Swift.Equatable {}
 extension ElkycCoreSDK.BannerPosition : Swift.Hashable {}
 extension ElkycCoreSDK.BannerPosition : Swift.RawRepresentable {}

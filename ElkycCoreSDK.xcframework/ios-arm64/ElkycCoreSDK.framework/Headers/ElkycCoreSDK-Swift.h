@@ -313,6 +313,12 @@ SWIFT_CLASS_PROPERTY(@property (nonatomic, class, readonly, copy) NSString * _No
 @end
 
 
+SWIFT_CLASS("_TtC12ElkycCoreSDK25BindableGestureRecognizer")
+@interface BindableGestureRecognizer : UITapGestureRecognizer
+- (nonnull instancetype)initWithTarget:(id _Nullable)target action:(SEL _Nullable)action SWIFT_UNAVAILABLE;
+@end
+
+
 
 @class UITableView;
 @class NSIndexPath;
@@ -347,11 +353,12 @@ SWIFT_AVAILABILITY(ios,introduced=11.0)
 @end
 
 
+/// This class is used internally by other frameworks
+/// warning:
+/// Class is not for public usage
 SWIFT_CLASS("_TtC12ElkycCoreSDK23ElkycFlowViewController")
 @interface ElkycFlowViewController : UINavigationController
 - (void)viewDidLoad;
-- (void)presentViewController:(UIViewController * _Nonnull)viewControllerToPresent animated:(BOOL)flag completion:(void (^ _Nullable)(void))completion;
-- (void)dismissViewControllerAnimated:(BOOL)flag completion:(void (^ _Nullable)(void))completion;
 - (nonnull instancetype)initWithNavigationBarClass:(Class _Nullable)navigationBarClass toolbarClass:(Class _Nullable)toolbarClass OBJC_DESIGNATED_INITIALIZER SWIFT_AVAILABILITY(ios,introduced=5.0);
 - (nonnull instancetype)initWithRootViewController:(UIViewController * _Nonnull)rootViewController OBJC_DESIGNATED_INITIALIZER;
 - (nonnull instancetype)initWithNibName:(NSString * _Nullable)nibNameOrNil bundle:(NSBundle * _Nullable)nibBundleOrNil OBJC_DESIGNATED_INITIALIZER;
@@ -661,7 +668,6 @@ SWIFT_CLASS("_TtC12ElkycCoreSDK14TextFieldInset")
 - (nonnull instancetype)initWithFrame:(CGRect)frame OBJC_DESIGNATED_INITIALIZER;
 - (nullable instancetype)initWithCoder:(NSCoder * _Nonnull)coder OBJC_DESIGNATED_INITIALIZER;
 @end
-
 
 
 
