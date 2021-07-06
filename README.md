@@ -171,7 +171,7 @@ public class Custom: ElkycStep {
 ## Predefined steps
 All our frameworks have predefined steps which can be easily used. Almost all steps have configs and inputs. In this section, I will describe all available steps in the current framework, their configs and will show how they look like. 
 
-Right now all steps localized in Russian.
+Right now all steps localized in Russian and English.
 
 ### Intro
 This step is intro for other steps in the chain.
