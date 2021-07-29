@@ -459,7 +459,11 @@ enum StepResult {
 To start your prepared flow all you should do is call a method on shared **ElkycSDK**.
 
 ```swift
-ElkycSDK.shared.startFlow(appKey: appKey, clientKey: clientKey, flow: flow, from: self) { result in
+ElkycSDK.shared.startFlow(appKey: Registration.appKey,
+                                  clientKey: Registration.clientKey,
+                                  clientSession: "test session", flow: flow,
+                                  from: self)
+        { result in
 	switch result {
 	case .success(let response):
 		print(response)
@@ -468,10 +472,11 @@ ElkycSDK.shared.startFlow(appKey: appKey, clientKey: clientKey, flow: flow, from
 	}
 }
 ```
-This method take 4 parameters
+This method take 5 parameters
 
-- **appKey** - application key, this key could be obtained at
-- **clientKey** - client key, this key could be obtained at
+- **appKey** - application key, this key could be obtained at the portal
+- **clientKey** - client key, this key could be obtained at the portal
+- **clientSession** - Optional. This is unique identifier which you can use to identify your client session.
 - **flow** - flow variable, it should consist one or more steps
 - **viewController** - viewController from which flow will be presented
 - **completion** - completion handler, here you will receive error from any step or an array with FlowResult struct
