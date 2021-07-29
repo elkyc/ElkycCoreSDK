@@ -65,15 +65,51 @@ The whole process is going synchronously from the first to the last step. During
 
 ## Configuration
 SDK can be configured via `config` property on the shared instance.
-Config has these properties:
+Config has one configuration variable:
 
-- **workplaceHost**, HTTPS Host to which data will be sent. If nil then SDK will use default host. Example: https://example.com
-- **sendToCRM**, Bool property if true then data will be sent to the backend, else you can use your code to send the data.
+- **configuration**, this is enum where you can configure how data will be transfered to the servers.
 
 ```swift
-ElkycSDK.shared.config.sendToCRM = true
-ElkycSDK.shared.config.workplaceHost = "https://example.com"
+public enum Configuration {
+    /// All data will process by cloud backend
+    case cloud
+    /// The step data will not move outside of the device
+    case local
+    /// Custom Host Configuration
+    case custom(config: CustomHostConfiguration)
+}
+
+public struct CustomHostConfiguration {
+    /// HTTPS Host to which data will be sent.
+    /// Example: https://example.com
+    public var host: String
+
+    /// Path to which data will be sent.
+    /// Example: /api/sdk/workplace/verification
+    public var mainPath: String
+
+    /// Optional, if you support custom auth in standart format for SDK, then you can use this property.
+    /// Example: /api/sdk/auth/signIn
+    public var authPath: String?
+
+    /// Turn on/off data encryption,
+    public var encryptData: Bool
+
+    /// Optional. If set then SDK will validate signature
+    public var rssigSalt: String?
+
+    /// Optional. If set then SDK will use this token for authorization
+    public var accessToken: String?
+}
 ```
+
+CustomHostConfiguration is a struct where you can configure your custom host. This struct has a bunch of rules and properties, they intersect with each other, so I will describe them in detail.
+
+The main difference is how SDK connects to a host where it saves data. 
+- **authPath** - You can set this path if your host will implement the same authorization system like Elkyc cloud has.
+- **accessToken** - You can set your custom Bearer token, instead of having authPath. BUT authPath has a higher priority.
+- **encryptData** - right now working ONLY if authPath is set. Will encrypt JSON data with AES-256-CTR standard.
+- **rssigSalt** - If you set this value then JSON data will be validated with Bcrypt standard.
 
 ## ElkycStep Protocol
 All our frameworks contain many predefined steps which you can configure. Usually, you should not implement your step but you can, probably you will need this if you want to add your custom UI to the verification process. In this section, you can find a way how to do that, as well as what basic operations on steps you can perform.
