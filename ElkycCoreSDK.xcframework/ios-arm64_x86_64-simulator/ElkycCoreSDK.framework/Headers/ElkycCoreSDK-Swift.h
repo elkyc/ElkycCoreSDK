@@ -355,6 +355,7 @@ SWIFT_AVAILABILITY(ios,introduced=11.0)
 @end
 
 
+
 /// This class is used internally by other frameworks
 /// warning:
 /// Class is not for public usage
@@ -1094,6 +1095,7 @@ SWIFT_AVAILABILITY(ios,introduced=11.0)
 @interface CountryCodePickerViewController (SWIFT_EXTENSION(ElkycCoreSDK)) <UISearchResultsUpdating>
 - (void)updateSearchResultsForSearchController:(UISearchController * _Nonnull)searchController;
 @end
+
 
 
 /// This class is used internally by other frameworks

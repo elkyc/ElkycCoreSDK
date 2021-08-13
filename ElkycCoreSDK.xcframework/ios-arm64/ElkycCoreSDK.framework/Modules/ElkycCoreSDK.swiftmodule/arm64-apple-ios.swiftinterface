@@ -525,6 +525,26 @@ extension Confirm {
     }
   }
 }
+public enum FlowResultType {
+  case selfieWithDoc
+  case innScan
+  case captureScan
+  case documentScan
+  case signature
+  case faceLiveness
+  case faceMatching
+  case faceCapturing
+  case diia
+  case custom
+  public var typeHint: Swift.String {
+    get
+  }
+  public static func == (a: ElkycCoreSDK.FlowResultType, b: ElkycCoreSDK.FlowResultType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
 extension Data {
   public func checksum() -> Swift.UInt16
   public func md5() -> Foundation.Data
@@ -855,17 +875,12 @@ extension DocumentConfirm {
     public init()
   }
 }
+public struct DiiaLink : Swift.Decodable {
+  public let deepLink: Foundation.URL
+  public init(from decoder: Swift.Decoder) throws
+}
 @available(iOS 11.0, tvOS 11.0, *)
 public typealias ConstraintDirectionalInsets = UIKit.NSDirectionalEdgeInsets
-public struct WorkPlace {
-  public static func signIn(login: Swift.String, password: Swift.String, completion: @escaping (Swift.Result<ElkycCoreSDK.SignResponse, Swift.Error>) -> Swift.Void)
-  public static func sendDocument(data: [Swift.String : Any], completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
-  public static func sendImage(request: ElkycCoreSDK.WorkplaceImageRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
-  public static func sendInn(request: ElkycCoreSDK.WorkplaceInnRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
-  public static func sendInnConfirm(request: ElkycCoreSDK.WorkplaceInnRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
-  public static func sendLivenessOrMatching(request: ElkycCoreSDK.WorkplaceLivenessOrMatchingRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
-  public static func sendOtp(request: ElkycCoreSDK.WorkplaceOtpRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
-}
 final public class SHA2 {
   public enum Variant : Swift.RawRepresentable {
     case sha224, sha256, sha384, sha512
@@ -1174,6 +1189,7 @@ public struct ElkycStepId {
     case selfieWithDocConfirm
     case innConfirm
     case confirmImage
+    case diia
     case any
     case custom
     public var stringValue: Swift.String {
@@ -1463,6 +1479,12 @@ public protocol NotificationBannerDelegate : AnyObject {
 public struct WorkplaceInnRequest : Swift.Encodable {
   public init(number: Swift.String?, image: Swift.String)
   public func encode(to encoder: Swift.Encoder) throws
+}
+public struct DiiaResult : Swift.Decodable {
+  public var photoImage: UIKit.UIImage? {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
 }
 public protocol DocumentTypeViewProtocol {
   var image: UIKit.UIImage? { get }
@@ -2550,6 +2572,13 @@ extension UIColor {
   public static let elkycResultGreen: UIKit.UIColor
   public static let elkycBorderColor: UIKit.UIColor
 }
+public struct FlowResult {
+  public let id: Swift.String
+  public let type: ElkycCoreSDK.FlowResultType
+  public let result: Any
+  public init(id: Swift.String, type: ElkycCoreSDK.FlowResultType, result: Any)
+  public func resultObject<T>(type: T.Type) -> T?
+}
 @available(iOS 9.0, macOS 10.11, *)
 extension UILayoutGuide {
   public var snp: ElkycCoreSDK.ConstraintLayoutGuideDSL {
@@ -2671,6 +2700,20 @@ extension CharacterSet {
 public struct Logger {
   public func requestLog(request: Foundation.URLRequest)
   public func responseLog(response: Foundation.HTTPURLResponse?, error: Swift.Error?, responseData: Foundation.Data?)
+}
+public struct CustomHostConfiguration {
+  public var host: Swift.String
+  public var mainPath: Swift.String
+  public var authPath: Swift.String?
+  public var encryptData: Swift.Bool
+  public var rssigSalt: Swift.String?
+  public var accessToken: Swift.String?
+  public init(host: Swift.String, mainPath: Swift.String, encryptData: Swift.Bool, authPath: Swift.String? = nil, rssigSalt: Swift.String? = nil, accessToken: Swift.String? = nil)
+}
+public enum Configuration {
+  case cloud
+  case local
+  case custom(config: ElkycCoreSDK.CustomHostConfiguration)
 }
 public protocol _UInt8Type {
 }
@@ -2993,6 +3036,50 @@ public enum BannerHaptic {
   @objc override dynamic public init()
   @objc deinit
 }
+public protocol ExecutionContext {
+  func execute(_ work: @escaping () -> Swift.Void)
+}
+extension DispatchQueue : ElkycCoreSDK.ExecutionContext {
+  public func execute(_ work: @escaping () -> Swift.Void)
+}
+final public class InvalidatableQueue : ElkycCoreSDK.ExecutionContext {
+  public init(queue: Dispatch.DispatchQueue = .main)
+  final public func invalidate()
+  final public func execute(_ work: @escaping () -> Swift.Void)
+  @objc deinit
+}
+final public class Promise<Value> {
+  public init()
+  public init(value: Value)
+  public init(error: Swift.Error)
+  convenience public init(queue: Dispatch.DispatchQueue = DispatchQueue.global(qos: .userInitiated), work: @escaping (@escaping (Value) -> Swift.Void, @escaping (Swift.Error) -> Swift.Void) throws -> Swift.Void)
+  @discardableResult
+  final public func then<NewValue>(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onFulfilled: @escaping (Value) throws -> ElkycCoreSDK.Promise<NewValue>) -> ElkycCoreSDK.Promise<NewValue>
+  @discardableResult
+  final public func then<NewValue>(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onFulfilled: @escaping (Value) throws -> NewValue) -> ElkycCoreSDK.Promise<NewValue>
+  @discardableResult
+  final public func then(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onFulfilled: @escaping (Value) -> Swift.Void, _ onRejected: @escaping (Swift.Error) -> Swift.Void = { _ in }) -> ElkycCoreSDK.Promise<Value>
+  @discardableResult
+  final public func `catch`(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onRejected: @escaping (Swift.Error) -> Swift.Void) -> ElkycCoreSDK.Promise<Value>
+  final public func reject(_ error: Swift.Error)
+  final public func fulfill(_ value: Value)
+  final public var isPending: Swift.Bool {
+    get
+  }
+  final public var isFulfilled: Swift.Bool {
+    get
+  }
+  final public var isRejected: Swift.Bool {
+    get
+  }
+  final public var value: Value? {
+    get
+  }
+  final public var error: Swift.Error? {
+    get
+  }
+  @objc deinit
+}
 public struct DocumentConfirmHintViewModel {
 }
 extension String {
@@ -3034,8 +3121,8 @@ public protocol BlockMode {
   func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
 }
 public class NetworkSession {
-  public init(session: Foundation.URLSession = URLSession.shared)
-  public func request<T>(_ request: ElkycCoreSDK.URLRequestConvertible, completion: @escaping (Swift.Result<T, Swift.Error>) -> Swift.Void) where T : Swift.Decodable
+  public init(encryptData: Swift.Bool, cryptSalt: Swift.String?, session: Foundation.URLSession = URLSession.shared)
+  public func request<T>(_ request: ElkycCoreSDK.Service) -> ElkycCoreSDK.Promise<T> where T : Swift.Decodable
   @objc deinit
 }
 public protocol CipherModeWorker {
@@ -3115,6 +3202,43 @@ extension Intro {
     }
   }
 }
+public enum Promises {
+  public static func all<T>(_ promises: [ElkycCoreSDK.Promise<T>]) -> ElkycCoreSDK.Promise<[T]>
+  public static func delay(_ delay: Foundation.TimeInterval) -> ElkycCoreSDK.Promise<()>
+  public static func timeout<T>(_ timeout: Foundation.TimeInterval) -> ElkycCoreSDK.Promise<T>
+  public static func race<T>(_ promises: [ElkycCoreSDK.Promise<T>]) -> ElkycCoreSDK.Promise<T>
+  public static func retry<T>(count: Swift.Int, delay: Foundation.TimeInterval, generate: @escaping () -> ElkycCoreSDK.Promise<T>) -> ElkycCoreSDK.Promise<T>
+  public static func kickoff<T>(_ block: @escaping () throws -> ElkycCoreSDK.Promise<T>) -> ElkycCoreSDK.Promise<T>
+  public static func kickoff<T>(_ block: @escaping () throws -> T) -> ElkycCoreSDK.Promise<T>
+  public static func zip<T, U>(_ first: ElkycCoreSDK.Promise<T>, _ second: ElkycCoreSDK.Promise<U>) -> ElkycCoreSDK.Promise<(T, U)>
+  public static func zip<T1, T2, T3>(_ p1: ElkycCoreSDK.Promise<T1>, _ p2: ElkycCoreSDK.Promise<T2>, _ last: ElkycCoreSDK.Promise<T3>) -> ElkycCoreSDK.Promise<(T1, T2, T3)>
+  public static func zip<T1, T2, T3, T4>(_ p1: ElkycCoreSDK.Promise<T1>, _ p2: ElkycCoreSDK.Promise<T2>, _ p3: ElkycCoreSDK.Promise<T3>, _ last: ElkycCoreSDK.Promise<T4>) -> ElkycCoreSDK.Promise<(T1, T2, T3, T4)>
+}
+extension Promise {
+  final public func addTimeout(_ timeout: Foundation.TimeInterval) -> ElkycCoreSDK.Promise<Value>
+  @discardableResult
+  final public func always(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onComplete: @escaping () -> Swift.Void) -> ElkycCoreSDK.Promise<Value>
+  final public func recover(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ recovery: @escaping (Swift.Error) throws -> ElkycCoreSDK.Promise<Value>) -> ElkycCoreSDK.Promise<Value>
+  final public func recover<E>(type errorType: E.Type, on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ recovery: @escaping (E) throws -> ElkycCoreSDK.Promise<Value>) -> ElkycCoreSDK.Promise<Value> where E : Swift.Error
+  final public func ensure(_ check: @escaping (Value) -> Swift.Bool) -> ElkycCoreSDK.Promise<Value>
+  final public func `catch`<E>(type errorType: E.Type, _ onRejected: @escaping (E) -> Swift.Void) -> ElkycCoreSDK.Promise<Value> where E : Swift.Error
+  final public func mapError(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ transformError: @escaping (Swift.Error) -> Swift.Error) -> ElkycCoreSDK.Promise<Value>
+  final public func mapError<E>(type errorType: E.Type, on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ transformError: @escaping (E) -> Swift.Error) -> ElkycCoreSDK.Promise<Value> where E : Swift.Error
+}
+public protocol Workplace {
+  func startVerification(appKey: Swift.String, transactionId: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func verificationSucceed(transactionId: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func verificationFailed(transactionId: Swift.String, error: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func sendDocument(data: [Swift.String : Any], completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendImage(request: ElkycCoreSDK.WorkplaceImageRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendInn(request: ElkycCoreSDK.WorkplaceInnRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendInnConfirm(request: ElkycCoreSDK.WorkplaceInnRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendLivenessOrMatching(request: ElkycCoreSDK.WorkplaceLivenessOrMatchingRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendOtp(request: ElkycCoreSDK.WorkplaceOtpRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func getDiiaUrl(completion: @escaping (Swift.Result<ElkycCoreSDK.DiiaLink, Swift.Error>) -> Swift.Void)
+  func getDiiaResult(completion: @escaping (Swift.Result<ElkycCoreSDK.DiiaResult, Swift.Error>) -> Swift.Void)
+  func updateClientToken(_ clientToken: Swift.String?)
+}
 final public class Poly1305 : ElkycCoreSDK.Authenticator {
   public enum Error : Swift.Error {
     case authenticateError
@@ -3192,43 +3316,20 @@ extension LayoutConstraint {
 public protocol Cryptor {
   mutating func seek(to: Swift.Int) throws
 }
-public struct FlowResult {
-  public let id: Swift.String
-  public let type: ElkycCoreSDK.FlowResultType
-  public let result: Any
-  public init(id: Swift.String, type: ElkycCoreSDK.FlowResultType, result: Any)
-  public func resultObject<T>(type: T.Type) -> T?
-}
-public enum FlowResultType {
-  case selfieWithDoc
-  case innScan
-  case captureScan
-  case documentScan
-  case signature
-  case faceLiveness
-  case faceMatching
-  case faceCapturing
-  case custom
-  public var typeHint: Swift.String {
-    get
-  }
-  public static func == (a: ElkycCoreSDK.FlowResultType, b: ElkycCoreSDK.FlowResultType) -> Swift.Bool
-  public func hash(into hasher: inout Swift.Hasher)
-  public var hashValue: Swift.Int {
-    get
-  }
-}
 @_hasMissingDesignatedInitializers public class ElkycSDK {
   public struct Config {
-    public var workplaceHost: Swift.String?
-    public var sendToCRM: Swift.Bool
+    public var configuration: ElkycCoreSDK.Configuration
   }
   public static let shared: ElkycCoreSDK.ElkycSDK
+  public var workPlace: ElkycCoreSDK.Workplace {
+    get
+  }
+  final public let networkSession: ElkycCoreSDK.NetworkSession
   public var config: ElkycCoreSDK.ElkycSDK.Config
   public func isStepAvailable(_ stepId: ElkycCoreSDK.ElkycStepId) -> Swift.Bool
   public func wrapStepCompletion<T>(stepId: ElkycCoreSDK.ElkycStepId, completion: @escaping ((Swift.Result<T, Swift.Error>) -> Swift.Void)) -> ((Swift.Result<T, Swift.Error>) -> Swift.Void)
   public func addFlowResult(_ flowResult: ElkycCoreSDK.FlowResult)
-  public func startFlow<Step>(appKey: Swift.String, clientKey: Swift.String, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<[ElkycCoreSDK.FlowResult], Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
+  public func startFlow<Step>(appKey: Swift.String, clientKey: Swift.String, clientSession: Swift.String? = nil, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<[ElkycCoreSDK.FlowResult], Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
   @objc deinit
 }
 @objc public enum BannerPosition : Swift.Int {
@@ -3351,6 +3452,8 @@ extension ElkycCoreSDK.Padding : Swift.Equatable {}
 extension ElkycCoreSDK.Padding : Swift.Hashable {}
 extension ElkycCoreSDK.Confirm.Response : Swift.Equatable {}
 extension ElkycCoreSDK.Confirm.Response : Swift.Hashable {}
+extension ElkycCoreSDK.FlowResultType : Swift.Equatable {}
+extension ElkycCoreSDK.FlowResultType : Swift.Hashable {}
 extension ElkycCoreSDK.PKCS5.PBKDF1.Error : Swift.Equatable {}
 extension ElkycCoreSDK.PKCS5.PBKDF1.Error : Swift.Hashable {}
 extension ElkycCoreSDK.PKCS5.PBKDF1.Variant : Swift.Equatable {}
@@ -3442,8 +3545,6 @@ extension ElkycCoreSDK.CBC.Error : Swift.Equatable {}
 extension ElkycCoreSDK.CBC.Error : Swift.Hashable {}
 extension ElkycCoreSDK.CipherError : Swift.Equatable {}
 extension ElkycCoreSDK.CipherError : Swift.Hashable {}
-extension ElkycCoreSDK.FlowResultType : Swift.Equatable {}
-extension ElkycCoreSDK.FlowResultType : Swift.Hashable {}
 extension ElkycCoreSDK.BannerPosition : Swift.Equatable {}
 extension ElkycCoreSDK.BannerPosition : Swift.Hashable {}
 extension ElkycCoreSDK.BannerPosition : Swift.RawRepresentable {}
