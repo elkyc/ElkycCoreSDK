@@ -3309,6 +3309,7 @@ public protocol Cryptor {
 }
 @_hasMissingDesignatedInitializers public class ElkycSDK {
   public struct Config {
+    public var isInDebug: Swift.Bool
     public var configuration: ElkycCoreSDK.Configuration
   }
   public static let shared: ElkycCoreSDK.ElkycSDK
