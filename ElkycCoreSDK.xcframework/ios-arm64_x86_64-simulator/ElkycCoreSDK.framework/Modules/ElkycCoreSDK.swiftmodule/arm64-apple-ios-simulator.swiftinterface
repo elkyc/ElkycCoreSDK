@@ -387,6 +387,7 @@ public enum NetworkError : Swift.Error {
   case urlRequestValidationFailed(reason: ElkycCoreSDK.NetworkError.URLRequestValidationFailureReason)
   case invalidCode(Swift.Int, Swift.String?)
   case noContentData
+  case systemError(Swift.Error)
   case invalidSignature
   public enum ParameterEncodingFailureReason {
     case missingURL
