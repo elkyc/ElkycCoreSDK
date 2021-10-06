@@ -65,7 +65,7 @@ The whole process is going synchronously from the first to the last step. During
 
 ## Configuration
 SDK can be configured via `config` property on the shared instance.
-Config has one configuration variable:
+Config has this variables:
 
 - **configuration**, this is enum where you can configure how data will be transfered to the servers.
 
@@ -102,6 +102,9 @@ public struct CustomHostConfiguration {
     public var accessToken: String?
 }
 ```
+
+- **isInDebug**, bool variable, if true then you will see additional logs, false by default
+- **faceSDKServiceURL**, string where you can set custom faceSDK Url.
 
 CustomHostConfiguration is a struct where you can configure your custom host. This struct has a bunch of rules and properties, they intersect with each other, so I will describe them in detail.
 
