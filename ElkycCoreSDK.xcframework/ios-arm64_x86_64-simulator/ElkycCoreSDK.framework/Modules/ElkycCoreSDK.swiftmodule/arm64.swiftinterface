@@ -3312,6 +3312,7 @@ public protocol Cryptor {
   public struct Config {
     public var isInDebug: Swift.Bool
     public var configuration: ElkycCoreSDK.Configuration
+    public var faceSDKServiceURL: Swift.String?
   }
   public static let shared: ElkycCoreSDK.ElkycSDK
   public var workPlace: ElkycCoreSDK.Workplace {

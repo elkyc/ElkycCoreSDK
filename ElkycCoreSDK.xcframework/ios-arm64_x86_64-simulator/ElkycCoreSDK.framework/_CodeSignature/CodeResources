@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		cRjuqqPBk+DgE9oCddSioeSe3Uo=
+		JCkgcR2IjO3H9xH+YClWo0seGWc=
 		</data>
 		<key>Confirmation.storyboardc/ConfirmationViewControler.nib</key>
 		<data>
@@ -170,11 +170,11 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		e2kMVBSwYpfOVpptPw0qvxsMWVA=
+		S7/cSj1xmlxfEMZ38Iy3jp8/ZCk=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		/SAxxn1fNOAPOjhywGLrrmKE6cA=
+		4R/GgsfKy9GOWNKX8SXgHBgtTPI=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -182,11 +182,11 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64.swiftinterface</key>
 		<data>
-		e2kMVBSwYpfOVpptPw0qvxsMWVA=
+		S7/cSj1xmlxfEMZ38Iy3jp8/ZCk=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		/SAxxn1fNOAPOjhywGLrrmKE6cA=
+		4R/GgsfKy9GOWNKX8SXgHBgtTPI=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -194,11 +194,11 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		ZpC0tfQQgv0jnXfJwM03ign4Gbg=
+		Bo84/VLYu1Ep/zQ+j8Onyd3/KX4=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		DPa1EBudVOfm+ZTCw+McODPYrz8=
+		sQpNmz5sdnuQsfa28riP/ZkWR7s=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -206,11 +206,11 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64.swiftinterface</key>
 		<data>
-		ZpC0tfQQgv0jnXfJwM03ign4Gbg=
+		Bo84/VLYu1Ep/zQ+j8Onyd3/KX4=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		DPa1EBudVOfm+ZTCw+McODPYrz8=
+		sQpNmz5sdnuQsfa28riP/ZkWR7s=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -269,7 +269,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			jQxHRM3QsoOWH7bzKPc9R6QwLRgd+gfMAJOaxemgWVc=
+			SOmo/wWFXhfkKw5hLKC5PoPUO6GFCHpuv3jXEsaSM+Y=
 			</data>
 		</dict>
 		<key>Confirmation.storyboardc/ConfirmationViewControler.nib</key>
@@ -549,14 +549,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lXsH9MqSglcZizrk9Ld4cuUOEfENo92cEZidkD7wL5M=
+			HOgs8JGdJS6dwvvIZ0xlrOG0gDoaeZkwra8XvtOeR0U=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			J/W+12P7iPIYKPcKDS/p/H+5F7CJRBptj9irr8FVcys=
+			Cr8xJQUkex2Scx4k0HPM7vZsjZcn/fZn4pfyXnf70gQ=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64.swiftdoc</key>
@@ -570,14 +570,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			lXsH9MqSglcZizrk9Ld4cuUOEfENo92cEZidkD7wL5M=
+			HOgs8JGdJS6dwvvIZ0xlrOG0gDoaeZkwra8XvtOeR0U=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			J/W+12P7iPIYKPcKDS/p/H+5F7CJRBptj9irr8FVcys=
+			Cr8xJQUkex2Scx4k0HPM7vZsjZcn/fZn4pfyXnf70gQ=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -591,14 +591,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ANNI7GiXK3WWWzaFge5+9VvV4t2qwv0Hd+h5vqr/73Y=
+			MD5dfMZ4MU03HUakIJj7D3XT2/QYV8zPMTIaPCrD9xo=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			L2rADG9XS/DP1ynrJObrzufhEQySA5gmIKjH6DECLBU=
+			HSh10vzlBzQQtVZ1FvchqBcFlysEOfNfcPN5BfA89LY=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -612,14 +612,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ANNI7GiXK3WWWzaFge5+9VvV4t2qwv0Hd+h5vqr/73Y=
+			MD5dfMZ4MU03HUakIJj7D3XT2/QYV8zPMTIaPCrD9xo=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			L2rADG9XS/DP1ynrJObrzufhEQySA5gmIKjH6DECLBU=
+			HSh10vzlBzQQtVZ1FvchqBcFlysEOfNfcPN5BfA89LY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
