@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		e+/PKxkp2YMRT1tL1bhEhOavR5Y=
+		zrOSqkfYz0ukyBBf5p3oVcAAmVU=
 		</data>
 		<key>Confirmation.storyboardc/ConfirmationViewControler.nib</key>
 		<data>
@@ -174,7 +174,7 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		8yqRSkTwD0MJ4nBYjCnPgvSmg1k=
+		xGLz3q8HN74gRVojpMAo4qavH3M=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64.swiftdoc</key>
 		<data>
@@ -186,7 +186,7 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64.swiftmodule</key>
 		<data>
-		8yqRSkTwD0MJ4nBYjCnPgvSmg1k=
+		xGLz3q8HN74gRVojpMAo4qavH3M=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -198,7 +198,7 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		vxUKh6JIMhUK+Q/Z+Z12mTgFFwc=
+		kphCz2gzMf72N+n2dpOcvMNzs8Y=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64.swiftdoc</key>
 		<data>
@@ -210,7 +210,7 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64.swiftmodule</key>
 		<data>
-		vxUKh6JIMhUK+Q/Z+Z12mTgFFwc=
+		kphCz2gzMf72N+n2dpOcvMNzs8Y=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -269,7 +269,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			5y5ol0kjE2IbiWershSsRqYwPM1KI3qTpwlMRd1O6s4=
+			d8S/oHDwMUvfnkZACba/USHqSmx/fRAxzfoCJVck07s=
 			</data>
 		</dict>
 		<key>Confirmation.storyboardc/ConfirmationViewControler.nib</key>
@@ -556,7 +556,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tqpbqGe42eOiIhIvwbQnbN/hWs69snnjKJVtcQP4J3M=
+			T+BQWlZ9gRgKXEGXmUp3sdx5JOClAiG4vxJ0Nutklbc=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64.swiftdoc</key>
@@ -577,7 +577,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tqpbqGe42eOiIhIvwbQnbN/hWs69snnjKJVtcQP4J3M=
+			T+BQWlZ9gRgKXEGXmUp3sdx5JOClAiG4vxJ0Nutklbc=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -598,7 +598,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KUnSXVCwhbjOCJ8yZjtjTSTMEWSxRNNvO0tgBcrOjgI=
+			8nX+QT1jxa42Ibx7h4NuhIpITjWOozL9lkKlvDCVkPQ=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64.swiftdoc</key>
@@ -619,7 +619,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			KUnSXVCwhbjOCJ8yZjtjTSTMEWSxRNNvO0tgBcrOjgI=
+			8nX+QT1jxa42Ibx7h4NuhIpITjWOozL9lkKlvDCVkPQ=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
