@@ -105,6 +105,25 @@ public struct CustomHostConfiguration {
 
 - **isInDebug**, bool variable, if true then you will see additional logs, false by default
 - **faceSDKServiceURL**, string where you can set custom faceSDK Url.
+- **faceSDKLocalizationHandler**, to change existing localization you can utilize the localization hook localizationHandler provided by Face SDK. This closure is called every time a string is requested. By returning nil we fallback to the default localization provided by SDK.
+
+```
+"hint.fit" = "Fit your face in the oval";
+"hint.lookStraight" = "Look straight";
+"hint.moveAway" = "Move away";
+"hint.moveCloser" = "Move closer";
+"hint.stayStill" = "Hold steady";
+"livenessProcessing.title.processing" = "Processing...";
+"livenessRetry.action.retry" = "Retry";
+"livenessRetry.text.guidelines" = "But please follow these guidelines:";
+"livenessRetry.text.noGlare" = "No glare or extreme lighting";
+"livenessRetry.text.noSmiling" = "Neutral expression, no smiling";
+"livenessRetry.title.tryAgain" = "Let’s try that again";
+"noCameraPermission.action.ok" = "OK";
+"noCameraPermission.action.settings" = "Settings";
+"noCameraPermission.text.changeSettings" = "The application doesn't have permission to use the camera, please change the privacy settings";
+"noCameraPermission.title.unavailable" = "Camera unavailable";
+```
 
 CustomHostConfiguration is a struct where you can configure your custom host. This struct has a bunch of rules and properties, they intersect with each other, so I will describe them in detail.
 
