@@ -1,5 +1,5 @@
 // swift-interface-format-version: 1.0
-// swift-compiler-version: Apple Swift version 5.5 (swiftlang-1300.0.31.1 clang-1300.0.29.1)
+// swift-compiler-version: Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)
 // swift-module-flags: -target arm64-apple-ios11.0-simulator -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ElkycCoreSDK
 import AVFoundation
 import CoreTelephony
@@ -3312,7 +3312,7 @@ public protocol Cryptor {
   public struct Config {
     public var isInDebug: Swift.Bool
     public var configuration: ElkycCoreSDK.Configuration
-    public var faceSDKServiceURL: Swift.String?
+    public var faceSDKLocalizationHandler: ((Swift.String) -> Swift.String?)?
   }
   public static let shared: ElkycCoreSDK.ElkycSDK
   public var workPlace: ElkycCoreSDK.Workplace {
@@ -3320,6 +3320,9 @@ public protocol Cryptor {
   }
   final public let networkSession: ElkycCoreSDK.NetworkSession
   public var config: ElkycCoreSDK.ElkycSDK.Config
+  public var faceSDKUrl: Swift.String? {
+    get
+  }
   public func isStepAvailable(_ stepId: ElkycCoreSDK.ElkycStepId) -> Swift.Bool
   public func wrapStepCompletion<T>(stepId: ElkycCoreSDK.ElkycStepId, completion: @escaping ((Swift.Result<T, Swift.Error>) -> Swift.Void)) -> ((Swift.Result<T, Swift.Error>) -> Swift.Void)
   public func addFlowResult(_ flowResult: ElkycCoreSDK.FlowResult)
