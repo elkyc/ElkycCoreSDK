@@ -104,7 +104,6 @@ public struct CustomHostConfiguration {
 ```
 
 - **isInDebug**, bool variable, if true then you will see additional logs, false by default
-- **faceSDKServiceURL**, string where you can set custom faceSDK Url.
 - **faceSDKLocalizationHandler**, to change existing localization you can utilize the localization hook localizationHandler provided by Face SDK. This closure is called every time a string is requested. By returning nil we fallback to the default localization provided by SDK.
 
 ```
