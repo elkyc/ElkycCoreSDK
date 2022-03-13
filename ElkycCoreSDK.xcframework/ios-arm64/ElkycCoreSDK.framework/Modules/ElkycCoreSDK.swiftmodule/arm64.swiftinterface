@@ -3331,6 +3331,9 @@ public protocol Cryptor {
   public func startFlow<Step>(appKey: Swift.String, clientKey: Swift.String, clientSession: Swift.String? = nil, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<[ElkycCoreSDK.FlowResult], Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
   @objc deinit
 }
+extension ElkycCoreSDK.ElkycSDK {
+  public func prepare(request: Foundation.URLRequest) -> Foundation.URLRequest?
+}
 @objc public enum BannerPosition : Swift.Int {
   case bottom
   case top
