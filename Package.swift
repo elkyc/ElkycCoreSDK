@@ -15,6 +15,6 @@ let package = Package(
         .binaryTarget(
             name: "ElkycCoreSDK",
             url: "https://github.com/elkyc/ElkycCoreSDK/releases/download/v\(version)/ElkycCoreSDK.xcframework.zip",
-            checksum: "73e6e99a6cd25072598257e99a00baa7a07219de7bdbfd6d575ebfdaab3ae37e")
+            checksum: checksum)
     ]
 )
