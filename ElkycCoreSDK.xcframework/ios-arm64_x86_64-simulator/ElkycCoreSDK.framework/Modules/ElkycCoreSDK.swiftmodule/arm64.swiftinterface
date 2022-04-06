@@ -450,6 +450,10 @@ public struct Registration {
   public static var isSignUpComplete: Swift.Bool {
     get
   }
+  public static var isDevelopment: Swift.Bool {
+    get
+    set
+  }
   public static func logout()
 }
 public struct SignResponse : Swift.Decodable {
