@@ -2,6 +2,7 @@
 // swift-compiler-version: Apple Swift version 5.6 (swiftlang-5.6.0.323.62 clang-1316.0.20.8)
 // swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ElkycCoreSDK
 import AVFoundation
+import CoreGraphics
 import CoreTelephony
 import Darwin
 @_exported import ElkycCoreSDK
@@ -446,6 +447,7 @@ public struct Registration {
   public static func servicesViewController(delegate: ElkycCoreSDK.ServicesDelegate?, logoutCompletion: (() -> Swift.Void)?) throws -> UIKit.UIViewController
   public static func enterViewController(completion: @escaping (ElkycCoreSDK.EnterResponse) -> Swift.Void) throws -> UIKit.UIViewController
   public static func register(registrationData: ElkycCoreSDK.RegistrationData, email: Swift.String?, phone: Swift.String?, code: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) throws
+  public static func sendOtp(type: ElkycCoreSDK.OtpType) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
   public static func signIn(login: Swift.String, password: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) throws
   public static var isSignUpComplete: Swift.Bool {
     get
@@ -906,6 +908,52 @@ final public class SHA2 {
 }
 extension ElkycCoreSDK.SHA2 : ElkycCoreSDK.Updatable {
   final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+open class KeychainWrapper {
+  @available(*, deprecated, message: "KeychainWrapper.defaultKeychainWrapper is deprecated since version 2.2.1, use KeychainWrapper.standard instead")
+  public static let defaultKeychainWrapper: ElkycCoreSDK.KeychainWrapper
+  public static let standard: ElkycCoreSDK.KeychainWrapper
+  public var serviceName: Swift.String {
+    get
+  }
+  public var accessGroup: Swift.String? {
+    get
+  }
+  public init(serviceName: Swift.String, accessGroup: Swift.String? = nil)
+  open func hasValue(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  open func accessibilityOfKey(_ key: Swift.String) -> ElkycCoreSDK.KeychainItemAccessibility?
+  open func allKeys() -> Swift.Set<Swift.String>
+  open func integer(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Int?
+  open func float(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Float?
+  open func double(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Double?
+  open func bool(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool?
+  open func string(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.String?
+  open func object(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.NSCoding?
+  open func data(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.Data?
+  open func dataRef(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.Data?
+  @discardableResult
+  open func set(_ value: Swift.Int, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Float, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Double, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Bool, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.String, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.NSCoding, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.Data, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @available(*, deprecated, message: "remove is deprecated since version 2.2.1, use removeObject instead")
+  @discardableResult
+  open func remove(key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func removeObject(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func removeAllKeys() -> Swift.Bool
+  open class func wipeKeychain()
+  @objc deinit
 }
 extension ElkycCoreSDK.AES : ElkycCoreSDK.Cryptors {
   final public func makeEncryptor() throws -> ElkycCoreSDK.Cryptor & ElkycCoreSDK.Updatable
@@ -1542,6 +1590,59 @@ public struct OFB : ElkycCoreSDK.BlockMode {
   public let options: ElkycCoreSDK.BlockModeOption
   public init(iv: Swift.Array<Swift.UInt8>)
   public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+extension ElkycCoreSDK.KeychainWrapper {
+  public func remove(forKey key: ElkycCoreSDK.KeychainWrapper.Key)
+}
+extension ElkycCoreSDK.KeychainWrapper {
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.String? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Bool? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Int? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Double? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Float? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> CoreGraphics.CGFloat? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Foundation.Data? {
+    get
+    set
+  }
+}
+extension ElkycCoreSDK.KeychainWrapper {
+  public func data(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Foundation.Data?
+  public func bool(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Bool?
+  public func integer(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Int?
+  public func float(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Float?
+  public func cgFloat(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> CoreGraphics.CGFloat?
+  public func double(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Double?
+  public func string(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.String?
+}
+extension ElkycCoreSDK.KeychainWrapper {
+  public struct Key : Swift.Hashable, Swift.RawRepresentable, Swift.ExpressibleByStringLiteral {
+    public var rawValue: Swift.String
+    public init(rawValue: Swift.String)
+    public init(stringLiteral value: Swift.String)
+    public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+    public typealias RawValue = Swift.String
+    public typealias StringLiteralType = Swift.String
+    public typealias UnicodeScalarLiteralType = Swift.String
+  }
 }
 public protocol AEAD {
   static var kLen: Swift.Int { get }
@@ -2201,6 +2302,7 @@ public struct CCM {
   public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
 }
 public struct NoReply : Swift.Decodable {
+  public init()
   public init(from decoder: Swift.Decoder) throws
 }
 public typealias MetadataCallback = (() throws -> Foundation.Data?)
@@ -2253,16 +2355,8 @@ extension ElkycCoreSDK.AnyElkycStep where Output == Swift.Void {
 }
 @available(iOS 9.0, *)
 public typealias ConstraintLayoutGuide = UIKit.UILayoutGuide
-public enum Model : Swift.String {
-  case simulator, iPod1, iPod2, iPod3, iPod4, iPod5, iPod6, iPod7, iPad2, iPad3, iPad4, iPadAir, iPadAir2, iPadAir3, iPadAir4, iPad5, iPad6, iPad7, iPad8, iPadMini, iPadMini2, iPadMini3, iPadMini4, iPadMini5, iPadPro9_7, iPadPro10_5, iPadPro11, iPadPro2_11, iPadPro12_9, iPadPro2_12_9, iPadPro3_12_9, iPadPro4_12_9, iPhone4, iPhone4S, iPhone5, iPhone5S, iPhone5C, iPhone6, iPhone6Plus, iPhone6S, iPhone6SPlus, iPhoneSE, iPhone7, iPhone7Plus, iPhone8, iPhone8Plus, iPhoneX, iPhoneXS, iPhoneXSMax, iPhoneXR, iPhone11, iPhone11Pro, iPhone11ProMax, iPhoneSE2, iPhone12Mini, iPhone12, iPhone12Pro, iPhone12ProMax, AppleWatch1, AppleWatchS1, AppleWatchS2, AppleWatchS3, AppleWatchS4, AppleWatchS5, AppleWatchSE, AppleWatchS6, AppleTV1, AppleTV2, AppleTV3, AppleTV4, AppleTV_4K, unrecognized
-  public init?(rawValue: Swift.String)
-  public typealias RawValue = Swift.String
-  public var rawValue: Swift.String {
-    get
-  }
-}
 extension UIKit.UIDevice {
-  @_Concurrency.MainActor(unsafe) public var type: ElkycCoreSDK.Model {
+  @_Concurrency.MainActor(unsafe) public static var isSimulator: Swift.Bool {
     get
   }
 }
@@ -2698,7 +2792,7 @@ public struct Logger {
   public func requestLog(request: Foundation.URLRequest)
   public func responseLog(response: Foundation.HTTPURLResponse?, error: Swift.Error?, responseData: Foundation.Data?)
 }
-public struct CustomHostConfiguration {
+public struct CustomHostConfiguration : Swift.Equatable {
   public var host: Swift.String
   public var mainPath: Swift.String
   public var authPath: Swift.String?
@@ -2706,11 +2800,13 @@ public struct CustomHostConfiguration {
   public var rssigSalt: Swift.String?
   public var accessToken: Swift.String?
   public init(host: Swift.String, mainPath: Swift.String, encryptData: Swift.Bool, authPath: Swift.String? = nil, rssigSalt: Swift.String? = nil, accessToken: Swift.String? = nil)
+  public static func == (a: ElkycCoreSDK.CustomHostConfiguration, b: ElkycCoreSDK.CustomHostConfiguration) -> Swift.Bool
 }
-public enum Configuration {
+public enum Configuration : Swift.Equatable {
   case cloud
   case local
   case custom(config: ElkycCoreSDK.CustomHostConfiguration)
+  public static func == (a: ElkycCoreSDK.Configuration, b: ElkycCoreSDK.Configuration) -> Swift.Bool
 }
 public protocol _UInt8Type {
 }
@@ -2744,6 +2840,27 @@ extension ElkycCoreSDK.SHA3 : ElkycCoreSDK.Updatable {
 }
 extension UIKit.UIImage {
   public func resize(maxHeight: Swift.Float = 200.0, maxWidth: Swift.Float = 200.0) -> UIKit.UIImage
+}
+public enum KeychainItemAccessibility {
+  @available(iOS 4, *)
+  case afterFirstUnlock
+  @available(iOS 4, *)
+  case afterFirstUnlockThisDeviceOnly
+  @available(iOS 4, *)
+  case always
+  @available(iOS 8, *)
+  case whenPasscodeSetThisDeviceOnly
+  @available(iOS 4, *)
+  case alwaysThisDeviceOnly
+  @available(iOS 4, *)
+  case whenUnlocked
+  @available(iOS 4, *)
+  case whenUnlockedThisDeviceOnly
+  public static func == (a: ElkycCoreSDK.KeychainItemAccessibility, b: ElkycCoreSDK.KeychainItemAccessibility) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
 }
 public protocol LayoutConstraintItem : AnyObject {
 }
@@ -3223,6 +3340,10 @@ extension ElkycCoreSDK.Promise {
   final public func mapError(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ transformError: @escaping (Swift.Error) -> Swift.Error) -> ElkycCoreSDK.Promise<Value>
   final public func mapError<E>(type errorType: E.Type, on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ transformError: @escaping (E) -> Swift.Error) -> ElkycCoreSDK.Promise<Value> where E : Swift.Error
 }
+public enum OtpType {
+  case phone(Swift.String)
+  case email(Swift.String)
+}
 public protocol Workplace {
   func startVerification(appKey: Swift.String, transactionId: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
   func verificationSucceed(transactionId: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
@@ -3232,7 +3353,9 @@ public protocol Workplace {
   func sendInn(request: ElkycCoreSDK.WorkplaceInnRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
   func sendInnConfirm(request: ElkycCoreSDK.WorkplaceInnRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
   func sendLivenessOrMatching(request: ElkycCoreSDK.WorkplaceLivenessOrMatchingRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
-  func sendOtp(request: ElkycCoreSDK.WorkplaceOtpRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendOtpData(request: ElkycCoreSDK.WorkplaceOtpRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendOtp(type: ElkycCoreSDK.OtpType) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func verifyOtp(type: ElkycCoreSDK.OtpType, code: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
   func getDiiaUrl(completion: @escaping (Swift.Result<ElkycCoreSDK.DiiaLink, Swift.Error>) -> Swift.Void)
   func getDiiaResult(completion: @escaping (Swift.Result<ElkycCoreSDK.DiiaResult, Swift.Error>) -> Swift.Void)
   func updateClientToken(_ clientToken: Swift.String?)
@@ -3324,15 +3447,13 @@ public protocol Cryptor {
   public var workPlace: ElkycCoreSDK.Workplace {
     get
   }
-  final public let networkSession: ElkycCoreSDK.NetworkSession
   public var config: ElkycCoreSDK.ElkycSDK.Config
-  public var faceSDKUrl: Swift.String? {
-    get
-  }
   public func isStepAvailable(_ stepId: ElkycCoreSDK.ElkycStepId) -> Swift.Bool
   public func wrapStepCompletion<T>(stepId: ElkycCoreSDK.ElkycStepId, completion: @escaping ((Swift.Result<T, Swift.Error>) -> Swift.Void)) -> ((Swift.Result<T, Swift.Error>) -> Swift.Void)
   public func addFlowResult(_ flowResult: ElkycCoreSDK.FlowResult)
+  @available(*, deprecated, message: "Use method without clientKey")
   public func startFlow<Step>(appKey: Swift.String, clientKey: Swift.String, clientSession: Swift.String? = nil, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<[ElkycCoreSDK.FlowResult], Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
+  public func startFlow<Step>(appKey: Swift.String, clientSession: Swift.String? = nil, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<[ElkycCoreSDK.FlowResult], Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
   @objc deinit
 }
 extension ElkycCoreSDK.ElkycSDK {
@@ -3513,9 +3634,6 @@ extension ElkycCoreSDK.Blowfish.Error : Swift.Hashable {}
 extension ElkycCoreSDK.CCM : ElkycCoreSDK.BlockMode {}
 extension ElkycCoreSDK.CCM.Error : Swift.Equatable {}
 extension ElkycCoreSDK.CCM.Error : Swift.Hashable {}
-extension ElkycCoreSDK.Model : Swift.Equatable {}
-extension ElkycCoreSDK.Model : Swift.Hashable {}
-extension ElkycCoreSDK.Model : Swift.RawRepresentable {}
 extension ElkycCoreSDK.QueuePosition : Swift.Equatable {}
 extension ElkycCoreSDK.QueuePosition : Swift.Hashable {}
 extension ElkycCoreSDK.QueuePosition : Swift.RawRepresentable {}
@@ -3530,6 +3648,8 @@ extension ElkycCoreSDK.AES.Variant : Swift.Hashable {}
 extension ElkycCoreSDK.AES.Variant : Swift.RawRepresentable {}
 extension ElkycCoreSDK.SHA3.Variant : Swift.Equatable {}
 extension ElkycCoreSDK.SHA3.Variant : Swift.Hashable {}
+extension ElkycCoreSDK.KeychainItemAccessibility : Swift.Equatable {}
+extension ElkycCoreSDK.KeychainItemAccessibility : Swift.Hashable {}
 extension ElkycCoreSDK.GCM.Mode : Swift.Equatable {}
 extension ElkycCoreSDK.GCM.Mode : Swift.Hashable {}
 extension ElkycCoreSDK.GCM.Error : Swift.Equatable {}
