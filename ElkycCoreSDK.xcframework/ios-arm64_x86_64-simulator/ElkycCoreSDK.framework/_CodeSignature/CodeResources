@@ -174,7 +174,7 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		hkKnD/etVIzV/E+3+ePqPNmtKgU=
+		9YidpHgH4Ey1+AgIsp87WcqwNMU=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
@@ -186,7 +186,7 @@
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		rjAX+yNr9ri7HAovCHVX2eCJaqA=
+		vQTlRmSkPUU+TlSIwgUTM9WdmLE=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
@@ -224,7 +224,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			qFYdm1jaBfpGvVBEYz+q8YTBg94=
+			C9JRdr2gNAZAU8nx4W4aYI8D9cI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -233,7 +233,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			i+yfHCWj/6UYp1O664WyMpuEPoQ=
+			sONisxls6oN7b+0MXvHC9VVPcdI=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -532,7 +532,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			R2gpS4njN21cCiILymRFHKkMINY9+/O1lebWZPJwkV4=
+			I0di+sYjpWE0yIuFOKwAN8xpaCnLhIrW7f3OrftcK6A=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
@@ -553,7 +553,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			/ry1yRUJBYRbrLbdHjjAep2eejcnL03U5K17vJuVhF4=
+			si7Mw4SRLBtNxYX5RKLvgTtDIhaHKciGVpLvmgZ0bu0=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
@@ -616,7 +616,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			qfsVh4ffWvEh1h/gY6H2GvTPGVxEiI7q91AiMf5lnCY=
+			jC1r1mc8g51SihiKM5FfZPn6lQc90VKEu4h0sD2+mXY=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -625,7 +625,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			q2THJ+vozES37b/LCzmhlOOzPHWW4OIJVT/DpFo488o=
+			tpO64VmgB8jGaEPQ1zu1M9kY84ugM4AQ881I0ihKEYo=
 			</data>
 			<key>optional</key>
 			<true/>
