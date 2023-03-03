@@ -6,6 +6,6 @@ framework module ElkycCoreSDK {
 }
 
 module ElkycCoreSDK.Swift {
-    header "ElkycCoreSDK-Swift.h"
-    requires objc
+  header "ElkycCoreSDK-Swift.h"
+  requires objc
 }

@@ -1,0 +1,3681 @@
+// swift-interface-format-version: 1.0
+// swift-compiler-version: Apple Swift version 5.7.2 (swiftlang-5.7.2.135.5 clang-1400.0.29.51)
+// swift-module-flags: -target arm64-apple-ios11.0 -enable-objc-interop -enable-library-evolution -swift-version 5 -enforce-exclusivity=checked -O -module-name ElkycCoreSDK
+// swift-module-flags-ignorable: -enable-bare-slash-regex
+import AVFoundation
+import CoreGraphics
+import CoreTelephony
+import Darwin
+@_exported import ElkycCoreSDK
+import Foundation
+import QuartzCore
+import SafariServices
+import Swift
+import UIKit
+import _Concurrency
+import _StringProcessing
+public typealias ConstraintView = UIKit.UIView
+@available(iOS 8.0, *)
+public struct ConstraintLayoutSupportDSL : ElkycCoreSDK.ConstraintDSL {
+  public var target: Swift.AnyObject? {
+    get
+  }
+  public var top: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var bottom: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var height: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+}
+public enum PhoneNumberError : Swift.Error {
+  case generalError
+  case invalidCountryCode
+  case notANumber
+  case unknownType
+  case tooLong
+  case tooShort
+  case deprecated
+  case metadataNotFound
+  public static func == (a: ElkycCoreSDK.PhoneNumberError, b: ElkycCoreSDK.PhoneNumberError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension ElkycCoreSDK.PhoneNumberError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public enum PhoneNumberFormat {
+  case e164
+  case international
+  case national
+  public static func == (a: ElkycCoreSDK.PhoneNumberFormat, b: ElkycCoreSDK.PhoneNumberFormat) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public enum PhoneNumberType : Swift.String, Swift.Codable {
+  case fixedLine
+  case mobile
+  case fixedOrMobile
+  case pager
+  case personalNumber
+  case premiumRate
+  case sharedCost
+  case tollFree
+  case voicemail
+  case voip
+  case uan
+  case unknown
+  case notParsed
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public enum PossibleLengthType : Swift.String, Swift.Codable {
+  case national
+  case localOnly
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers @_Concurrency.MainActor(unsafe) open class NotificationBanner : ElkycCoreSDK.BaseNotificationBanner {
+  @objc @_Concurrency.MainActor(unsafe) public var subtitleLabel: ElkycCoreSDK.MarqueeLabel? {
+    get
+  }
+  @objc @_Concurrency.MainActor(unsafe) public init(title: Swift.String? = nil, subtitle: Swift.String? = nil, leftView: UIKit.UIView? = nil, rightView: UIKit.UIView? = nil, style: ElkycCoreSDK.BannerStyle = .info, colors: ElkycCoreSDK.BannerColorsProtocol? = nil)
+  @objc @_Concurrency.MainActor(unsafe) convenience public init(attributedTitle: Foundation.NSAttributedString, attributedSubtitle: Foundation.NSAttributedString? = nil, leftView: UIKit.UIView? = nil, rightView: UIKit.UIView? = nil, style: ElkycCoreSDK.BannerStyle = .info, colors: ElkycCoreSDK.BannerColorsProtocol? = nil)
+  @objc @_Concurrency.MainActor(unsafe) public init(customView: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension ElkycCoreSDK.NotificationBanner {
+  @_Concurrency.MainActor(unsafe) public func applyStyling(cornerRadius: CoreFoundation.CGFloat? = nil, titleFont: UIKit.UIFont? = nil, titleColor: UIKit.UIColor? = nil, titleTextAlign: UIKit.NSTextAlignment? = nil, subtitleFont: UIKit.UIFont? = nil, subtitleColor: UIKit.UIColor? = nil, subtitleTextAlign: UIKit.NSTextAlignment? = nil)
+}
+public typealias ConstraintInterfaceLayoutDirection = UIKit.UIUserInterfaceLayoutDirection
+public struct ConstraintConfig {
+  public static var interfaceLayoutDirection: ElkycCoreSDK.ConstraintInterfaceLayoutDirection
+}
+@_hasMissingDesignatedInitializers public class ConstraintMakerFinalizable {
+  @discardableResult
+  public func labeled(_ label: Swift.String) -> ElkycCoreSDK.ConstraintMakerFinalizable
+  public var constraint: ElkycCoreSDK.Constraint {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 11.0, *)
+public protocol CountryCodePickerDelegate : AnyObject {
+  func countryCodePickerViewControllerDidPickCountry(_ country: ElkycCoreSDK.CountryCodePickerViewController.Country)
+}
+@objc @_hasMissingDesignatedInitializers @available(iOS 11.0, *)
+@_Concurrency.MainActor(unsafe) public class CountryCodePickerViewController : UIKit.UITableViewController {
+  @_Concurrency.MainActor(unsafe) final public let phoneNumberKit: ElkycCoreSDK.PhoneNumberKit
+  @_Concurrency.MainActor(unsafe) weak public var delegate: ElkycCoreSDK.CountryCodePickerDelegate?
+  @_Concurrency.MainActor(unsafe) public init(phoneNumberKit: ElkycCoreSDK.PhoneNumberKit, commonCountryCodes: [Swift.String] = PhoneNumberKit.CountryCodePicker.commonCountryCodes)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillAppear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewWillDisappear(_ animated: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func numberOfSections(in tableView: UIKit.UITableView) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, numberOfRowsInSection section: Swift.Int) -> Swift.Int
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, cellForRowAt indexPath: Foundation.IndexPath) -> UIKit.UITableViewCell
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, titleForHeaderInSection section: Swift.Int) -> Swift.String?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func sectionIndexTitles(for tableView: UIKit.UITableView) -> [Swift.String]?
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func tableView(_ tableView: UIKit.UITableView, didSelectRowAt indexPath: Foundation.IndexPath)
+  @objc deinit
+}
+@available(iOS 11.0, *)
+extension ElkycCoreSDK.CountryCodePickerViewController : UIKit.UISearchResultsUpdating {
+  @_Concurrency.MainActor(unsafe) @objc dynamic public func updateSearchResults(for searchController: UIKit.UISearchController)
+}
+@available(iOS 11.0, *)
+extension ElkycCoreSDK.CountryCodePickerViewController {
+  public struct Country {
+    public var code: Swift.String
+    public var flag: Swift.String
+    public var name: Swift.String
+    public var prefix: Swift.String
+    public init?(for countryCode: Swift.String, with phoneNumberKit: ElkycCoreSDK.PhoneNumberKit)
+  }
+  @objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class Cell : UIKit.UITableViewCell {
+    @objc deinit
+  }
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) open class PhoneNumberTextField : UIKit.UITextField, UIKit.UITextFieldDelegate {
+  @_Concurrency.MainActor(unsafe) final public let phoneNumberKit: ElkycCoreSDK.PhoneNumberKit
+  @_Concurrency.MainActor(unsafe) public var flagButton: UIKit.UIButton {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var text: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open func setTextUnformatted(newValue: Swift.String?)
+  @_Concurrency.MainActor(unsafe) open var defaultRegion: Swift.String {
+    get
+    @available(*, deprecated, message: "    The setter of defaultRegion is deprecated,\n    please override defaultRegion in a subclass instead.")
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var withPrefix: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var withFlag: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var withExamplePlaceholder: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var countryCodePlaceholderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var numberPlaceholderColor: UIKit.UIColor {
+    get
+    set
+  }
+  @available(iOS 11.0, *)
+  @_Concurrency.MainActor(unsafe) public var withDefaultPickerUI: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var isPartialFormatterEnabled: Swift.Bool
+  @_Concurrency.MainActor(unsafe) public var maxDigits: Swift.Int? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var partialFormatter: ElkycCoreSDK.PartialFormatter {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var delegate: UIKit.UITextFieldDelegate? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var currentRegion: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var nationalNumber: Swift.String {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var isValidNumber: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var phoneNumber: ElkycCoreSDK.PhoneNumber? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) convenience public init(withPhoneNumberKit phoneNumberKit: ElkycCoreSDK.PhoneNumberKit)
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreFoundation.CGRect, phoneNumberKit: ElkycCoreSDK.PhoneNumberKit)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) open func updateFlag()
+  @_Concurrency.MainActor(unsafe) open func updatePlaceholder()
+  @_Concurrency.MainActor(unsafe) @objc open func textField(_ textField: UIKit.UITextField, shouldChangeCharactersIn range: Foundation.NSRange, replacementString string: Swift.String) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldShouldBeginEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldDidBeginEditing(_ textField: UIKit.UITextField)
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldShouldEndEditing(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldDidEndEditing(_ textField: UIKit.UITextField)
+  @available(iOS 10.0, tvOS 10.0, *)
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldDidEndEditing(_ textField: UIKit.UITextField, reason: UIKit.UITextField.DidEndEditingReason)
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldShouldClear(_ textField: UIKit.UITextField) -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc open func textFieldShouldReturn(_ textField: UIKit.UITextField) -> Swift.Bool
+  @objc deinit
+}
+@available(iOS 11.0, *)
+extension ElkycCoreSDK.PhoneNumberTextField : ElkycCoreSDK.CountryCodePickerDelegate {
+  @_Concurrency.MainActor(unsafe) public func countryCodePickerViewControllerDidPickCountry(_ country: ElkycCoreSDK.CountryCodePickerViewController.Country)
+}
+public protocol Authenticator {
+  func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+public struct BlockModeOption : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public init(rawValue: Swift.Int)
+  public typealias ArrayLiteralElement = ElkycCoreSDK.BlockModeOption
+  public typealias Element = ElkycCoreSDK.BlockModeOption
+  public typealias RawValue = Swift.Int
+}
+extension ElkycCoreSDK.Rabbit {
+  convenience public init(key: Swift.String) throws
+  convenience public init(key: Swift.String, iv: Swift.String) throws
+}
+@objc public protocol BannerColorsProtocol {
+  @objc func color(for style: ElkycCoreSDK.BannerStyle) -> UIKit.UIColor
+}
+@_hasMissingDesignatedInitializers public class BannerColors : ElkycCoreSDK.BannerColorsProtocol {
+  @objc public func color(for style: ElkycCoreSDK.BannerStyle) -> UIKit.UIColor
+  @objc deinit
+}
+extension ElkycCoreSDK.ZVProgressHUD {
+  @_Concurrency.MainActor(unsafe) public class func setDisplayStyle(_ displayStyle: ElkycCoreSDK.ZVProgressHUD.DisplayStyle)
+  @_Concurrency.MainActor(unsafe) public class func setMaskType(_ maskType: ElkycCoreSDK.ZVProgressHUD.MaskType)
+  @_Concurrency.MainActor(unsafe) public class func setCornerRadius(_ cornerRadius: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public class func setOffset(_ offset: UIKit.UIOffset)
+  @_Concurrency.MainActor(unsafe) public class func setTitleLabelFont(_ font: UIKit.UIFont)
+  @_Concurrency.MainActor(unsafe) public class func setTitleLabelColor(_ color: UIKit.UIColor?)
+  @_Concurrency.MainActor(unsafe) public class func setProgressLabelFont(_ font: UIKit.UIFont)
+  @_Concurrency.MainActor(unsafe) public class func setProgressLabelColor(_ color: UIKit.UIColor?)
+  @_Concurrency.MainActor(unsafe) public class func setProgressLabelHidden(_ isProgressLabelHidden: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) public class func setStrokeWidth(_ strokeWidth: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public class func setIndicatorSize(_ size: CoreFoundation.CGSize)
+  @_Concurrency.MainActor(unsafe) public class func setAnimationType(_ animationType: ElkycCoreSDK.ZVIndicatorView.AnimationType)
+  @_Concurrency.MainActor(unsafe) public class func setContentInsets(_ indets: UIKit.UIEdgeInsets)
+  @_Concurrency.MainActor(unsafe) public class func setTitleEdgeInsets(_ indets: UIKit.UIEdgeInsets)
+  @_Concurrency.MainActor(unsafe) public class func setIndicatorEdgeInsets(_ indets: UIKit.UIEdgeInsets)
+  @_Concurrency.MainActor(unsafe) public class func setLogo(_ logo: UIKit.UIImage?)
+  @_Concurrency.MainActor(unsafe) public class func setLogoSize(_ size: CoreFoundation.CGSize)
+}
+extension ElkycCoreSDK.ZVProgressHUD {
+  @_Concurrency.MainActor(unsafe) public class func setMaxSupportedWindowLevel(_ windowLevel: UIKit.UIWindow.Level)
+  @_Concurrency.MainActor(unsafe) public class func setFadeInAnimationTimeInterval(_ timeInterval: Foundation.TimeInterval)
+  @_Concurrency.MainActor(unsafe) public class func setFadeOutAnimationTImeInterval(_ timeInterval: Foundation.TimeInterval)
+  @_Concurrency.MainActor(unsafe) public class func setMinimumDismissTimeInterval(_ timeInterval: Foundation.TimeInterval)
+  @_Concurrency.MainActor(unsafe) public class func setMaximumDismissTimeInterval(_ timeInterval: Foundation.TimeInterval)
+  @_Concurrency.MainActor(unsafe) public class func setMaximumContentSize(_ size: CoreFoundation.CGSize)
+}
+extension ElkycCoreSDK.ZVProgressHUD {
+  @_Concurrency.MainActor(unsafe) public class func showText(_ text: Swift.String, in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func showSuccess(with title: Swift.String = "", in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func showError(with title: Swift.String = "", in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func showWarning(with title: Swift.String = "", in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func show(with title: Swift.String = "", in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func showProgress(_ progress: Swift.Float, title: Swift.String = "", in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func showImage(_ image: UIKit.UIImage, title: Swift.String = "", in superview: UIKit.UIView? = nil, dismissAtomically: Swift.Bool = true, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func showAnimation(_ images: [UIKit.UIImage], duration: Foundation.TimeInterval = 0.0, title: Swift.String = "", in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func showCustomView(_ view: UIKit.UIView, in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func show(with displayType: ElkycCoreSDK.ZVProgressHUD.DisplayType, in superview: UIKit.UIView? = nil, delay delayTimeInterval: Foundation.TimeInterval = 0.0, with configuration: ElkycCoreSDK.ZVProgressHUD.Configuration? = nil)
+  @_Concurrency.MainActor(unsafe) public class func dismiss(delay: Foundation.TimeInterval = 0.0, completion: ElkycCoreSDK.ZVProgressHUD.CompletionHandler? = nil)
+}
+extension ElkycCoreSDK.PhoneNumber {
+  public func adjustedNationalNumber() -> Swift.String
+}
+public typealias Parameters = [Swift.String : Any]
+public protocol ParameterEncoding {
+  func encode(_ urlRequest: ElkycCoreSDK.URLRequestConvertible, with parameters: ElkycCoreSDK.Parameters?) throws -> Foundation.URLRequest
+}
+public struct URLEncoding : ElkycCoreSDK.ParameterEncoding {
+  public enum Destination {
+    case methodDependent
+    case queryString
+    case httpBody
+    public static func == (a: ElkycCoreSDK.URLEncoding.Destination, b: ElkycCoreSDK.URLEncoding.Destination) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum ArrayEncoding {
+    case brackets
+    case noBrackets
+    public static func == (a: ElkycCoreSDK.URLEncoding.ArrayEncoding, b: ElkycCoreSDK.URLEncoding.ArrayEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum BoolEncoding {
+    case numeric
+    case literal
+    public static func == (a: ElkycCoreSDK.URLEncoding.BoolEncoding, b: ElkycCoreSDK.URLEncoding.BoolEncoding) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static var `default`: ElkycCoreSDK.URLEncoding {
+    get
+  }
+  public static var queryString: ElkycCoreSDK.URLEncoding {
+    get
+  }
+  public static var httpBody: ElkycCoreSDK.URLEncoding {
+    get
+  }
+  public let destination: ElkycCoreSDK.URLEncoding.Destination
+  public let arrayEncoding: ElkycCoreSDK.URLEncoding.ArrayEncoding
+  public let boolEncoding: ElkycCoreSDK.URLEncoding.BoolEncoding
+  public init(destination: ElkycCoreSDK.URLEncoding.Destination = .methodDependent, arrayEncoding: ElkycCoreSDK.URLEncoding.ArrayEncoding = .brackets, boolEncoding: ElkycCoreSDK.URLEncoding.BoolEncoding = .numeric)
+  public func encode(_ urlRequest: ElkycCoreSDK.URLRequestConvertible, with parameters: ElkycCoreSDK.Parameters?) throws -> Foundation.URLRequest
+  public func queryComponents(fromKey key: Swift.String, value: Any) -> [(Swift.String, Swift.String)]
+  public func escape(_ string: Swift.String) -> Swift.String
+}
+public struct JSONEncoding : ElkycCoreSDK.ParameterEncoding {
+  public static var `default`: ElkycCoreSDK.JSONEncoding {
+    get
+  }
+  public static var prettyPrinted: ElkycCoreSDK.JSONEncoding {
+    get
+  }
+  public let options: Foundation.JSONSerialization.WritingOptions
+  public init(options: Foundation.JSONSerialization.WritingOptions = [])
+  public func encode(_ urlRequest: ElkycCoreSDK.URLRequestConvertible, with parameters: ElkycCoreSDK.Parameters?) throws -> Foundation.URLRequest
+  public func encode(_ urlRequest: ElkycCoreSDK.URLRequestConvertible, withJSONObject jsonObject: Any? = nil) throws -> Foundation.URLRequest
+}
+public struct HTTPMethod : Swift.RawRepresentable, Swift.Equatable, Swift.Hashable {
+  public static let connect: ElkycCoreSDK.HTTPMethod
+  public static let delete: ElkycCoreSDK.HTTPMethod
+  public static let get: ElkycCoreSDK.HTTPMethod
+  public static let head: ElkycCoreSDK.HTTPMethod
+  public static let options: ElkycCoreSDK.HTTPMethod
+  public static let patch: ElkycCoreSDK.HTTPMethod
+  public static let post: ElkycCoreSDK.HTTPMethod
+  public static let put: ElkycCoreSDK.HTTPMethod
+  public static let trace: ElkycCoreSDK.HTTPMethod
+  public let rawValue: Swift.String
+  public init(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+}
+public class SelfieWithDocConfirm : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(selfieImg: UIKit.UIImage, config: ElkycCoreSDK.DocumentConfirm.Config)
+  public static let hints: [ElkycCoreSDK.DocumentConfirmHintViewModel]
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.DocumentConfirm.StepResult, Swift.Error>) -> Swift.Void))
+  public typealias Output = ElkycCoreSDK.DocumentConfirm.StepResult
+  @objc deinit
+}
+public enum NetworkError : Swift.Error {
+  case invalidURL(url: ElkycCoreSDK.URLConvertible)
+  case parameterEncodingFailed(reason: ElkycCoreSDK.NetworkError.ParameterEncodingFailureReason)
+  case urlRequestValidationFailed(reason: ElkycCoreSDK.NetworkError.URLRequestValidationFailureReason)
+  case invalidCode(Swift.Int, Swift.String?)
+  case noContentData
+  case systemError(Swift.Error)
+  case invalidSignature
+  public enum ParameterEncodingFailureReason {
+    case missingURL
+    case jsonEncodingFailed(error: Swift.Error)
+    case customEncodingFailed(error: Swift.Error)
+  }
+  public enum URLRequestValidationFailureReason {
+    case bodyDataInGETRequest(Foundation.Data)
+  }
+}
+extension ElkycCoreSDK.NetworkError : Foundation.LocalizedError {
+  public var errorDescription: Swift.String? {
+    get
+  }
+}
+public class CMAC : ElkycCoreSDK.Authenticator {
+  public enum Error : Swift.Error {
+    case wrongKeyLength
+    public static func == (a: ElkycCoreSDK.CMAC.Error, b: ElkycCoreSDK.CMAC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(key: Swift.Array<Swift.UInt8>) throws
+  public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public func authenticate(_ bytes: Swift.Array<Swift.UInt8>, cipher: ElkycCoreSDK.Cipher) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+public struct HKDF {
+  public enum Error : Swift.Error {
+    case invalidInput
+    case derivedKeyTooLong
+    public static func == (a: ElkycCoreSDK.HKDF.Error, b: ElkycCoreSDK.HKDF.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>? = nil, info: Swift.Array<Swift.UInt8>? = nil, keyLength: Swift.Int? = nil, variant: ElkycCoreSDK.HMAC.Variant = .sha256) throws
+  public func calculate() throws -> Swift.Array<Swift.UInt8>
+}
+extension Swift.Encodable {
+  public func asDictionary() throws -> [Swift.String : Any]
+}
+public protocol Cryptors : AnyObject {
+  func makeEncryptor() throws -> ElkycCoreSDK.Cryptor & ElkycCoreSDK.Updatable
+  func makeDecryptor() throws -> ElkycCoreSDK.Cryptor & ElkycCoreSDK.Updatable
+  static func randomIV(_ blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+}
+extension ElkycCoreSDK.Cryptors {
+  public static func randomIV(_ count: Swift.Int) -> Swift.Array<Swift.UInt8>
+}
+public struct Registration {
+  public static func servicesViewController(delegate: ElkycCoreSDK.ServicesDelegate?, logoutCompletion: (() -> Swift.Void)?) throws -> UIKit.UIViewController
+  public static func enterViewController(completion: @escaping (ElkycCoreSDK.EnterResponse) -> Swift.Void) throws -> UIKit.UIViewController
+  public static func register(registrationData: ElkycCoreSDK.RegistrationData, email: Swift.String?, phone: Swift.String?, code: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) throws
+  public static func sendOtp(type: ElkycCoreSDK.OtpType) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  public static func signIn(login: Swift.String, password: Swift.String, completion: @escaping (Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void) throws
+  public static var isSignUpComplete: Swift.Bool {
+    get
+  }
+  public static var isDevelopment: Swift.Bool {
+    get
+    set
+  }
+  public static func logout()
+}
+public struct SignResponse : Swift.Decodable {
+  public let clientKey: Swift.String
+  public let appKey: Swift.String
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct PCBC : ElkycCoreSDK.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: ElkycCoreSDK.PCBC.Error, b: ElkycCoreSDK.PCBC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: ElkycCoreSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+public protocol PaddingProtocol {
+  func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+  func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
+}
+public enum Padding : ElkycCoreSDK.PaddingProtocol {
+  case noPadding, zeroPadding, pkcs7, pkcs5, iso78164
+  public func add(to: Swift.Array<Swift.UInt8>, blockSize: Swift.Int) -> Swift.Array<Swift.UInt8>
+  public func remove(from: Swift.Array<Swift.UInt8>, blockSize: Swift.Int?) -> Swift.Array<Swift.UInt8>
+  public static func == (a: ElkycCoreSDK.Padding, b: ElkycCoreSDK.Padding) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public class Confirm : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(config: ElkycCoreSDK.Confirm.Config = Config())
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.Confirm.Response, Swift.Error>) -> Swift.Void))
+  public typealias Output = ElkycCoreSDK.Confirm.Response
+  @objc deinit
+}
+extension ElkycCoreSDK.Confirm {
+  @frozen public enum Response {
+    case mainAction
+    case close
+    public static func == (a: ElkycCoreSDK.Confirm.Response, b: ElkycCoreSDK.Confirm.Response) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public struct Config {
+    public var title: Swift.String
+    public var description: Swift.String
+    public var image: UIKit.UIImage?
+    public var mainBtnBackgroundColor: UIKit.UIColor
+    public var mainBtnTintColor: UIKit.UIColor
+    public var mainBtnTitle: Swift.String
+    public var showCloseBtn: Swift.Bool
+    public var closeBtnTint: UIKit.UIColor
+    public var alertTitle: Swift.String
+    public var alertDescription: Swift.String
+    public var alertDestructiveBtnTitle: Swift.String
+    public var alertMainBtnTitle: Swift.String
+    public init()
+    public static var livenessSuccess: ElkycCoreSDK.Confirm.Config {
+      get
+    }
+    public static var livenessFail: ElkycCoreSDK.Confirm.Config {
+      get
+    }
+    public static var congrats: ElkycCoreSDK.Confirm.Config {
+      get
+    }
+  }
+}
+public enum FlowResultType {
+  case selfieWithDoc
+  case innScan
+  case captureScan
+  case documentScan
+  case signature
+  case faceLiveness
+  case faceMatching
+  case faceCapturing
+  case diia
+  case custom
+  public var typeHint: Swift.String {
+    get
+  }
+  public static func == (a: ElkycCoreSDK.FlowResultType, b: ElkycCoreSDK.FlowResultType) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension Foundation.Data {
+  public func checksum() -> Swift.UInt16
+  public func md5() -> Foundation.Data
+  public func sha1() -> Foundation.Data
+  public func sha224() -> Foundation.Data
+  public func sha256() -> Foundation.Data
+  public func sha384() -> Foundation.Data
+  public func sha512() -> Foundation.Data
+  public func sha3(_ variant: ElkycCoreSDK.SHA3.Variant) -> Foundation.Data
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Foundation.Data
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Foundation.Data
+  public func crc16(seed: Swift.UInt16? = nil) -> Foundation.Data
+  public func encrypt(cipher: ElkycCoreSDK.Cipher) throws -> Foundation.Data
+  public func decrypt(cipher: ElkycCoreSDK.Cipher) throws -> Foundation.Data
+  public func authenticate(with authenticator: ElkycCoreSDK.Authenticator) throws -> Foundation.Data
+}
+extension Foundation.Data {
+  public init(hex: Swift.String)
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func toHexString() -> Swift.String
+}
+extension ElkycCoreSDK.PKCS5 {
+  public struct PBKDF1 {
+    public enum Error : Swift.Error {
+      case invalidInput
+      case derivedKeyTooLong
+      public static func == (a: ElkycCoreSDK.PKCS5.PBKDF1.Error, b: ElkycCoreSDK.PKCS5.PBKDF1.Error) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public enum Variant {
+      case md5, sha1
+      public static func == (a: ElkycCoreSDK.PKCS5.PBKDF1.Variant, b: ElkycCoreSDK.PKCS5.PBKDF1.Variant) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, variant: ElkycCoreSDK.PKCS5.PBKDF1.Variant = .sha1, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil) throws
+    public func calculate() -> Swift.Array<Swift.UInt8>
+  }
+}
+@available(iOS 8.0, *)
+public typealias ConstraintLayoutSupport = UIKit.UILayoutSupport
+extension ElkycCoreSDK.HMAC {
+  convenience public init(key: Swift.String, variant: ElkycCoreSDK.HMAC.Variant = .md5) throws
+}
+public protocol ConstraintRelatableTarget {
+}
+extension Swift.Int : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension Swift.UInt : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension Swift.Float : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension Swift.Double : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension CoreFoundation.CGFloat : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension CoreFoundation.CGSize : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension CoreFoundation.CGPoint : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension UIKit.UIEdgeInsets : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+@available(iOS 11.0, tvOS 11.0, *)
+extension UIKit.NSDirectionalEdgeInsets : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension ElkycCoreSDK.ConstraintItem : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+extension UIKit.UIView : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+@available(iOS 9.0, macOS 10.11, *)
+extension UIKit.UILayoutGuide : ElkycCoreSDK.ConstraintRelatableTarget {
+}
+@available(*, renamed: "Digest")
+public typealias Hash = ElkycCoreSDK.Digest
+public struct Digest {
+  public static func md5(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha1(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha224(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha256(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha384(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha512(_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  public static func sha2(_ bytes: Swift.Array<Swift.UInt8>, variant: ElkycCoreSDK.SHA2.Variant) -> Swift.Array<Swift.UInt8>
+  public static func sha3(_ bytes: Swift.Array<Swift.UInt8>, variant: ElkycCoreSDK.SHA3.Variant) -> Swift.Array<Swift.UInt8>
+}
+public class AcceptTerms : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init()
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void))
+  public typealias Output = Swift.Void
+  @objc deinit
+}
+@objc @_Concurrency.MainActor(unsafe) open class FloatingNotificationBanner : ElkycCoreSDK.GrowingNotificationBanner {
+  @_Concurrency.MainActor(unsafe) public init(title: Swift.String? = nil, subtitle: Swift.String? = nil, titleFont: UIKit.UIFont? = nil, titleColor: UIKit.UIColor? = nil, titleTextAlign: UIKit.NSTextAlignment? = nil, subtitleFont: UIKit.UIFont? = nil, subtitleColor: UIKit.UIColor? = nil, subtitleTextAlign: UIKit.NSTextAlignment? = nil, leftView: UIKit.UIView? = nil, rightView: UIKit.UIView? = nil, style: ElkycCoreSDK.BannerStyle = .info, colors: ElkycCoreSDK.BannerColorsProtocol? = nil, iconPosition: ElkycCoreSDK.GrowingNotificationBanner.IconPosition = .center)
+  @objc @_Concurrency.MainActor(unsafe) public init(customView: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) public func show(queuePosition: ElkycCoreSDK.QueuePosition = .back, bannerPosition: ElkycCoreSDK.BannerPosition = .top, queue: ElkycCoreSDK.NotificationBannerQueue = NotificationBannerQueue.default, on viewController: UIKit.UIViewController? = nil, edgeInsets: UIKit.UIEdgeInsets = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8), cornerRadius: CoreFoundation.CGFloat? = nil, shadowColor: UIKit.UIColor = .black, shadowOpacity: CoreFoundation.CGFloat = 1, shadowBlurRadius: CoreFoundation.CGFloat = 0, shadowCornerRadius: CoreFoundation.CGFloat = 0, shadowOffset: UIKit.UIOffset = .zero, shadowEdgeInsets: UIKit.UIEdgeInsets? = nil)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+public protocol NibView {
+  var internalView: UIKit.UIView! { get }
+  func loadViewFromNib()
+}
+extension ElkycCoreSDK.NibView where Self : UIKit.UIView {
+  public var internalView: UIKit.UIView! {
+    get
+  }
+  public func loadViewFromNib()
+}
+extension ElkycCoreSDK.Blowfish {
+  convenience public init(key: Swift.String, iv: Swift.String, padding: ElkycCoreSDK.Padding = .pkcs7) throws
+}
+@_hasMissingDesignatedInitializers public class ConstraintMaker {
+  public var left: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var top: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var bottom: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var right: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var leading: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var trailing: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var width: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var height: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var centerX: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var centerY: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(*, deprecated, renamed: "lastBaseline")
+  public var baseline: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var lastBaseline: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var firstBaseline: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leftMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var rightMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var topMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var bottomMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leadingMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var trailingMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerXWithinMargins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerYWithinMargins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var edges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var horizontalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var verticalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var directionalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var directionalHorizontalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var directionalVerticalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var size: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var center: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var margins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var directionalMargins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerWithinMargins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @objc deinit
+}
+public struct CFB : ElkycCoreSDK.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: ElkycCoreSDK.CFB.Error, b: ElkycCoreSDK.CFB.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: ElkycCoreSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+extension UIKit.UIFont {
+  public static let fortyFour: UIKit.UIFont
+  public static let fortyFourBold: UIKit.UIFont
+  public static let thirteenSemiBold: UIKit.UIFont
+  public static let fifteen: UIKit.UIFont
+  public static let seventeen: UIKit.UIFont
+  public static let seventeenSemiBold: UIKit.UIFont
+  public static let seventeenBold: UIKit.UIFont
+  public static let eighteen: UIKit.UIFont
+  public static let eighteenSemiBold: UIKit.UIFont
+  public static let twony: UIKit.UIFont
+  public static let twonySemiBold: UIKit.UIFont
+  public static let twonyTwoMedium: UIKit.UIFont
+  public static let twonyFourMedium: UIKit.UIFont
+  public static let twonyEightMedium: UIKit.UIFont
+  public static let sixteenSemiBold: UIKit.UIFont
+  public static let sixteenMedium: UIKit.UIFont
+  public static let thirtyTwoBold: UIKit.UIFont
+  public static let thirtyFourBold: UIKit.UIFont
+  public static let thirtySixBold: UIKit.UIFont
+}
+@_hasMissingDesignatedInitializers open class BCrypt {
+  public enum SaltPrefixType : Swift.String {
+    case _2A
+    case _2B
+    public init?(rawValue: Swift.String)
+    public typealias RawValue = Swift.String
+    public var rawValue: Swift.String {
+      get
+    }
+  }
+  public enum Exception : Swift.Error {
+    case InvalidRounds
+    case RandomAllocationFault
+    case UTF8Fault
+    case Unsupported
+    case InvalidSalt
+    case InvalidPassword
+    case KDFault
+    case RandomDeviceFault
+    public static func == (a: ElkycCoreSDK.BCrypt.Exception, b: ElkycCoreSDK.BCrypt.Exception) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static func RandomArray<T>(count: Swift.Int) throws -> [T]
+  public static func Salt(_ prefix: ElkycCoreSDK.BCrypt.SaltPrefixType = ._2B, rounds: Swift.Int = 12) throws -> Swift.String
+  public static func Hash(_ password: Swift.String, salt: Swift.String) throws -> Swift.String
+  public static func KDF(_ password: Swift.String, salt: Swift.String, desiredKeyBytes: Swift.Int, rounds: Swift.UInt32, ignoreFewRounds: Swift.Bool = false) throws -> [Swift.UInt8]
+  public static func Check(_ password: Swift.String, hashed: Swift.String) -> Swift.Bool
+  @objc deinit
+}
+public class DocumentConfirm : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(docImage: UIKit.UIImage?, config: ElkycCoreSDK.DocumentConfirm.Config = Config())
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.DocumentConfirm.StepResult, Swift.Error>) -> Swift.Void))
+  public typealias Output = ElkycCoreSDK.DocumentConfirm.StepResult
+  @objc deinit
+}
+extension ElkycCoreSDK.DocumentConfirm {
+  @frozen public enum StepResult {
+    case retry
+    case next
+    public static func == (a: ElkycCoreSDK.DocumentConfirm.StepResult, b: ElkycCoreSDK.DocumentConfirm.StepResult) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+extension ElkycCoreSDK.DocumentConfirm {
+  public struct Config {
+    public var title: Swift.String
+    public var docImage: UIKit.UIImage?
+    public var mainBtnBackgroundColor: UIKit.UIColor
+    public var mainBtnTintColor: UIKit.UIColor
+    public var mainBtnTitle: Swift.String
+    public var retryBtnBackgroundColor: UIKit.UIColor
+    public var retryBtnTintColor: UIKit.UIColor
+    public var retryBtnTitle: Swift.String
+    public var isRetryBtnHidden: Swift.Bool
+    public var hints: [ElkycCoreSDK.DocumentConfirmHintViewModel]?
+    public init()
+  }
+}
+public struct DiiaLink : Swift.Decodable {
+  public let deepLink: Foundation.URL
+  public init(from decoder: Swift.Decoder) throws
+}
+@available(iOS 11.0, tvOS 11.0, *)
+public typealias ConstraintDirectionalInsets = UIKit.NSDirectionalEdgeInsets
+final public class SHA2 {
+  public enum Variant : Swift.RawRepresentable {
+    case sha224, sha256, sha384, sha512
+    public var digestLength: Swift.Int {
+      get
+    }
+    public var blockSize: Swift.Int {
+      get
+    }
+    public typealias RawValue = Swift.Int
+    public var rawValue: ElkycCoreSDK.SHA2.Variant.RawValue {
+      get
+    }
+    public init?(rawValue: ElkycCoreSDK.SHA2.Variant.RawValue)
+  }
+  public init(variant: ElkycCoreSDK.SHA2.Variant)
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension ElkycCoreSDK.SHA2 : ElkycCoreSDK.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+open class KeychainWrapper {
+  @available(*, deprecated, message: "KeychainWrapper.defaultKeychainWrapper is deprecated since version 2.2.1, use KeychainWrapper.standard instead")
+  public static let defaultKeychainWrapper: ElkycCoreSDK.KeychainWrapper
+  public static let standard: ElkycCoreSDK.KeychainWrapper
+  public var serviceName: Swift.String {
+    get
+  }
+  public var accessGroup: Swift.String? {
+    get
+  }
+  public init(serviceName: Swift.String, accessGroup: Swift.String? = nil)
+  open func hasValue(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  open func accessibilityOfKey(_ key: Swift.String) -> ElkycCoreSDK.KeychainItemAccessibility?
+  open func allKeys() -> Swift.Set<Swift.String>
+  open func integer(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Int?
+  open func float(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Float?
+  open func double(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Double?
+  open func bool(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool?
+  open func string(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.String?
+  open func object(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.NSCoding?
+  open func data(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.Data?
+  open func dataRef(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Foundation.Data?
+  @discardableResult
+  open func set(_ value: Swift.Int, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Float, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Double, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.Bool, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Swift.String, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.NSCoding, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func set(_ value: Foundation.Data, forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @available(*, deprecated, message: "remove is deprecated since version 2.2.1, use removeObject instead")
+  @discardableResult
+  open func remove(key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func removeObject(forKey key: Swift.String, withAccessibility accessibility: ElkycCoreSDK.KeychainItemAccessibility? = nil, isSynchronizable: Swift.Bool = false) -> Swift.Bool
+  @discardableResult
+  open func removeAllKeys() -> Swift.Bool
+  open class func wipeKeychain()
+  @objc deinit
+}
+extension ElkycCoreSDK.AES : ElkycCoreSDK.Cryptors {
+  final public func makeEncryptor() throws -> ElkycCoreSDK.Cryptor & ElkycCoreSDK.Updatable
+  final public func makeDecryptor() throws -> ElkycCoreSDK.Cryptor & ElkycCoreSDK.Updatable
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class TextFieldInset : UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func textRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func placeholderRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func editingRect(forBounds bounds: CoreFoundation.CGRect) -> CoreFoundation.CGRect
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+extension UIKit.UIView {
+  @available(*, deprecated, renamed: "snp.left")
+  @_Concurrency.MainActor(unsafe) public var snp_left: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.top")
+  @_Concurrency.MainActor(unsafe) public var snp_top: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.right")
+  @_Concurrency.MainActor(unsafe) public var snp_right: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.bottom")
+  @_Concurrency.MainActor(unsafe) public var snp_bottom: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.leading")
+  @_Concurrency.MainActor(unsafe) public var snp_leading: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.trailing")
+  @_Concurrency.MainActor(unsafe) public var snp_trailing: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.width")
+  @_Concurrency.MainActor(unsafe) public var snp_width: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.height")
+  @_Concurrency.MainActor(unsafe) public var snp_height: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.centerX")
+  @_Concurrency.MainActor(unsafe) public var snp_centerX: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.centerY")
+  @_Concurrency.MainActor(unsafe) public var snp_centerY: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.baseline")
+  @_Concurrency.MainActor(unsafe) public var snp_baseline: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  @available(*, deprecated, renamed: "snp.lastBaseline")
+  @_Concurrency.MainActor(unsafe) public var snp_lastBaseline: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  @available(iOS, deprecated, renamed: "snp.firstBaseline")
+  @_Concurrency.MainActor(unsafe) public var snp_firstBaseline: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.leftMargin")
+  @_Concurrency.MainActor(unsafe) public var snp_leftMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.topMargin")
+  @_Concurrency.MainActor(unsafe) public var snp_topMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.rightMargin")
+  @_Concurrency.MainActor(unsafe) public var snp_rightMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.bottomMargin")
+  @_Concurrency.MainActor(unsafe) public var snp_bottomMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.leadingMargin")
+  @_Concurrency.MainActor(unsafe) public var snp_leadingMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.trailingMargin")
+  @_Concurrency.MainActor(unsafe) public var snp_trailingMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.centerXWithinMargins")
+  @_Concurrency.MainActor(unsafe) public var snp_centerXWithinMargins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.centerYWithinMargins")
+  @_Concurrency.MainActor(unsafe) public var snp_centerYWithinMargins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.edges")
+  @_Concurrency.MainActor(unsafe) public var snp_edges: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.size")
+  @_Concurrency.MainActor(unsafe) public var snp_size: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.center")
+  @_Concurrency.MainActor(unsafe) public var snp_center: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.margins")
+  @_Concurrency.MainActor(unsafe) public var snp_margins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  @available(iOS, deprecated, renamed: "snp.centerWithinMargins")
+  @_Concurrency.MainActor(unsafe) public var snp_centerWithinMargins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(*, deprecated, renamed: "snp.prepareConstraints(_:)")
+  @_Concurrency.MainActor(unsafe) public func snp_prepareConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void) -> [ElkycCoreSDK.Constraint]
+  @available(*, deprecated, renamed: "snp.makeConstraints(_:)")
+  @_Concurrency.MainActor(unsafe) public func snp_makeConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  @available(*, deprecated, renamed: "snp.remakeConstraints(_:)")
+  @_Concurrency.MainActor(unsafe) public func snp_remakeConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  @available(*, deprecated, renamed: "snp.updateConstraints(_:)")
+  @_Concurrency.MainActor(unsafe) public func snp_updateConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  @available(*, deprecated, renamed: "snp.removeConstraints()")
+  @_Concurrency.MainActor(unsafe) public func snp_removeConstraints()
+  @_Concurrency.MainActor(unsafe) public var snp: ElkycCoreSDK.ConstraintViewDSL {
+    get
+  }
+}
+final public class SHA1 {
+  public init()
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension ElkycCoreSDK.SHA1 : ElkycCoreSDK.Updatable {
+  @discardableResult
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) public class ZVIndicatorView : UIKit.UIView {
+  public enum AnimationType {
+    case flat
+    case native
+    public static func == (a: ElkycCoreSDK.ZVIndicatorView.AnimationType, b: ElkycCoreSDK.ZVIndicatorView.AnimationType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum IndicatorType {
+    case none
+    case error, success, warning
+    case indicator(style: ElkycCoreSDK.ZVIndicatorView.AnimationType)
+    case progress(value: Swift.Float)
+    case image(value: UIKit.UIImage, dismissAtomically: Swift.Bool)
+    case animation(value: [UIKit.UIImage], duration: Foundation.TimeInterval)
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension ElkycCoreSDK.ZVIndicatorView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+}
+@available(*, deprecated, message: "Use ConstraintMakerPrioritizable instead.")
+public typealias ConstraintMakerPriortizable = ElkycCoreSDK.ConstraintMakerPrioritizable
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ConstraintMakerPrioritizable : ElkycCoreSDK.ConstraintMakerFinalizable {
+  @discardableResult
+  public func priority(_ amount: ElkycCoreSDK.ConstraintPriority) -> ElkycCoreSDK.ConstraintMakerFinalizable
+  @discardableResult
+  public func priority(_ amount: ElkycCoreSDK.ConstraintPriorityTarget) -> ElkycCoreSDK.ConstraintMakerFinalizable
+  @available(*, deprecated, message: "Use priority(.required) instead.")
+  @discardableResult
+  public func priorityRequired() -> ElkycCoreSDK.ConstraintMakerFinalizable
+  @available(*, deprecated, message: "Use priority(.high) instead.")
+  @discardableResult
+  public func priorityHigh() -> ElkycCoreSDK.ConstraintMakerFinalizable
+  @available(*, deprecated, message: "Use priority(.medium) instead.")
+  @discardableResult
+  public func priorityMedium() -> ElkycCoreSDK.ConstraintMakerFinalizable
+  @available(*, deprecated, message: "Use priority(.low) instead.")
+  @discardableResult
+  public func priorityLow() -> ElkycCoreSDK.ConstraintMakerFinalizable
+  @objc deinit
+}
+public enum PKCS5 {
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class ElkycFlowViewController : UIKit.UINavigationController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) public func updateCurrent(viewController: UIKit.UIViewController)
+  @available(iOS 5.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(navigationBarClass: Swift.AnyClass?, toolbarClass: Swift.AnyClass?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(rootViewController: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+public struct CTR {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: ElkycCoreSDK.CTR.Error, b: ElkycCoreSDK.CTR.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: ElkycCoreSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>, counter: Swift.Int = 0)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+public protocol ConstraintPriorityTarget {
+  var constraintPriorityTargetValue: Swift.Float { get }
+}
+extension Swift.Int : ElkycCoreSDK.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension Swift.UInt : ElkycCoreSDK.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension Swift.Float : ElkycCoreSDK.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension Swift.Double : ElkycCoreSDK.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension CoreFoundation.CGFloat : ElkycCoreSDK.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+extension UIKit.UILayoutPriority : ElkycCoreSDK.ConstraintPriorityTarget {
+  public var constraintPriorityTargetValue: Swift.Float {
+    get
+  }
+}
+public struct ElkycStepId {
+  public var id: Swift.String
+  public var stepType: ElkycCoreSDK.ElkycStepId.StepType
+  public init(id: Swift.String = UUID().uuidString, stepType: ElkycCoreSDK.ElkycStepId.StepType)
+  public enum StepType : Swift.CaseIterable {
+    case creditCardScan
+    case barCodeScan
+    case captureDocScan
+    case selfieCapture
+    case rfidDocScan
+    case docScan
+    case docImageScan
+    case specificDocScan
+    case faceCapturing
+    case faceMatching
+    case faceLiveness
+    case signaturePad
+    case otpVerification
+    case intro
+    case acceptTerms
+    case documentSelection
+    case selfieIntro
+    case documentIntro
+    case documentConfirm
+    case selfieWithDocConfirm
+    case innConfirm
+    case confirmImage
+    case diia
+    case any
+    case custom
+    public var stringValue: Swift.String {
+      get
+    }
+    public static func == (a: ElkycCoreSDK.ElkycStepId.StepType, b: ElkycCoreSDK.ElkycStepId.StepType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public typealias AllCases = [ElkycCoreSDK.ElkycStepId.StepType]
+    public static var allCases: [ElkycCoreSDK.ElkycStepId.StepType] {
+      get
+    }
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+}
+@objc public enum BannerStyle : Swift.Int {
+  case danger
+  case info
+  case customView
+  case success
+  case warning
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ConstraintMakerEditable : ElkycCoreSDK.ConstraintMakerPrioritizable {
+  @discardableResult
+  public func multipliedBy(_ amount: ElkycCoreSDK.ConstraintMultiplierTarget) -> ElkycCoreSDK.ConstraintMakerEditable
+  @discardableResult
+  public func dividedBy(_ amount: ElkycCoreSDK.ConstraintMultiplierTarget) -> ElkycCoreSDK.ConstraintMakerEditable
+  @discardableResult
+  public func offset(_ amount: ElkycCoreSDK.ConstraintOffsetTarget) -> ElkycCoreSDK.ConstraintMakerEditable
+  @discardableResult
+  public func inset(_ amount: ElkycCoreSDK.ConstraintInsetTarget) -> ElkycCoreSDK.ConstraintMakerEditable
+  @available(iOS 11.0, tvOS 11.0, *)
+  @discardableResult
+  public func inset(_ amount: ElkycCoreSDK.ConstraintDirectionalInsetTarget) -> ElkycCoreSDK.ConstraintMakerEditable
+  @objc deinit
+}
+@_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers public class ConstraintMakerExtendable : ElkycCoreSDK.ConstraintMakerRelatable {
+  public var left: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var top: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var bottom: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var right: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var leading: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var trailing: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var width: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var height: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var centerX: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var centerY: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(*, deprecated, renamed: "lastBaseline")
+  public var baseline: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var lastBaseline: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var firstBaseline: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leftMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var rightMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var topMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var bottomMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leadingMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var trailingMargin: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerXWithinMargins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerYWithinMargins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var edges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var horizontalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var verticalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var directionalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var directionalHorizontalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var directionalVerticalEdges: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  public var size: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var margins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var directionalMargins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerWithinMargins: ElkycCoreSDK.ConstraintMakerExtendable {
+    get
+  }
+  @objc deinit
+}
+@available(iOS 9.0, macOS 10.11, *)
+public struct ConstraintLayoutGuideDSL : ElkycCoreSDK.ConstraintAttributesDSL {
+  @discardableResult
+  public func prepareConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void) -> [ElkycCoreSDK.Constraint]
+  public func makeConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  public func remakeConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  public func updateConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  public func removeConstraints()
+  public var target: Swift.AnyObject? {
+    get
+  }
+}
+final public class Rabbit {
+  public enum Error : Swift.Error {
+    case invalidKeyOrInitializationVector
+    public static func == (a: ElkycCoreSDK.Rabbit.Error, b: ElkycCoreSDK.Rabbit.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let ivSize: Swift.Int
+  public static let keySize: Swift.Int
+  public static let blockSize: Swift.Int
+  final public var keySize: Swift.Int {
+    get
+  }
+  convenience public init(key: Swift.Array<Swift.UInt8>) throws
+  public init(key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>?) throws
+  @objc deinit
+}
+extension ElkycCoreSDK.Rabbit : ElkycCoreSDK.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  public init(hex: Swift.String)
+  public func toHexString() -> Swift.String
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  @available(*, deprecated)
+  public func chunks(size chunksize: Swift.Int) -> Swift.Array<Swift.Array<Element>>
+  public func md5() -> [Element]
+  public func sha1() -> [Element]
+  public func sha224() -> [Element]
+  public func sha256() -> [Element]
+  public func sha384() -> [Element]
+  public func sha512() -> [Element]
+  public func sha2(_ variant: ElkycCoreSDK.SHA2.Variant) -> [Element]
+  public func sha3(_ variant: ElkycCoreSDK.SHA3.Variant) -> [Element]
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public func crc16(seed: Swift.UInt16? = nil) -> Swift.UInt16
+  public func encrypt(cipher: ElkycCoreSDK.Cipher) throws -> [Element]
+  public func decrypt(cipher: ElkycCoreSDK.Cipher) throws -> [Element]
+  public func authenticate<A>(with authenticator: A) throws -> [Element] where A : ElkycCoreSDK.Authenticator
+}
+public struct WorkplaceLivenessOrMatchingRequest : Swift.Encodable {
+  public init(liveness: Swift.String, guid: Swift.String?)
+  public init(livenessError: Swift.String)
+  public init(facematchResult: Swift.Bool, similarity: Swift.Double)
+  public init(facematchingError: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public enum WorkplaceImageType : Swift.String, Swift.Encodable {
+  case face
+  case selfie
+  case signature
+  case utility
+  case specific
+  public init?(rawValue: Swift.String)
+  public typealias RawValue = Swift.String
+  public var rawValue: Swift.String {
+    get
+  }
+}
+public struct WorkplaceImageRequest : Swift.Encodable {
+  public let image: Swift.String
+  public let type: ElkycCoreSDK.WorkplaceImageType
+  public init(image: Swift.String, type: ElkycCoreSDK.WorkplaceImageType)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public protocol NotificationBannerDelegate : AnyObject {
+  func notificationBannerWillAppear(_ banner: ElkycCoreSDK.BaseNotificationBanner)
+  func notificationBannerDidAppear(_ banner: ElkycCoreSDK.BaseNotificationBanner)
+  func notificationBannerWillDisappear(_ banner: ElkycCoreSDK.BaseNotificationBanner)
+  func notificationBannerDidDisappear(_ banner: ElkycCoreSDK.BaseNotificationBanner)
+}
+@objc @_hasMissingDesignatedInitializers @objcMembers @_Concurrency.MainActor(unsafe) open class BaseNotificationBanner : UIKit.UIView {
+  @objc @_Concurrency.MainActor(unsafe) public static let BannerWillAppear: Foundation.Notification.Name
+  @objc @_Concurrency.MainActor(unsafe) public static let BannerDidAppear: Foundation.Notification.Name
+  @objc @_Concurrency.MainActor(unsafe) public static let BannerWillDisappear: Foundation.Notification.Name
+  @objc @_Concurrency.MainActor(unsafe) public static let BannerDidDisappear: Foundation.Notification.Name
+  @objc @_Concurrency.MainActor(unsafe) public static let BannerObjectKey: Swift.String
+  @_Concurrency.MainActor(unsafe) weak public var delegate: ElkycCoreSDK.NotificationBannerDelegate?
+  @objc @_Concurrency.MainActor(unsafe) final public let style: ElkycCoreSDK.BannerStyle
+  @objc @_Concurrency.MainActor(unsafe) public var bannerHeight: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var titleLabel: UIKit.UILabel? {
+    get
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var duration: Swift.Double {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var autoDismiss: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var transparency: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) public var haptic: ElkycCoreSDK.BannerHaptic
+  @objc @_Concurrency.MainActor(unsafe) public var dismissOnTap: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var dismissOnSwipeUp: Swift.Bool
+  @objc @_Concurrency.MainActor(unsafe) public var onTap: (() -> Swift.Void)?
+  @objc @_Concurrency.MainActor(unsafe) public var onSwipeUp: (() -> Swift.Void)?
+  @objc @_Concurrency.MainActor(unsafe) public var bannerQueue: ElkycCoreSDK.NotificationBannerQueue
+  @objc @_Concurrency.MainActor(unsafe) public var animationDuration: Swift.Double
+  @objc @_Concurrency.MainActor(unsafe) public var isDisplaying: Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+  @objc @_Concurrency.MainActor(unsafe) public func show(queuePosition: ElkycCoreSDK.QueuePosition = .back, bannerPosition: ElkycCoreSDK.BannerPosition = .top, queue: ElkycCoreSDK.NotificationBannerQueue = NotificationBannerQueue.default, on viewController: UIKit.UIViewController? = nil)
+  @objc @_Concurrency.MainActor(unsafe) public func resetDuration()
+  @objc @_Concurrency.MainActor(unsafe) public func dismiss(forced: Swift.Bool = false)
+  @objc @_Concurrency.MainActor(unsafe) public func remove()
+}
+public struct WorkplaceInnRequest : Swift.Encodable {
+  public init(number: Swift.String?, image: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+public struct DiiaResult : Swift.Decodable {
+  public var photoImage: UIKit.UIImage? {
+    get
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+public protocol DocumentTypeViewProtocol {
+  var image: UIKit.UIImage? { get }
+  var name: Swift.String { get }
+}
+@objc open class PhoneNumberFormatter : Foundation.Formatter {
+  final public let phoneNumberKit: ElkycCoreSDK.PhoneNumberKit
+  @objc dynamic public var generatesPhoneNumber: Swift.Bool
+  @objc dynamic public var defaultRegion: Swift.String {
+    @objc get
+    @objc set
+  }
+  @objc dynamic public var withPrefix: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc dynamic public var currentRegion: Swift.String {
+    @objc get
+  }
+  public init(phoneNumberKit pnk: ElkycCoreSDK.PhoneNumberKit = PhoneNumberKit(), defaultRegion: Swift.String = PhoneNumberKit.defaultRegionCode(), withPrefix: Swift.Bool = true)
+  @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension ElkycCoreSDK.PhoneNumberFormatter {
+  @objc override dynamic open func string(for obj: Any?) -> Swift.String?
+  @objc override dynamic open func getObjectValue(_ obj: Swift.AutoreleasingUnsafeMutablePointer<Swift.AnyObject?>?, for string: Swift.String, errorDescription error: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>?) -> Swift.Bool
+  @objc override dynamic open func isPartialStringValid(_ partialStringPtr: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString>, proposedSelectedRange proposedSelRangePtr: Foundation.NSRangePointer?, originalString origString: Swift.String, originalSelectedRange origSelRange: Foundation.NSRange, errorDescription error: Swift.AutoreleasingUnsafeMutablePointer<Foundation.NSString?>?) -> Swift.Bool
+}
+@_hasMissingDesignatedInitializers final public class PartialFormatter {
+  convenience public init(phoneNumberKit: ElkycCoreSDK.PhoneNumberKit = PhoneNumberKit(), defaultRegion: Swift.String = PhoneNumberKit.defaultRegionCode(), withPrefix: Swift.Bool = true, maxDigits: Swift.Int? = nil)
+  final public var defaultRegion: Swift.String {
+    get
+    set
+  }
+  final public var maxDigits: Swift.Int?
+  final public var currentRegion: Swift.String {
+    get
+  }
+  final public func nationalNumber(from rawNumber: Swift.String) -> Swift.String
+  final public func formatPartial(_ rawNumber: Swift.String) -> Swift.String
+  @objc deinit
+}
+public struct OFB : ElkycCoreSDK.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: ElkycCoreSDK.OFB.Error, b: ElkycCoreSDK.OFB.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: ElkycCoreSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+extension ElkycCoreSDK.KeychainWrapper {
+  public func remove(forKey key: ElkycCoreSDK.KeychainWrapper.Key)
+}
+extension ElkycCoreSDK.KeychainWrapper {
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.String? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Bool? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Int? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Double? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Float? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> CoreFoundation.CGFloat? {
+    get
+    set
+  }
+  public subscript(key: ElkycCoreSDK.KeychainWrapper.Key) -> Foundation.Data? {
+    get
+    set
+  }
+}
+extension ElkycCoreSDK.KeychainWrapper {
+  public func data(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Foundation.Data?
+  public func bool(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Bool?
+  public func integer(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Int?
+  public func float(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Float?
+  public func cgFloat(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> CoreFoundation.CGFloat?
+  public func double(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.Double?
+  public func string(forKey key: ElkycCoreSDK.KeychainWrapper.Key) -> Swift.String?
+}
+extension ElkycCoreSDK.KeychainWrapper {
+  public struct Key : Swift.Hashable, Swift.RawRepresentable, Swift.ExpressibleByStringLiteral {
+    public var rawValue: Swift.String
+    public init(rawValue: Swift.String)
+    public init(stringLiteral value: Swift.String)
+    public typealias ExtendedGraphemeClusterLiteralType = Swift.String
+    public typealias RawValue = Swift.String
+    public typealias StringLiteralType = Swift.String
+    public typealias UnicodeScalarLiteralType = Swift.String
+  }
+}
+public protocol AEAD {
+  static var kLen: Swift.Int { get }
+  static var ivRange: Swift.Range<Swift.Int> { get }
+}
+public struct Banner {
+  public static func showError(_ error: Swift.String)
+}
+final public class ChaCha20 {
+  public enum Error : Swift.Error {
+    case invalidKeyOrInitializationVector
+    case notSupported
+    public static func == (a: ElkycCoreSDK.ChaCha20.Error, b: ElkycCoreSDK.ChaCha20.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>, iv nonce: Swift.Array<Swift.UInt8>) throws
+  @objc deinit
+}
+extension ElkycCoreSDK.ChaCha20 : ElkycCoreSDK.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension ElkycCoreSDK.ChaCha20 {
+  public struct ChaChaEncryptor : ElkycCoreSDK.Cryptor, ElkycCoreSDK.Updatable {
+    public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+    public func seek(to: Swift.Int) throws
+  }
+}
+extension ElkycCoreSDK.ChaCha20 {
+  public struct ChaChaDecryptor : ElkycCoreSDK.Cryptor, ElkycCoreSDK.Updatable {
+    public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = true) throws -> Swift.Array<Swift.UInt8>
+    public func seek(to: Swift.Int) throws
+  }
+}
+extension ElkycCoreSDK.ChaCha20 : ElkycCoreSDK.Cryptors {
+  final public func makeEncryptor() -> ElkycCoreSDK.Cryptor & ElkycCoreSDK.Updatable
+  final public func makeDecryptor() -> ElkycCoreSDK.Cryptor & ElkycCoreSDK.Updatable
+}
+public class SelfieIntro : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(config: ElkycCoreSDK.SelfieIntro.Config = Config())
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void))
+  public typealias Output = Swift.Void
+  @objc deinit
+}
+extension ElkycCoreSDK.SelfieIntro {
+  public struct Config {
+    public var title: Swift.String
+    public var description: Swift.String
+    public var image: UIKit.UIImage?
+    public var mainBtnBackgroundColor: UIKit.UIColor
+    public var mainBtnTintColor: UIKit.UIColor
+    public var mainBtnTitle: Swift.String
+    public init()
+  }
+}
+public struct ConstraintViewDSL : ElkycCoreSDK.ConstraintAttributesDSL {
+  @discardableResult
+  public func prepareConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void) -> [ElkycCoreSDK.Constraint]
+  public func makeConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  public func remakeConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  public func updateConstraints(_ closure: (_ make: ElkycCoreSDK.ConstraintMaker) -> Swift.Void)
+  public func removeConstraints()
+  public var contentHuggingHorizontalPriority: Swift.Float {
+    get
+    nonmutating set
+  }
+  public var contentHuggingVerticalPriority: Swift.Float {
+    get
+    nonmutating set
+  }
+  public var contentCompressionResistanceHorizontalPriority: Swift.Float {
+    get
+    nonmutating set
+  }
+  public var contentCompressionResistanceVerticalPriority: Swift.Float {
+    get
+    nonmutating set
+  }
+  public var target: Swift.AnyObject? {
+    get
+  }
+}
+extension UIKit.UITextField {
+  @_Concurrency.MainActor(unsafe) public func validateFieldFor(maxLength: Swift.Int, range: Foundation.NSRange, replacementString: Swift.String) -> Swift.Bool
+}
+final public class HMAC : ElkycCoreSDK.Authenticator {
+  public enum Error : Swift.Error {
+    case authenticateError
+    case invalidInput
+    public static func == (a: ElkycCoreSDK.HMAC.Error, b: ElkycCoreSDK.HMAC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Variant {
+    case sha1, sha256, sha384, sha512, md5
+    public static func == (a: ElkycCoreSDK.HMAC.Variant, b: ElkycCoreSDK.HMAC.Variant) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(key: Swift.Array<Swift.UInt8>, variant: ElkycCoreSDK.HMAC.Variant = .md5)
+  final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class Constraint {
+  final public var layoutConstraints: [ElkycCoreSDK.LayoutConstraint]
+  final public var isActive: Swift.Bool {
+    get
+    set
+  }
+  @available(*, deprecated, renamed: "activate()")
+  final public func install()
+  @available(*, deprecated, renamed: "deactivate()")
+  final public func uninstall()
+  final public func activate()
+  final public func deactivate()
+  @discardableResult
+  final public func update(offset: ElkycCoreSDK.ConstraintOffsetTarget) -> ElkycCoreSDK.Constraint
+  @discardableResult
+  final public func update(inset: ElkycCoreSDK.ConstraintInsetTarget) -> ElkycCoreSDK.Constraint
+  @available(iOS 11.0, tvOS 11.0, *)
+  @discardableResult
+  final public func update(inset: ElkycCoreSDK.ConstraintDirectionalInsetTarget) -> ElkycCoreSDK.Constraint
+  @discardableResult
+  final public func update(priority: ElkycCoreSDK.ConstraintPriorityTarget) -> ElkycCoreSDK.Constraint
+  @discardableResult
+  final public func update(priority: ElkycCoreSDK.ConstraintPriority) -> ElkycCoreSDK.Constraint
+  @available(*, deprecated, renamed: "update(offset:)")
+  final public func updateOffset(amount: ElkycCoreSDK.ConstraintOffsetTarget)
+  @available(*, deprecated, renamed: "update(inset:)")
+  final public func updateInsets(amount: ElkycCoreSDK.ConstraintInsetTarget)
+  @available(*, deprecated, renamed: "update(priority:)")
+  final public func updatePriority(amount: ElkycCoreSDK.ConstraintPriorityTarget)
+  @available(*, deprecated, message: "Use update(priority: ConstraintPriorityTarget) instead.")
+  final public func updatePriorityRequired()
+  @available(*, deprecated, message: "Use update(priority: ConstraintPriorityTarget) instead.")
+  final public func updatePriorityHigh()
+  @available(*, deprecated, message: "Use update(priority: ConstraintPriorityTarget) instead.")
+  final public func updatePriorityMedium()
+  @available(*, deprecated, message: "Use update(priority: ConstraintPriorityTarget) instead.")
+  final public func updatePriorityLow()
+  @objc deinit
+}
+public protocol ConstraintDSL {
+  var target: Swift.AnyObject? { get }
+  func setLabel(_ value: Swift.String?)
+  func label() -> Swift.String?
+}
+extension ElkycCoreSDK.ConstraintDSL {
+  public func setLabel(_ value: Swift.String?)
+  public func label() -> Swift.String?
+}
+public protocol ConstraintBasicAttributesDSL : ElkycCoreSDK.ConstraintDSL {
+}
+extension ElkycCoreSDK.ConstraintBasicAttributesDSL {
+  public var left: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var top: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var right: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var bottom: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var leading: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var trailing: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var width: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var height: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var centerX: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var centerY: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var edges: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var directionalEdges: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var horizontalEdges: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var verticalEdges: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var directionalHorizontalEdges: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var directionalVerticalEdges: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var size: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  public var center: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+}
+public protocol ConstraintAttributesDSL : ElkycCoreSDK.ConstraintBasicAttributesDSL {
+}
+extension ElkycCoreSDK.ConstraintAttributesDSL {
+  @available(*, deprecated, renamed: "lastBaseline")
+  public var baseline: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var lastBaseline: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, macOS 10.11, *)
+  public var firstBaseline: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leftMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var topMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var rightMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var bottomMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var leadingMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var trailingMargin: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerXWithinMargins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerYWithinMargins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var margins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var directionalMargins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+  @available(iOS 8.0, *)
+  public var centerWithinMargins: ElkycCoreSDK.ConstraintItem {
+    get
+  }
+}
+extension ElkycCoreSDK.ConstraintMakerRelatable {
+  @discardableResult
+  public func equalToSuperview<T>(_ closure: (ElkycCoreSDK.ConstraintView) -> T, _ file: Swift.String = #file, line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable where T : ElkycCoreSDK.ConstraintRelatableTarget
+  @discardableResult
+  public func lessThanOrEqualToSuperview<T>(_ closure: (ElkycCoreSDK.ConstraintView) -> T, _ file: Swift.String = #file, line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable where T : ElkycCoreSDK.ConstraintRelatableTarget
+  @discardableResult
+  public func greaterThanOrEqualTo<T>(_ closure: (ElkycCoreSDK.ConstraintView) -> T, _ file: Swift.String = #file, line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable where T : ElkycCoreSDK.ConstraintRelatableTarget
+}
+extension ElkycCoreSDK.MetadataTerritory {
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case codeID
+    case countryCode
+    case internationalPrefix
+    case mainCountryForCode
+    case nationalPrefix
+    case nationalPrefixFormattingRule
+    case nationalPrefixForParsing
+    case nationalPrefixTransformRule
+    case preferredExtnPrefix
+    case emergency
+    case fixedLine
+    case generalDesc
+    case mobile
+    case pager
+    case personalNumber
+    case premiumRate
+    case sharedCost
+    case tollFree
+    case voicemail
+    case voip
+    case uan
+    case numberFormats
+    case leadingDigits
+    case availableFormats
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+extension ElkycCoreSDK.MetadataPhoneNumberFormat {
+  public enum CodingKeys : Swift.String, Swift.CodingKey {
+    case pattern
+    case format
+    case intlFormat
+    case leadingDigitsPatterns
+    case nationalPrefixFormattingRule
+    case nationalPrefixOptionalWhenFormatting
+    case domesticCarrierCodeFormattingRule
+    public init?(rawValue: Swift.String)
+    public init?(stringValue: Swift.String)
+    public init?(intValue: Swift.Int)
+    public typealias RawValue = Swift.String
+    public var intValue: Swift.Int? {
+      get
+    }
+    public var rawValue: Swift.String {
+      get
+    }
+    public var stringValue: Swift.String {
+      get
+    }
+  }
+  public init(from decoder: Swift.Decoder) throws
+}
+public enum CoreSDKError : Foundation.LocalizedError {
+  case unexpectedError
+  case unknownBundle
+  case stepIsUnavailable
+  public var errorDescription: Swift.String? {
+    get
+  }
+  public static func == (a: ElkycCoreSDK.CoreSDKError, b: ElkycCoreSDK.CoreSDKError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol ConstraintOffsetTarget : ElkycCoreSDK.ConstraintConstantTarget {
+}
+extension Swift.Int : ElkycCoreSDK.ConstraintOffsetTarget {
+}
+extension Swift.UInt : ElkycCoreSDK.ConstraintOffsetTarget {
+}
+extension Swift.Float : ElkycCoreSDK.ConstraintOffsetTarget {
+}
+extension Swift.Double : ElkycCoreSDK.ConstraintOffsetTarget {
+}
+extension CoreFoundation.CGFloat : ElkycCoreSDK.ConstraintOffsetTarget {
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class LayoutConstraint : UIKit.NSLayoutConstraint {
+  @_Concurrency.MainActor(unsafe) public var label: Swift.String? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init()
+  @objc deinit
+}
+@available(*, deprecated, renamed: "ZVActivityIndicatorView", message: "renamed ActivityIndicatorView will remove in future")
+public typealias ActivityIndicatorView = ElkycCoreSDK.ZVActivityIndicatorView
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class ZVActivityIndicatorView : UIKit.UIView {
+  @_Concurrency.MainActor(unsafe) public var isAnimating: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var duration: Swift.Double
+  @_Concurrency.MainActor(unsafe) public var timingFunction: QuartzCore.CAMediaTimingFunction?
+  @_Concurrency.MainActor(unsafe) public var strokeWidth: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var strokColor: UIKit.UIColor? {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var hidesWhenStopped: Swift.Bool {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) public var progress: CoreFoundation.CGFloat {
+    get
+    set
+  }
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func layoutSubviews()
+}
+extension ElkycCoreSDK.ZVActivityIndicatorView {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+}
+extension ElkycCoreSDK.ZVActivityIndicatorView {
+  @_Concurrency.MainActor(unsafe) public func startAnimating()
+  @_Concurrency.MainActor(unsafe) public func stopAnimating()
+}
+@_hasMissingDesignatedInitializers final public class Checksum {
+  @objc deinit
+}
+extension ElkycCoreSDK.Checksum {
+  public static func crc32(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public static func crc32c(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.UInt32
+  public static func crc16(_ message: Swift.Array<Swift.UInt8>, seed: Swift.UInt16? = nil) -> Swift.UInt16
+}
+public class DocumentIntro : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(config: ElkycCoreSDK.DocumentIntro.Config = Config())
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<ElkycCoreSDK.DocumentIntro.StepResult, Swift.Error>) -> Swift.Void))
+  public typealias Output = ElkycCoreSDK.DocumentIntro.StepResult
+  @objc deinit
+}
+extension ElkycCoreSDK.DocumentIntro {
+  @frozen public enum StepResult {
+    case takePhoto
+    case galleryImage(UIKit.UIImage)
+  }
+}
+extension ElkycCoreSDK.DocumentIntro {
+  public struct Config {
+    public var title: Swift.String
+    public var description: Swift.String
+    public var image: UIKit.UIImage?
+    public var mainBtnBackgroundColor: UIKit.UIColor
+    public var mainBtnTintColor: UIKit.UIColor
+    public var mainBtnTitle: Swift.String
+    public var galleryBtnBackgroundColor: UIKit.UIColor
+    public var galleryBtnTintColor: UIKit.UIColor
+    public var galleryBtnTitle: Swift.String
+    public var isGalleryBtnHidden: Swift.Bool
+    public init()
+    public static var worldwide: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var worldwideBack: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var utilityBill: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var travelDocument: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var idCard: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var inn: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var ukrainianPassportFirst: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var ukrainianPassportSecond: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var ukrainianPassportThird: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+    public static var ukrainianPassportFourth: ElkycCoreSDK.DocumentIntro.Config {
+      get
+    }
+  }
+}
+public struct HTTPHeaders {
+  public init()
+  public init(_ headers: [ElkycCoreSDK.HTTPHeader])
+  public init(_ dictionary: [Swift.String : Swift.String])
+  public mutating func add(name: Swift.String, value: Swift.String)
+  public mutating func add(_ header: ElkycCoreSDK.HTTPHeader)
+  public mutating func update(name: Swift.String, value: Swift.String)
+  public mutating func update(_ header: ElkycCoreSDK.HTTPHeader)
+  public mutating func remove(name: Swift.String)
+  public mutating func sort()
+  public func sorted() -> ElkycCoreSDK.HTTPHeaders
+  public func value(for name: Swift.String) -> Swift.String?
+  public subscript(name: Swift.String) -> Swift.String? {
+    get
+    set
+  }
+  public var dictionary: [Swift.String : Swift.String] {
+    get
+  }
+}
+extension ElkycCoreSDK.HTTPHeaders : Swift.ExpressibleByDictionaryLiteral {
+  public init(dictionaryLiteral elements: (Swift.String, Swift.String)...)
+  public typealias Key = Swift.String
+  public typealias Value = Swift.String
+}
+extension ElkycCoreSDK.HTTPHeaders : Swift.ExpressibleByArrayLiteral {
+  public init(arrayLiteral elements: ElkycCoreSDK.HTTPHeader...)
+  public typealias ArrayLiteralElement = ElkycCoreSDK.HTTPHeader
+}
+extension ElkycCoreSDK.HTTPHeaders : Swift.Sequence {
+  public func makeIterator() -> Swift.IndexingIterator<[ElkycCoreSDK.HTTPHeader]>
+}
+extension ElkycCoreSDK.HTTPHeaders : Swift.Collection {
+  public var startIndex: Swift.Int {
+    get
+  }
+  public var endIndex: Swift.Int {
+    get
+  }
+  public subscript(position: Swift.Int) -> ElkycCoreSDK.HTTPHeader {
+    get
+  }
+  public func index(after i: Swift.Int) -> Swift.Int
+  public typealias Element = ElkycCoreSDK.HTTPHeader
+  public typealias Index = Swift.Int
+  public typealias Indices = Swift.DefaultIndices<ElkycCoreSDK.HTTPHeaders>
+  public typealias Iterator = Swift.IndexingIterator<[ElkycCoreSDK.HTTPHeader]>
+  public typealias SubSequence = Swift.Slice<ElkycCoreSDK.HTTPHeaders>
+}
+extension ElkycCoreSDK.HTTPHeaders : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+public struct HTTPHeader : Swift.Hashable {
+  public let name: Swift.String
+  public let value: Swift.String
+  public init(name: Swift.String, value: Swift.String)
+  public func hash(into hasher: inout Swift.Hasher)
+  public static func == (a: ElkycCoreSDK.HTTPHeader, b: ElkycCoreSDK.HTTPHeader) -> Swift.Bool
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension ElkycCoreSDK.HTTPHeader : Swift.CustomStringConvertible {
+  public var description: Swift.String {
+    get
+  }
+}
+extension ElkycCoreSDK.HTTPHeader {
+  public static func accept(_ value: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func acceptCharset(_ value: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func acceptLanguage(_ value: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func acceptEncoding(_ value: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func authorization(username: Swift.String, password: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func authorization(bearerToken: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func authorization(_ value: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func contentDisposition(_ value: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func contentType(_ value: Swift.String) -> ElkycCoreSDK.HTTPHeader
+  public static func userAgent(_ value: Swift.String) -> ElkycCoreSDK.HTTPHeader
+}
+extension ElkycCoreSDK.HTTPHeaders {
+  public static let `default`: ElkycCoreSDK.HTTPHeaders
+}
+extension ElkycCoreSDK.HTTPHeader {
+  public static let defaultAcceptEncoding: ElkycCoreSDK.HTTPHeader
+  public static let defaultAcceptLanguage: ElkycCoreSDK.HTTPHeader
+  public static let defaultUserAgent: ElkycCoreSDK.HTTPHeader
+}
+extension Foundation.URLRequest {
+  public var headers: ElkycCoreSDK.HTTPHeaders {
+    get
+    set
+  }
+}
+extension Foundation.HTTPURLResponse {
+  public var headers: ElkycCoreSDK.HTTPHeaders {
+    get
+  }
+}
+extension Foundation.URLSessionConfiguration {
+  public var headers: ElkycCoreSDK.HTTPHeaders {
+    get
+    set
+  }
+}
+final public class Blowfish {
+  public enum Error : Swift.Error {
+    case dataPaddingRequired
+    case invalidKeyOrInitializationVector
+    case invalidInitializationVector
+    case invalidBlockMode
+    public static func == (a: ElkycCoreSDK.Blowfish.Error, b: ElkycCoreSDK.Blowfish.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>, blockMode: ElkycCoreSDK.BlockMode = CBC(iv: Array<UInt8>(repeating: 0, count: Blowfish.blockSize)), padding: ElkycCoreSDK.Padding) throws
+  @objc deinit
+}
+extension ElkycCoreSDK.Blowfish : ElkycCoreSDK.Cipher {
+  final public func encrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
+  final public func decrypt<C>(_ bytes: C) throws -> Swift.Array<Swift.UInt8> where C : Swift.Collection, C.Element == Swift.UInt8, C.Index == Swift.Int
+}
+@available(iOS 8.0, *)
+extension UIKit.UILayoutSupport {
+  @_Concurrency.MainActor(unsafe) public var snp: ElkycCoreSDK.ConstraintLayoutSupportDSL {
+    get
+  }
+}
+public protocol Updatable {
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool) throws -> Swift.Array<Swift.UInt8>
+  mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+}
+extension ElkycCoreSDK.Updatable {
+  public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public mutating func update(withBytes bytes: Swift.Array<Swift.UInt8>, isLast: Swift.Bool = false, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish() throws -> Swift.Array<Swift.UInt8>
+  public mutating func finish(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(withBytes bytes: Swift.Array<Swift.UInt8>, output: (_ bytes: Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+  public mutating func finish(output: (Swift.Array<Swift.UInt8>) -> Swift.Void) throws
+}
+public struct CCM {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    case invalidParameter
+    case fail
+    public static func == (a: ElkycCoreSDK.CCM.Error, b: ElkycCoreSDK.CCM.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: ElkycCoreSDK.BlockModeOption
+  public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
+  public init(iv: Swift.Array<Swift.UInt8>, tagLength: Swift.Int, messageLength: Swift.Int, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+public struct NoReply : Swift.Decodable {
+  public init()
+  public init(from decoder: Swift.Decoder) throws
+}
+public typealias MetadataCallback = (() throws -> Foundation.Data?)
+@objc final public class PhoneNumberKit : ObjectiveC.NSObject {
+  public init(metadataCallback: @escaping ElkycCoreSDK.MetadataCallback = PhoneNumberKit.defaultMetadataCallback)
+  final public func parse(_ numberString: Swift.String, withRegion region: Swift.String = PhoneNumberKit.defaultRegionCode(), ignoreType: Swift.Bool = false) throws -> ElkycCoreSDK.PhoneNumber
+  final public func parse(_ numberStrings: [Swift.String], withRegion region: Swift.String = PhoneNumberKit.defaultRegionCode(), ignoreType: Swift.Bool = false, shouldReturnFailedEmptyNumbers: Swift.Bool = false) -> [ElkycCoreSDK.PhoneNumber]
+  final public func isValidPhoneNumber(_ numberString: Swift.String, withRegion region: Swift.String = PhoneNumberKit.defaultRegionCode(), ignoreType: Swift.Bool = false) -> Swift.Bool
+  final public func format(_ phoneNumber: ElkycCoreSDK.PhoneNumber, toType formatType: ElkycCoreSDK.PhoneNumberFormat, withPrefix prefix: Swift.Bool = true) -> Swift.String
+  final public func allCountries() -> [Swift.String]
+  final public func countries(withCode countryCode: Swift.UInt64) -> [Swift.String]?
+  final public func mainCountry(forCode countryCode: Swift.UInt64) -> Swift.String?
+  final public func countryCode(for country: Swift.String) -> Swift.UInt64?
+  final public func leadingDigits(for country: Swift.String) -> Swift.String?
+  final public func getRegionCode(of phoneNumber: ElkycCoreSDK.PhoneNumber) -> Swift.String?
+  final public func getExampleNumber(forCountry countryCode: Swift.String, ofType type: ElkycCoreSDK.PhoneNumberType = .mobile) -> ElkycCoreSDK.PhoneNumber?
+  final public func getFormattedExampleNumber(forCountry countryCode: Swift.String, ofType type: ElkycCoreSDK.PhoneNumberType = .mobile, withFormat format: ElkycCoreSDK.PhoneNumberFormat = .international, withPrefix prefix: Swift.Bool = true) -> Swift.String?
+  final public func metadata(for country: Swift.String) -> ElkycCoreSDK.MetadataTerritory?
+  final public func metadata(forCode countryCode: Swift.UInt64) -> [ElkycCoreSDK.MetadataTerritory]?
+  final public func possiblePhoneNumberLengths(forCountry country: Swift.String, phoneNumberType: ElkycCoreSDK.PhoneNumberType, lengthType: ElkycCoreSDK.PossibleLengthType) -> [Swift.Int]
+  final public class func defaultRegionCode() -> Swift.String
+  public static func defaultMetadataCallback() throws -> Foundation.Data?
+  @objc deinit
+}
+extension ElkycCoreSDK.PhoneNumberKit {
+  public enum CountryCodePicker {
+    public static var commonCountryCodes: [Swift.String]
+    public static var forceModalPresentation: Swift.Bool
+  }
+}
+@objc @_Concurrency.MainActor(unsafe) final public class BindableGestureRecognizer : UIKit.UITapGestureRecognizer {
+  @_Concurrency.MainActor(unsafe) public init(action: @escaping () -> Swift.Void)
+  @objc deinit
+}
+public protocol ElkycStep : AnyObject {
+  associatedtype Output
+  var stepId: ElkycCoreSDK.ElkycStepId { get set }
+  func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Self.Output, Swift.Error>) -> Swift.Void))
+}
+extension ElkycCoreSDK.ElkycStep {
+  public func next<Second>(_ next: @escaping (Self.Output) -> Second) -> ElkycCoreSDK.AnyElkycStep<Second.Output> where Second : ElkycCoreSDK.ElkycStep
+  public func combine<Second>(_ zipped: @escaping (Self.Output) -> Second) -> ElkycCoreSDK.AnyElkycStep<(Self.Output, Second.Output)> where Second : ElkycCoreSDK.ElkycStep
+  public func retry(when: @escaping (Self.Output) -> Swift.Bool) -> ElkycCoreSDK.AnyElkycStep<Self.Output>
+  public func map<NewOutput>(_ map: @escaping (Self.Output) -> NewOutput) -> ElkycCoreSDK.AnyElkycStep<NewOutput>
+  public func eraseToAnyStep() -> ElkycCoreSDK.AnyElkycStep<Self.Output>
+  public func setCurrent(step: UIKit.UIViewController, from viewController: UIKit.UIViewController)
+}
+extension ElkycCoreSDK.AnyElkycStep where Output == () {
+  public static func just<Value>(_ value: Value) -> ElkycCoreSDK.AnyElkycStep<Value>
+}
+@available(iOS 9.0, *)
+public typealias ConstraintLayoutGuide = UIKit.UILayoutGuide
+extension UIKit.UIDevice {
+  @_Concurrency.MainActor(unsafe) public static var isSimulator: Swift.Bool {
+    get
+  }
+}
+extension Swift.String {
+  public func decryptBase64ToString(cipher: ElkycCoreSDK.Cipher) throws -> Swift.String
+  public func decryptBase64(cipher: ElkycCoreSDK.Cipher) throws -> Swift.Array<Swift.UInt8>
+}
+@objc public enum QueuePosition : Swift.Int {
+  case back
+  case front
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+@objc @objcMembers open class NotificationBannerQueue : ObjectiveC.NSObject {
+  @objc public static let `default`: ElkycCoreSDK.NotificationBannerQueue
+  @objc public var numberOfBanners: Swift.Int {
+    @objc get
+  }
+  @objc public init(maxBannersOnScreenSimultaneously: Swift.Int = 1)
+  @objc public func removeAll()
+  @objc public func dismissAllForced()
+  @objc deinit
+}
+@objc @_inheritsConvenienceInitializers @IBDesignable @_Concurrency.MainActor(unsafe) open class MarqueeLabel : UIKit.UILabel, QuartzCore.CAAnimationDelegate {
+  public enum MarqueeType {
+    case left
+    case leftRight
+    case right
+    case rightLeft
+    case continuous
+    case continuousReverse
+    public static func == (a: ElkycCoreSDK.MarqueeLabel.MarqueeType, b: ElkycCoreSDK.MarqueeLabel.MarqueeType) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) open var type: ElkycCoreSDK.MarqueeLabel.MarqueeType {
+    get
+    set
+  }
+  @_Concurrency.MainActor(unsafe) open var scrollSequence: [ElkycCoreSDK.MarqueeStep]?
+  @_Concurrency.MainActor(unsafe) open var animationCurve: UIKit.UIView.AnimationCurve
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var labelize: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var holdScrolling: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var tapToScroll: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) open var isPaused: Swift.Bool {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open var awayFromHome: Swift.Bool {
+    get
+  }
+  public enum SpeedLimit {
+    case rate(CoreFoundation.CGFloat)
+    case duration(CoreFoundation.CGFloat)
+  }
+  @_Concurrency.MainActor(unsafe) open var speed: ElkycCoreSDK.MarqueeLabel.SpeedLimit {
+    get
+    set
+  }
+  @objc @available(*, deprecated, message: "Use speed property instead")
+  @IBInspectable @_Concurrency.MainActor(unsafe) open var scrollDuration: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @available(*, deprecated, message: "Use speed property instead")
+  @IBInspectable @_Concurrency.MainActor(unsafe) open var scrollRate: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var leadingBuffer: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var trailingBuffer: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var fadeLength: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @IBInspectable @_Concurrency.MainActor(unsafe) open var animationDelay: CoreFoundation.CGFloat
+  @_Concurrency.MainActor(unsafe) public var animationDuration: CoreFoundation.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) open class func restartLabelsOfController(_ controller: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) open class func controllerViewWillAppear(_ controller: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) open class func controllerViewDidAppear(_ controller: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) open class func controllerLabelsLabelize(_ controller: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) open class func controllerLabelsAnimate(_ controller: UIKit.UIViewController)
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreFoundation.CGRect, rate: CoreFoundation.CGFloat, fadeLength fade: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) public init(frame: CoreFoundation.CGRect, duration: CoreFoundation.CGFloat, fadeLength fade: CoreFoundation.CGFloat)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @_Concurrency.MainActor(unsafe) @objc convenience override dynamic public init(frame: CoreFoundation.CGRect)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func awakeFromNib()
+  @available(iOS 8.0, *)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func prepareForInterfaceBuilder()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func layoutSubviews()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func willMove(toWindow newWindow: UIKit.UIWindow?)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func didMoveToWindow()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func sizeThatFits(_ size: CoreFoundation.CGSize) -> CoreFoundation.CGSize
+  @_Concurrency.MainActor(unsafe) open func labelShouldScroll() -> Swift.Bool
+  @_Concurrency.MainActor(unsafe) @objc public func animationDidStop(_ anim: QuartzCore.CAAnimation, finished flag: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open class var layerClass: Swift.AnyClass {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func draw(_ layer: QuartzCore.CALayer, in ctx: CoreGraphics.CGContext)
+  @objc @_Concurrency.MainActor(unsafe) public func restartForViewController(_ notification: Foundation.Notification)
+  @objc @_Concurrency.MainActor(unsafe) public func labelizeForController(_ notification: Foundation.Notification)
+  @objc @_Concurrency.MainActor(unsafe) public func animateForController(_ notification: Foundation.Notification)
+  @_Concurrency.MainActor(unsafe) public func triggerScrollStart()
+  @objc @_Concurrency.MainActor(unsafe) public func restartLabel()
+  @available(*, deprecated, message: "Use the shutdownLabel function instead")
+  @_Concurrency.MainActor(unsafe) public func resetLabel()
+  @objc @_Concurrency.MainActor(unsafe) public func shutdownLabel()
+  @_Concurrency.MainActor(unsafe) public func pauseLabel()
+  @_Concurrency.MainActor(unsafe) public func unpauseLabel()
+  @objc @_Concurrency.MainActor(unsafe) public func labelWasTapped(_ recognizer: UIKit.UIGestureRecognizer)
+  @_Concurrency.MainActor(unsafe) open func labelWillBeginScroll()
+  @_Concurrency.MainActor(unsafe) open func labelReturnedToHome(_ finished: Swift.Bool)
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func forBaselineLayout() -> UIKit.UIView
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var forLastBaselineLayout: UIKit.UIView {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var text: Swift.String? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var attributedText: Foundation.NSAttributedString? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var font: UIKit.UIFont! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var textColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var backgroundColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shadowColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var shadowOffset: CoreFoundation.CGSize {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var highlightedTextColor: UIKit.UIColor? {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isHighlighted: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isEnabled: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var numberOfLines: Swift.Int {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var adjustsFontSizeToFitWidth: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var minimumScaleFactor: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var baselineAdjustment: UIKit.UIBaselineAdjustment {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var intrinsicContentSize: CoreFoundation.CGSize {
+    @objc get
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var tintColor: UIKit.UIColor! {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open func tintColorDidChange()
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var contentMode: UIKit.UIView.ContentMode {
+    @objc get
+    @objc set
+  }
+  @_Concurrency.MainActor(unsafe) @objc override dynamic open var isAccessibilityElement: Swift.Bool {
+    @objc get
+    @objc set
+  }
+  @objc deinit
+}
+public protocol MarqueeStep {
+  var timeStep: CoreFoundation.CGFloat { get }
+  var timingFunction: UIKit.UIView.AnimationCurve { get }
+  var edgeFades: ElkycCoreSDK.EdgeFade { get }
+}
+public struct ScrollStep : ElkycCoreSDK.MarqueeStep {
+  public enum Position {
+    case home
+    case away
+    case partial(CoreFoundation.CGFloat)
+  }
+  public let timeStep: CoreFoundation.CGFloat
+  public let timingFunction: UIKit.UIView.AnimationCurve
+  public let position: ElkycCoreSDK.ScrollStep.Position
+  public let edgeFades: ElkycCoreSDK.EdgeFade
+  public init(timeStep: CoreFoundation.CGFloat, timingFunction: UIKit.UIView.AnimationCurve = .linear, position: ElkycCoreSDK.ScrollStep.Position, edgeFades: ElkycCoreSDK.EdgeFade)
+}
+public struct FadeStep : ElkycCoreSDK.MarqueeStep {
+  public let timeStep: CoreFoundation.CGFloat
+  public let timingFunction: UIKit.UIView.AnimationCurve
+  public let edgeFades: ElkycCoreSDK.EdgeFade
+  public init(timeStep: CoreFoundation.CGFloat, timingFunction: UIKit.UIView.AnimationCurve = .linear, edgeFades: ElkycCoreSDK.EdgeFade)
+}
+public struct EdgeFade : Swift.OptionSet {
+  public let rawValue: Swift.Int
+  public static let leading: ElkycCoreSDK.EdgeFade
+  public static let trailing: ElkycCoreSDK.EdgeFade
+  public init(rawValue: Swift.Int)
+  public typealias ArrayLiteralElement = ElkycCoreSDK.EdgeFade
+  public typealias Element = ElkycCoreSDK.EdgeFade
+  public typealias RawValue = Swift.Int
+}
+extension UIKit.UIWindow {
+  @_Concurrency.MainActor(unsafe) public var width: CoreFoundation.CGFloat {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public var height: CoreFoundation.CGFloat {
+    get
+  }
+}
+@_hasMissingDesignatedInitializers public class Log : Swift.TextOutputStream {
+  public func write(_ string: Swift.String)
+  public static var log: ElkycCoreSDK.Log
+  @objc deinit
+}
+public protocol ConstraintConstantTarget {
+}
+extension CoreFoundation.CGPoint : ElkycCoreSDK.ConstraintConstantTarget {
+}
+extension CoreFoundation.CGSize : ElkycCoreSDK.ConstraintConstantTarget {
+}
+extension UIKit.UIEdgeInsets : ElkycCoreSDK.ConstraintConstantTarget {
+}
+@available(iOS 11.0, tvOS 11.0, *)
+extension UIKit.NSDirectionalEdgeInsets : ElkycCoreSDK.ConstraintConstantTarget {
+}
+extension UIKit.UIStoryboard {
+  @_Concurrency.MainActor(unsafe) public static func viewController<T>(from name: Swift.String) -> T where T : AnyObject
+}
+public struct ECB : ElkycCoreSDK.BlockMode {
+  public let options: ElkycCoreSDK.BlockModeOption
+  public init()
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+extension ElkycCoreSDK.PKCS5 {
+  public struct PBKDF2 {
+    public enum Error : Swift.Error {
+      case invalidInput
+      case derivedKeyTooLong
+      public static func == (a: ElkycCoreSDK.PKCS5.PBKDF2.Error, b: ElkycCoreSDK.PKCS5.PBKDF2.Error) -> Swift.Bool
+      public func hash(into hasher: inout Swift.Hasher)
+      public var hashValue: Swift.Int {
+        get
+      }
+    }
+    public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, iterations: Swift.Int = 4096, keyLength: Swift.Int? = nil, variant: ElkycCoreSDK.HMAC.Variant = .sha256) throws
+    public func calculate() throws -> Swift.Array<Swift.UInt8>
+  }
+}
+final public class KeyboardHandler {
+  public init(scrollView: UIKit.UIScrollView, offset: CoreFoundation.CGFloat = 0)
+  final public func handleKeyboard()
+  @objc deinit
+}
+extension UIKit.UIColor {
+  public static let elkycAppBlack: UIKit.UIColor
+  public static let elkycAppWhite: UIKit.UIColor
+  public static let elkycMain: UIKit.UIColor
+  public static let elkycSecondaryGray: UIKit.UIColor
+  public static let elkycRed: UIKit.UIColor
+  public static let elkycResultRed: UIKit.UIColor
+  public static let elkycResultOrange: UIKit.UIColor
+  public static let elkycResultGreen: UIKit.UIColor
+  public static let elkycBorderColor: UIKit.UIColor
+}
+public struct FlowResult {
+  public let id: Swift.String
+  public let type: ElkycCoreSDK.FlowResultType
+  public let result: Any
+  public init(id: Swift.String, type: ElkycCoreSDK.FlowResultType, result: Any)
+  public func resultObject<T>(type: T.Type) -> T?
+}
+@available(iOS 9.0, macOS 10.11, *)
+extension UIKit.UILayoutGuide {
+  @_Concurrency.MainActor(unsafe) public var snp: ElkycCoreSDK.ConstraintLayoutGuideDSL {
+    get
+  }
+}
+final public class MD5 {
+  public init()
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension ElkycCoreSDK.MD5 : ElkycCoreSDK.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+final public class AES {
+  public enum Error : Swift.Error {
+    case invalidKeySize
+    case dataPaddingRequired
+    case invalidData
+    public static func == (a: ElkycCoreSDK.AES.Error, b: ElkycCoreSDK.AES.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public enum Variant : Swift.Int {
+    case aes128, aes192, aes256
+    public init?(rawValue: Swift.Int)
+    public typealias RawValue = Swift.Int
+    public var rawValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  final public let keySize: Swift.Int
+  final public let variant: ElkycCoreSDK.AES.Variant
+  public init(key: Swift.Array<Swift.UInt8>, blockMode: ElkycCoreSDK.BlockMode, padding: ElkycCoreSDK.Padding = .pkcs7) throws
+  @objc deinit
+}
+extension ElkycCoreSDK.AES : ElkycCoreSDK.Cipher {
+  final public func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  final public func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+@_hasMissingDesignatedInitializers public class AnyElkycStep<Output> : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Output, Swift.Error>) -> Swift.Void))
+  @objc deinit
+}
+public protocol Service : ElkycCoreSDK.URLRequestConvertible {
+  var method: ElkycCoreSDK.HTTPMethod { get }
+  var path: Swift.String { get }
+  var parameters: [Swift.String : Any?]? { get }
+  var headers: [Swift.String : Swift.String]? { get }
+  var timeoutInterval: Foundation.TimeInterval { get }
+  var host: Swift.String { get }
+  var shouldValidateRssig: Swift.Bool { get }
+  var shouldEncryptData: Swift.Bool { get }
+}
+extension ElkycCoreSDK.Service {
+  public var timeoutInterval: Foundation.TimeInterval {
+    get
+  }
+  public var host: Swift.String {
+    get
+  }
+  public var headers: [Swift.String : Swift.String]? {
+    get
+  }
+  public var shouldValidateRssig: Swift.Bool {
+    get
+  }
+  public var shouldEncryptData: Swift.Bool {
+    get
+  }
+}
+extension ElkycCoreSDK.Service {
+  public func asURLRequest() throws -> Foundation.URLRequest
+}
+extension Swift.Array where Element == Swift.UInt8 {
+  public func toBase64() -> Swift.String?
+  public init(base64: Swift.String)
+}
+public protocol URLConvertible {
+  func asURL() throws -> Foundation.URL
+}
+extension Swift.String : ElkycCoreSDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+extension Foundation.URL : ElkycCoreSDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+extension Foundation.URLComponents : ElkycCoreSDK.URLConvertible {
+  public func asURL() throws -> Foundation.URL
+}
+public protocol URLRequestConvertible {
+  func asURLRequest() throws -> Foundation.URLRequest
+}
+extension ElkycCoreSDK.URLRequestConvertible {
+  public var urlRequest: Foundation.URLRequest? {
+    get
+  }
+}
+extension Foundation.URLRequest : ElkycCoreSDK.URLRequestConvertible {
+  public func asURLRequest() throws -> Foundation.URLRequest
+}
+extension Foundation.URLRequest {
+  public init(url: ElkycCoreSDK.URLConvertible, method: ElkycCoreSDK.HTTPMethod, headers: ElkycCoreSDK.HTTPHeaders? = nil) throws
+}
+extension Foundation.URLRequest {
+  public var method: ElkycCoreSDK.HTTPMethod? {
+    get
+    set
+  }
+  public func validate() throws
+}
+extension Foundation.CharacterSet {
+  public static let afURLQueryAllowed: Foundation.CharacterSet
+}
+public struct Logger {
+  public func requestLog(request: Foundation.URLRequest)
+  public func responseLog(response: Foundation.HTTPURLResponse?, error: Swift.Error?, responseData: Foundation.Data?)
+}
+public struct CustomHostConfiguration : Swift.Equatable {
+  public var host: Swift.String
+  public var mainPath: Swift.String
+  public var authPath: Swift.String?
+  public var encryptData: Swift.Bool
+  public var rssigSalt: Swift.String?
+  public var accessToken: Swift.String?
+  public init(host: Swift.String, mainPath: Swift.String, encryptData: Swift.Bool, authPath: Swift.String? = nil, rssigSalt: Swift.String? = nil, accessToken: Swift.String? = nil)
+  public static func == (a: ElkycCoreSDK.CustomHostConfiguration, b: ElkycCoreSDK.CustomHostConfiguration) -> Swift.Bool
+}
+public enum Configuration : Swift.Equatable {
+  case cloud
+  case local
+  case custom(config: ElkycCoreSDK.CustomHostConfiguration)
+  public static func == (a: ElkycCoreSDK.Configuration, b: ElkycCoreSDK.Configuration) -> Swift.Bool
+}
+public protocol _UInt8Type {
+}
+extension Swift.UInt8 : ElkycCoreSDK._UInt8Type {
+}
+extension Swift.UInt8 {
+  public func bits() -> [ElkycCoreSDK.Bit]
+  public func bits() -> Swift.String
+}
+final public class SHA3 {
+  final public let blockSize: Swift.Int
+  final public let digestLength: Swift.Int
+  final public let markByte: Swift.UInt8
+  public enum Variant {
+    case sha224, sha256, sha384, sha512, keccak224, keccak256, keccak384, keccak512
+    public var outputLength: Swift.Int {
+      get
+    }
+    public static func == (a: ElkycCoreSDK.SHA3.Variant, b: ElkycCoreSDK.SHA3.Variant) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public init(variant: ElkycCoreSDK.SHA3.Variant)
+  final public func calculate(for bytes: Swift.Array<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+extension ElkycCoreSDK.SHA3 : ElkycCoreSDK.Updatable {
+  final public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+}
+extension UIKit.UIImage {
+  public func resize(maxHeight: Swift.Float = 200.0, maxWidth: Swift.Float = 200.0) -> UIKit.UIImage
+}
+public enum KeychainItemAccessibility {
+  @available(iOS 4, *)
+  case afterFirstUnlock
+  @available(iOS 4, *)
+  case afterFirstUnlockThisDeviceOnly
+  @available(iOS 4, *)
+  case always
+  @available(iOS 8, *)
+  case whenPasscodeSetThisDeviceOnly
+  @available(iOS 4, *)
+  case alwaysThisDeviceOnly
+  @available(iOS 4, *)
+  case whenUnlocked
+  @available(iOS 4, *)
+  case whenUnlockedThisDeviceOnly
+  public static func == (a: ElkycCoreSDK.KeychainItemAccessibility, b: ElkycCoreSDK.KeychainItemAccessibility) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol LayoutConstraintItem : AnyObject {
+}
+@available(iOS 9.0, macOS 10.11, *)
+extension UIKit.UILayoutGuide : ElkycCoreSDK.LayoutConstraintItem {
+}
+extension UIKit.UIView : ElkycCoreSDK.LayoutConstraintItem {
+}
+public protocol ConstraintInsetTarget : ElkycCoreSDK.ConstraintConstantTarget {
+}
+extension Swift.Int : ElkycCoreSDK.ConstraintInsetTarget {
+}
+extension Swift.UInt : ElkycCoreSDK.ConstraintInsetTarget {
+}
+extension Swift.Float : ElkycCoreSDK.ConstraintInsetTarget {
+}
+extension Swift.Double : ElkycCoreSDK.ConstraintInsetTarget {
+}
+extension CoreFoundation.CGFloat : ElkycCoreSDK.ConstraintInsetTarget {
+}
+extension UIKit.UIEdgeInsets : ElkycCoreSDK.ConstraintInsetTarget {
+}
+@frozen public enum EnterResponse {
+  case signIn(login: Swift.String, password: Swift.String)
+  case registration(ElkycCoreSDK.RegistrationData)
+}
+extension ElkycCoreSDK.ChaCha20 {
+  convenience public init(key: Swift.String, iv: Swift.String) throws
+}
+extension ElkycCoreSDK.AES {
+  convenience public init(key: Swift.String, iv: Swift.String, padding: ElkycCoreSDK.Padding = .pkcs7) throws
+}
+@_inheritsConvenienceInitializers final public class CBCMAC : ElkycCoreSDK.CMAC {
+  override final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  override public init(key: Swift.Array<Swift.UInt8>) throws
+  @objc deinit
+}
+public typealias ConstraintInsets = UIKit.UIEdgeInsets
+extension Swift.String {
+  public var bytes: Swift.Array<Swift.UInt8> {
+    get
+  }
+  public func md5() -> Swift.String
+  public func sha1() -> Swift.String
+  public func sha224() -> Swift.String
+  public func sha256() -> Swift.String
+  public func sha384() -> Swift.String
+  public func sha512() -> Swift.String
+  public func sha3(_ variant: ElkycCoreSDK.SHA3.Variant) -> Swift.String
+  public func crc32(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.String
+  public func crc32c(seed: Swift.UInt32? = nil, reflect: Swift.Bool = true) -> Swift.String
+  public func crc16(seed: Swift.UInt16? = nil) -> Swift.String
+  public func encrypt(cipher: ElkycCoreSDK.Cipher) throws -> Swift.String
+  public func encryptToBase64(cipher: ElkycCoreSDK.Cipher) throws -> Swift.String?
+  public func authenticate<A>(with authenticator: A) throws -> Swift.String where A : ElkycCoreSDK.Authenticator
+}
+@_hasMissingDesignatedInitializers public class ConstraintDescription {
+  @objc deinit
+}
+final public class GCM : ElkycCoreSDK.BlockMode {
+  public enum Mode {
+    case combined
+    case detached
+    public static func == (a: ElkycCoreSDK.GCM.Mode, b: ElkycCoreSDK.GCM.Mode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let options: ElkycCoreSDK.BlockModeOption
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    case fail
+    public static func == (a: ElkycCoreSDK.GCM.Error, b: ElkycCoreSDK.GCM.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(iv: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, tagLength: Swift.Int = 16, mode: ElkycCoreSDK.GCM.Mode = .detached)
+  convenience public init(iv: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, mode: ElkycCoreSDK.GCM.Mode = .detached)
+  final public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+  @objc deinit
+}
+@objc @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class GrowingNotificationBanner : ElkycCoreSDK.BaseNotificationBanner {
+  public enum IconPosition {
+    case top
+    case center
+    public static func == (a: ElkycCoreSDK.GrowingNotificationBanner.IconPosition, b: ElkycCoreSDK.GrowingNotificationBanner.IconPosition) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) @objc override public var bannerHeight: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) public var subtitleLabel: UIKit.UILabel? {
+    get
+  }
+  @_Concurrency.MainActor(unsafe) public init(title: Swift.String? = nil, subtitle: Swift.String? = nil, leftView: UIKit.UIView? = nil, rightView: UIKit.UIView? = nil, style: ElkycCoreSDK.BannerStyle = .info, colors: ElkycCoreSDK.BannerColorsProtocol? = nil, iconPosition: ElkycCoreSDK.GrowingNotificationBanner.IconPosition = .center, sideViewSize: CoreFoundation.CGFloat = 24.0)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension ElkycCoreSDK.GrowingNotificationBanner {
+  @_Concurrency.MainActor(unsafe) public func applyStyling(cornerRadius: CoreFoundation.CGFloat? = nil, titleFont: UIKit.UIFont? = nil, titleColor: UIKit.UIColor? = nil, titleTextAlign: UIKit.NSTextAlignment? = nil, subtitleFont: UIKit.UIFont? = nil, subtitleColor: UIKit.UIColor? = nil, subtitleTextAlign: UIKit.NSTextAlignment? = nil)
+}
+@_hasMissingDesignatedInitializers public class ConstraintMakerRelatable {
+  @discardableResult
+  public func equalTo(_ other: ElkycCoreSDK.ConstraintRelatableTarget, _ file: Swift.String = #file, _ line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable
+  @discardableResult
+  public func equalToSuperview(_ file: Swift.String = #file, _ line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable
+  @discardableResult
+  public func lessThanOrEqualTo(_ other: ElkycCoreSDK.ConstraintRelatableTarget, _ file: Swift.String = #file, _ line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable
+  @discardableResult
+  public func lessThanOrEqualToSuperview(_ file: Swift.String = #file, _ line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable
+  @discardableResult
+  public func greaterThanOrEqualTo(_ other: ElkycCoreSDK.ConstraintRelatableTarget, _ file: Swift.String = #file, line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable
+  @discardableResult
+  public func greaterThanOrEqualToSuperview(_ file: Swift.String = #file, line: Swift.UInt = #line) -> ElkycCoreSDK.ConstraintMakerEditable
+  @objc deinit
+}
+public enum PKCS7 {
+}
+@_hasMissingDesignatedInitializers public class BlockDecryptor : ElkycCoreSDK.Cryptor, ElkycCoreSDK.Updatable {
+  public func update(withBytes bytes: Swift.ArraySlice<Swift.UInt8>, isLast: Swift.Bool = false) throws -> Swift.Array<Swift.UInt8>
+  public func seek(to position: Swift.Int) throws
+  @objc deinit
+}
+final public class OCB : ElkycCoreSDK.BlockMode {
+  public enum Mode {
+    case combined
+    case detached
+    public static func == (a: ElkycCoreSDK.OCB.Mode, b: ElkycCoreSDK.OCB.Mode) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public let options: ElkycCoreSDK.BlockModeOption
+  public enum Error : Swift.Error {
+    case invalidNonce
+    case fail
+    public static func == (a: ElkycCoreSDK.OCB.Error, b: ElkycCoreSDK.OCB.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  final public var authenticationTag: Swift.Array<Swift.UInt8>?
+  public init(nonce N: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, tagLength: Swift.Int = 16, mode: ElkycCoreSDK.OCB.Mode = .detached)
+  convenience public init(nonce N: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>, additionalAuthenticatedData: Swift.Array<Swift.UInt8>? = nil, mode: ElkycCoreSDK.OCB.Mode = .detached)
+  final public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+  @objc deinit
+}
+public protocol ServicesDelegate : AnyObject {
+  var viewController: ElkycCoreSDK.ServicesViewController? { get set }
+  func didSelect(index: Swift.Int)
+}
+@objc @_inheritsConvenienceInitializers @_Concurrency.MainActor(unsafe) public class ServicesViewController : UIKit.UIViewController {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public func viewDidLoad()
+  @_Concurrency.MainActor(unsafe) public func run<Flow>(flow: Flow, completion: (([ElkycCoreSDK.FlowResult]) -> Swift.Void)?) where Flow : ElkycCoreSDK.ElkycStep
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public init(nibName nibNameOrNil: Swift.String?, bundle nibBundleOrNil: Foundation.Bundle?)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder: Foundation.NSCoder)
+  @objc deinit
+}
+public struct ConstraintPriority : Swift.ExpressibleByFloatLiteral, Swift.Equatable, Swift.Strideable {
+  public typealias FloatLiteralType = Swift.Float
+  public let value: Swift.Float
+  public init(floatLiteral value: Swift.Float)
+  public init(_ value: Swift.Float)
+  public static var required: ElkycCoreSDK.ConstraintPriority {
+    get
+  }
+  public static var high: ElkycCoreSDK.ConstraintPriority {
+    get
+  }
+  public static var medium: ElkycCoreSDK.ConstraintPriority {
+    get
+  }
+  public static var low: ElkycCoreSDK.ConstraintPriority {
+    get
+  }
+  public static func == (lhs: ElkycCoreSDK.ConstraintPriority, rhs: ElkycCoreSDK.ConstraintPriority) -> Swift.Bool
+  public func advanced(by n: ElkycCoreSDK.ConstraintPriority.FloatLiteralType) -> ElkycCoreSDK.ConstraintPriority
+  public func distance(to other: ElkycCoreSDK.ConstraintPriority) -> ElkycCoreSDK.ConstraintPriority.FloatLiteralType
+  public typealias Stride = ElkycCoreSDK.ConstraintPriority.FloatLiteralType
+}
+public struct WorkplaceOtpRequest : Swift.Encodable {
+  public init(email: Swift.String)
+  public init(phone: Swift.String)
+  public func encode(to encoder: Swift.Encoder) throws
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @objcMembers @_Concurrency.MainActor(unsafe) open class StatusBarNotificationBanner : ElkycCoreSDK.BaseNotificationBanner {
+  @_Concurrency.MainActor(unsafe) @objc override public var bannerHeight: CoreFoundation.CGFloat {
+    @objc get
+    @objc set
+  }
+  @objc @_Concurrency.MainActor(unsafe) convenience public init(title: Swift.String, style: ElkycCoreSDK.BannerStyle = .info, colors: ElkycCoreSDK.BannerColorsProtocol? = nil)
+  @objc @_Concurrency.MainActor(unsafe) convenience public init(attributedTitle: Foundation.NSAttributedString, style: ElkycCoreSDK.BannerStyle = .info, colors: ElkycCoreSDK.BannerColorsProtocol? = nil)
+  @objc @_Concurrency.MainActor(unsafe) public init(customView: UIKit.UIView)
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+  @objc deinit
+}
+extension ElkycCoreSDK.StatusBarNotificationBanner {
+  @_Concurrency.MainActor(unsafe) public func applyStyling(titleColor: UIKit.UIColor? = nil, titleTextAlign: UIKit.NSTextAlignment? = nil)
+}
+extension Foundation.NSNotification.Name {
+  public static let ZVProgressHUDReceivedTouchUpInsideEvent: Foundation.Notification.Name
+  public static let ZVProgressHUDWillAppear: Foundation.Notification.Name
+  public static let ZVProgressHUDDidAppear: Foundation.Notification.Name
+  public static let ZVProgressHUDWillDisappear: Foundation.Notification.Name
+  public static let ZVProgressHUDDidDisappear: Foundation.Notification.Name
+}
+@objc @_inheritsConvenienceInitializers @_hasMissingDesignatedInitializers @_Concurrency.MainActor(unsafe) open class ZVProgressHUD : UIKit.UIControl {
+  public typealias CompletionHandler = () -> Swift.Void
+  public struct Configuration {
+    public var displayStyle: ElkycCoreSDK.ZVProgressHUD.DisplayStyle
+    public var maskType: ElkycCoreSDK.ZVProgressHUD.MaskType
+    public var position: ElkycCoreSDK.ZVProgressHUD.Position
+    public var cornerRadius: CoreFoundation.CGFloat
+    public var offset: UIKit.UIOffset
+    public var titleLabelFont: UIKit.UIFont
+    public var titleLabelColor: UIKit.UIColor?
+    public var progressForegroundColor: UIKit.UIColor?
+    public var progressBackgroundColor: UIKit.UIColor?
+    public var progressLabelFont: UIKit.UIFont
+    public var progressLabelColor: UIKit.UIColor?
+    public var isProgressLabelHidden: Swift.Bool
+    public var strokeWidth: CoreFoundation.CGFloat
+    public var animationType: ElkycCoreSDK.ZVIndicatorView.AnimationType
+    public var contentInsets: UIKit.UIEdgeInsets
+    public var titleEdgeInsets: UIKit.UIEdgeInsets
+    public var indicatorEdgeInsets: UIKit.UIEdgeInsets
+    public var indicatorSize: CoreFoundation.CGSize
+    public var logo: UIKit.UIImage?
+    public var logoSize: CoreFoundation.CGSize
+    public init()
+  }
+  public enum DisplayType {
+    case indicator(title: Swift.String?, type: ElkycCoreSDK.ZVIndicatorView.IndicatorType)
+    case text(value: Swift.String)
+    case customeView(view: UIKit.UIView)
+  }
+  public enum DisplayStyle {
+    case light
+    case dark
+    case custom((backgroundColor: UIKit.UIColor, foregroundColor: UIKit.UIColor))
+  }
+  public enum MaskType {
+    case none
+    case clear
+    case black
+    case custom(color: UIKit.UIColor)
+  }
+  public enum Position {
+    case top
+    case center
+    case bottom
+    public static func == (a: ElkycCoreSDK.ZVProgressHUD.Position, b: ElkycCoreSDK.ZVProgressHUD.Position) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  @_Concurrency.MainActor(unsafe) public var displayType: ElkycCoreSDK.ZVProgressHUD.DisplayType? {
+    get
+  }
+  @objc deinit
+  @_Concurrency.MainActor(unsafe) @objc required dynamic public init?(coder aDecoder: Foundation.NSCoder)
+}
+public enum BannerHaptic {
+  case light
+  case medium
+  case heavy
+  case none
+  public static func == (a: ElkycCoreSDK.BannerHaptic, b: ElkycCoreSDK.BannerHaptic) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+@objc @_inheritsConvenienceInitializers open class BannerHapticGenerator : ObjectiveC.NSObject {
+  open class func generate(_ haptic: ElkycCoreSDK.BannerHaptic)
+  @objc override dynamic public init()
+  @objc deinit
+}
+public protocol ExecutionContext {
+  func execute(_ work: @escaping () -> Swift.Void)
+}
+extension Dispatch.DispatchQueue : ElkycCoreSDK.ExecutionContext {
+  public func execute(_ work: @escaping () -> Swift.Void)
+}
+final public class InvalidatableQueue : ElkycCoreSDK.ExecutionContext {
+  public init(queue: Dispatch.DispatchQueue = .main)
+  final public func invalidate()
+  final public func execute(_ work: @escaping () -> Swift.Void)
+  @objc deinit
+}
+final public class Promise<Value> {
+  public init()
+  public init(value: Value)
+  public init(error: Swift.Error)
+  convenience public init(queue: Dispatch.DispatchQueue = DispatchQueue.global(qos: .userInitiated), work: @escaping (_ fulfill: @escaping (Value) -> Swift.Void, _ reject: @escaping (Swift.Error) -> Swift.Void) throws -> Swift.Void)
+  @discardableResult
+  final public func then<NewValue>(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onFulfilled: @escaping (Value) throws -> ElkycCoreSDK.Promise<NewValue>) -> ElkycCoreSDK.Promise<NewValue>
+  @discardableResult
+  final public func then<NewValue>(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onFulfilled: @escaping (Value) throws -> NewValue) -> ElkycCoreSDK.Promise<NewValue>
+  @discardableResult
+  final public func then(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onFulfilled: @escaping (Value) -> Swift.Void, _ onRejected: @escaping (Swift.Error) -> Swift.Void = { _ in }) -> ElkycCoreSDK.Promise<Value>
+  @discardableResult
+  final public func `catch`(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onRejected: @escaping (Swift.Error) -> Swift.Void) -> ElkycCoreSDK.Promise<Value>
+  final public func reject(_ error: Swift.Error)
+  final public func fulfill(_ value: Value)
+  final public var isPending: Swift.Bool {
+    get
+  }
+  final public var isFulfilled: Swift.Bool {
+    get
+  }
+  final public var isRejected: Swift.Bool {
+    get
+  }
+  final public var value: Value? {
+    get
+  }
+  final public var error: Swift.Error? {
+    get
+  }
+  @objc deinit
+}
+public struct DocumentConfirmHintViewModel {
+  public init(image: UIKit.UIImage?, text: Swift.String)
+}
+extension Swift.String {
+  public func height(forConstrainedWidth width: CoreFoundation.CGFloat, font: UIKit.UIFont) -> CoreFoundation.CGFloat
+}
+public protocol ConstraintMultiplierTarget {
+  var constraintMultiplierTargetValue: CoreFoundation.CGFloat { get }
+}
+extension Swift.Int : ElkycCoreSDK.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreFoundation.CGFloat {
+    get
+  }
+}
+extension Swift.UInt : ElkycCoreSDK.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreFoundation.CGFloat {
+    get
+  }
+}
+extension Swift.Float : ElkycCoreSDK.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreFoundation.CGFloat {
+    get
+  }
+}
+extension Swift.Double : ElkycCoreSDK.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreFoundation.CGFloat {
+    get
+  }
+}
+extension CoreFoundation.CGFloat : ElkycCoreSDK.ConstraintMultiplierTarget {
+  public var constraintMultiplierTargetValue: CoreFoundation.CGFloat {
+    get
+  }
+}
+public struct RegistrationData {
+}
+public typealias CipherOperationOnBlock = (_ block: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>?
+public protocol BlockMode {
+  var options: ElkycCoreSDK.BlockModeOption { get }
+  func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+public class NetworkSession {
+  public init(encryptData: Swift.Bool, cryptSalt: Swift.String?, session: Foundation.URLSession = URLSession.shared)
+  public func request<T>(_ request: ElkycCoreSDK.Service) -> ElkycCoreSDK.Promise<T> where T : Swift.Decodable
+  @objc deinit
+}
+public protocol CipherModeWorker {
+  var cipherOperation: ElkycCoreSDK.CipherOperationOnBlock { get }
+  var additionalBufferSize: Swift.Int { get }
+  mutating func encrypt(block plaintext: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+  mutating func decrypt(block ciphertext: Swift.ArraySlice<Swift.UInt8>) -> Swift.Array<Swift.UInt8>
+}
+public protocol BlockModeWorker : ElkycCoreSDK.CipherModeWorker {
+  var blockSize: Swift.Int { get }
+}
+public protocol CounterModeWorker : ElkycCoreSDK.CipherModeWorker {
+  associatedtype Counter
+  var counter: Self.Counter { get set }
+}
+public protocol SeekableModeWorker : ElkycCoreSDK.CipherModeWorker {
+  mutating func seek(to position: Swift.Int) throws
+}
+public protocol StreamModeWorker : ElkycCoreSDK.CipherModeWorker {
+}
+public protocol FinalizingEncryptModeWorker : ElkycCoreSDK.CipherModeWorker {
+  mutating func finalize(encrypt ciphertext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+}
+public protocol FinalizingDecryptModeWorker : ElkycCoreSDK.CipherModeWorker {
+  @discardableResult
+  mutating func willDecryptLast(bytes ciphertext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+  mutating func didDecryptLast(bytes plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+  mutating func finalize(decrypt plaintext: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.ArraySlice<Swift.UInt8>
+}
+public protocol ConstraintDirectionalInsetTarget : ElkycCoreSDK.ConstraintConstantTarget {
+}
+@available(iOS 11.0, tvOS 11.0, *)
+extension UIKit.NSDirectionalEdgeInsets : ElkycCoreSDK.ConstraintDirectionalInsetTarget {
+}
+public enum Bit : Swift.Int {
+  case zero
+  case one
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public class Intro : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(config: ElkycCoreSDK.Intro.Config = Config())
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Swift.Void, Swift.Error>) -> Swift.Void))
+  public typealias Output = Swift.Void
+  @objc deinit
+}
+extension ElkycCoreSDK.Intro {
+  public struct Config {
+    public var image: UIKit.UIImage?
+    public var title: Swift.String?
+    public var attributedTitle: Foundation.NSAttributedString?
+    public var description: Swift.String?
+    public var mainBtnTint: UIKit.UIColor
+    public var mainBtnTitle: Swift.String?
+    public init()
+    public static var startVerification: ElkycCoreSDK.Intro.Config {
+      get
+    }
+    public static var rfid: ElkycCoreSDK.Intro.Config {
+      get
+    }
+    public static var liveness: ElkycCoreSDK.Intro.Config {
+      get
+    }
+    public static var world: ElkycCoreSDK.Intro.Config {
+      get
+    }
+    public static var selfieWithDoc: ElkycCoreSDK.Intro.Config {
+      get
+    }
+    public static var signature: ElkycCoreSDK.Intro.Config {
+      get
+    }
+  }
+}
+public enum Promises {
+  public static func all<T>(_ promises: [ElkycCoreSDK.Promise<T>]) -> ElkycCoreSDK.Promise<[T]>
+  public static func delay(_ delay: Foundation.TimeInterval) -> ElkycCoreSDK.Promise<()>
+  public static func timeout<T>(_ timeout: Foundation.TimeInterval) -> ElkycCoreSDK.Promise<T>
+  public static func race<T>(_ promises: [ElkycCoreSDK.Promise<T>]) -> ElkycCoreSDK.Promise<T>
+  public static func retry<T>(count: Swift.Int, delay: Foundation.TimeInterval, generate: @escaping () -> ElkycCoreSDK.Promise<T>) -> ElkycCoreSDK.Promise<T>
+  public static func kickoff<T>(_ block: @escaping () throws -> ElkycCoreSDK.Promise<T>) -> ElkycCoreSDK.Promise<T>
+  public static func kickoff<T>(_ block: @escaping () throws -> T) -> ElkycCoreSDK.Promise<T>
+  public static func zip<T, U>(_ first: ElkycCoreSDK.Promise<T>, _ second: ElkycCoreSDK.Promise<U>) -> ElkycCoreSDK.Promise<(T, U)>
+  public static func zip<T1, T2, T3>(_ p1: ElkycCoreSDK.Promise<T1>, _ p2: ElkycCoreSDK.Promise<T2>, _ last: ElkycCoreSDK.Promise<T3>) -> ElkycCoreSDK.Promise<(T1, T2, T3)>
+  public static func zip<T1, T2, T3, T4>(_ p1: ElkycCoreSDK.Promise<T1>, _ p2: ElkycCoreSDK.Promise<T2>, _ p3: ElkycCoreSDK.Promise<T3>, _ last: ElkycCoreSDK.Promise<T4>) -> ElkycCoreSDK.Promise<(T1, T2, T3, T4)>
+}
+extension ElkycCoreSDK.Promise {
+  final public func addTimeout(_ timeout: Foundation.TimeInterval) -> ElkycCoreSDK.Promise<Value>
+  @discardableResult
+  final public func always(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ onComplete: @escaping () -> Swift.Void) -> ElkycCoreSDK.Promise<Value>
+  final public func recover(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ recovery: @escaping (Swift.Error) throws -> ElkycCoreSDK.Promise<Value>) -> ElkycCoreSDK.Promise<Value>
+  final public func recover<E>(type errorType: E.Type, on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ recovery: @escaping (E) throws -> ElkycCoreSDK.Promise<Value>) -> ElkycCoreSDK.Promise<Value> where E : Swift.Error
+  final public func ensure(_ check: @escaping (Value) -> Swift.Bool) -> ElkycCoreSDK.Promise<Value>
+  final public func `catch`<E>(type errorType: E.Type, _ onRejected: @escaping (E) -> Swift.Void) -> ElkycCoreSDK.Promise<Value> where E : Swift.Error
+  final public func mapError(on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ transformError: @escaping (Swift.Error) -> Swift.Error) -> ElkycCoreSDK.Promise<Value>
+  final public func mapError<E>(type errorType: E.Type, on queue: ElkycCoreSDK.ExecutionContext = DispatchQueue.main, _ transformError: @escaping (E) -> Swift.Error) -> ElkycCoreSDK.Promise<Value> where E : Swift.Error
+}
+public enum OtpType {
+  case phone(Swift.String)
+  case email(Swift.String)
+}
+public protocol Workplace {
+  func startVerification(appKey: Swift.String, transactionId: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func verificationSucceed(transactionId: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func verificationFailed(transactionId: Swift.String, error: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func sendDocument(data: [Swift.String : Any], completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendImage(request: ElkycCoreSDK.WorkplaceImageRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendInn(request: ElkycCoreSDK.WorkplaceInnRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendInnConfirm(request: ElkycCoreSDK.WorkplaceInnRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendLivenessOrMatching(request: ElkycCoreSDK.WorkplaceLivenessOrMatchingRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendOtpData(request: ElkycCoreSDK.WorkplaceOtpRequest, completion: @escaping (Swift.Result<ElkycCoreSDK.NoReply, Swift.Error>) -> Swift.Void)
+  func sendOtp(type: ElkycCoreSDK.OtpType) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func verifyOtp(type: ElkycCoreSDK.OtpType, code: Swift.String) -> ElkycCoreSDK.Promise<ElkycCoreSDK.NoReply>
+  func getDiiaUrl(completion: @escaping (Swift.Result<ElkycCoreSDK.DiiaLink, Swift.Error>) -> Swift.Void)
+  func getDiiaResult(completion: @escaping (Swift.Result<ElkycCoreSDK.DiiaResult, Swift.Error>) -> Swift.Void)
+  func updateClientToken(_ clientToken: Swift.String?)
+}
+final public class Poly1305 : ElkycCoreSDK.Authenticator {
+  public enum Error : Swift.Error {
+    case authenticateError
+    public static func == (a: ElkycCoreSDK.Poly1305.Error, b: ElkycCoreSDK.Poly1305.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public static let blockSize: Swift.Int
+  public init(key: Swift.Array<Swift.UInt8>)
+  final public func authenticate(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  @objc deinit
+}
+public class DocumentSelection : ElkycCoreSDK.ElkycStep {
+  public var stepId: ElkycCoreSDK.ElkycStepId
+  public init(documents: [ElkycCoreSDK.DocumentTypeViewProtocol], config: ElkycCoreSDK.DocumentSelection.Config = Config())
+  public func start(from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<Swift.Int, Swift.Error>) -> Swift.Void))
+  public typealias Output = Swift.Int
+  @objc deinit
+}
+extension ElkycCoreSDK.DocumentSelection {
+  public struct Config {
+    public var title: Swift.String
+    public var mainBtnBackgroundColor: UIKit.UIColor
+    public var mainBtnTintColor: UIKit.UIColor
+    public var mainBtnTitle: Swift.String
+    public var documentTypeViewTintColor: UIKit.UIColor
+    public init()
+  }
+}
+public struct CBC : ElkycCoreSDK.BlockMode {
+  public enum Error : Swift.Error {
+    case invalidInitializationVector
+    public static func == (a: ElkycCoreSDK.CBC.Error, b: ElkycCoreSDK.CBC.Error) -> Swift.Bool
+    public func hash(into hasher: inout Swift.Hasher)
+    public var hashValue: Swift.Int {
+      get
+    }
+  }
+  public let options: ElkycCoreSDK.BlockModeOption
+  public init(iv: Swift.Array<Swift.UInt8>)
+  public func worker(blockSize: Swift.Int, cipherOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock, encryptionOperation: @escaping ElkycCoreSDK.CipherOperationOnBlock) throws -> ElkycCoreSDK.CipherModeWorker
+}
+public enum CipherError : Swift.Error {
+  case encrypt
+  case decrypt
+  public static func == (a: ElkycCoreSDK.CipherError, b: ElkycCoreSDK.CipherError) -> Swift.Bool
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+public protocol Cipher : AnyObject {
+  var keySize: Swift.Int { get }
+  func encrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func decrypt(_ bytes: Swift.ArraySlice<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+extension ElkycCoreSDK.Cipher {
+  public func encrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+  public func decrypt(_ bytes: Swift.Array<Swift.UInt8>) throws -> Swift.Array<Swift.UInt8>
+}
+final public class Scrypt {
+  public init(password: Swift.Array<Swift.UInt8>, salt: Swift.Array<Swift.UInt8>, dkLen: Swift.Int, N: Swift.Int, r: Swift.Int, p: Swift.Int) throws
+  final public func calculate() throws -> [Swift.UInt8]
+  @objc deinit
+}
+extension ElkycCoreSDK.LayoutConstraint {
+  @_Concurrency.MainActor(unsafe) @objc override dynamic public var description: Swift.String {
+    @objc get
+  }
+}
+public protocol Cryptor {
+  mutating func seek(to: Swift.Int) throws
+}
+@_hasMissingDesignatedInitializers public class ElkycSDK {
+  public struct Config {
+    public var isInDebug: Swift.Bool
+    public var configuration: ElkycCoreSDK.Configuration
+    public var faceSDKLocalizationHandler: ((Swift.String) -> Swift.String?)?
+  }
+  public static let shared: ElkycCoreSDK.ElkycSDK
+  public var workPlace: ElkycCoreSDK.Workplace {
+    get
+  }
+  public var config: ElkycCoreSDK.ElkycSDK.Config
+  public func isStepAvailable(_ stepId: ElkycCoreSDK.ElkycStepId) -> Swift.Bool
+  public func wrapStepCompletion<T>(stepId: ElkycCoreSDK.ElkycStepId, completion: @escaping ((Swift.Result<T, Swift.Error>) -> Swift.Void)) -> ((Swift.Result<T, Swift.Error>) -> Swift.Void)
+  public func addFlowResult(_ flowResult: ElkycCoreSDK.FlowResult)
+  @available(*, deprecated, message: "Use method without clientKey")
+  public func startFlow<Step>(appKey: Swift.String, clientKey: Swift.String, clientSession: Swift.String? = nil, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<[ElkycCoreSDK.FlowResult], Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
+  public func startFlow<Step>(appKey: Swift.String, clientSession: Swift.String? = nil, flow: Step, from viewController: UIKit.UIViewController, completion: @escaping ((Swift.Result<[ElkycCoreSDK.FlowResult], Swift.Error>) -> Swift.Void)) where Step : ElkycCoreSDK.ElkycStep
+  @objc deinit
+}
+extension ElkycCoreSDK.ElkycSDK {
+  public func prepare(request: Foundation.URLRequest) -> Foundation.URLRequest?
+}
+@objc public enum BannerPosition : Swift.Int {
+  case bottom
+  case top
+  public init?(rawValue: Swift.Int)
+  public typealias RawValue = Swift.Int
+  public var rawValue: Swift.Int {
+    get
+  }
+}
+public struct MetadataTerritory : Swift.Decodable {
+  public let codeID: Swift.String
+  public let countryCode: Swift.UInt64
+  public let internationalPrefix: Swift.String?
+  public let mainCountryForCode: Swift.Bool
+  public let nationalPrefix: Swift.String?
+  public let nationalPrefixFormattingRule: Swift.String?
+  public let nationalPrefixForParsing: Swift.String?
+  public let nationalPrefixTransformRule: Swift.String?
+  public let preferredExtnPrefix: Swift.String?
+  public let emergency: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let fixedLine: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let generalDesc: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let mobile: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let pager: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let personalNumber: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let premiumRate: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let sharedCost: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let tollFree: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let voicemail: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let voip: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let uan: ElkycCoreSDK.MetadataPhoneNumberDesc?
+  public let numberFormats: [ElkycCoreSDK.MetadataPhoneNumberFormat]
+  public let leadingDigits: Swift.String?
+}
+public struct MetadataPhoneNumberDesc : Swift.Decodable {
+  public let exampleNumber: Swift.String?
+  public let nationalNumberPattern: Swift.String?
+  public let possibleNumberPattern: Swift.String?
+  public let possibleLengths: ElkycCoreSDK.MetadataPossibleLengths?
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MetadataPossibleLengths : Swift.Decodable {
+  public init(from decoder: Swift.Decoder) throws
+}
+public struct MetadataPhoneNumberFormat : Swift.Decodable {
+  public let pattern: Swift.String?
+  public let format: Swift.String?
+  public let intlFormat: Swift.String?
+  public let leadingDigitsPatterns: [Swift.String]?
+  public var nationalPrefixFormattingRule: Swift.String?
+  public let nationalPrefixOptionalWhenFormatting: Swift.Bool?
+  public let domesticCarrierCodeFormattingRule: Swift.String?
+}
+@_hasMissingDesignatedInitializers final public class AEADChaCha20Poly1305 : ElkycCoreSDK.AEAD {
+  public static let kLen: Swift.Int
+  public static var ivRange: Swift.Range<Swift.Int>
+  public static func encrypt(_ plainText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>) throws -> (cipherText: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>)
+  public static func decrypt(_ cipherText: Swift.Array<Swift.UInt8>, key: Swift.Array<Swift.UInt8>, iv: Swift.Array<Swift.UInt8>, authenticationHeader: Swift.Array<Swift.UInt8>, authenticationTag: Swift.Array<Swift.UInt8>) throws -> (plainText: Swift.Array<Swift.UInt8>, success: Swift.Bool)
+  @objc deinit
+}
+@_hasMissingDesignatedInitializers final public class ConstraintItem {
+  @objc deinit
+}
+public func == (lhs: ElkycCoreSDK.ConstraintItem, rhs: ElkycCoreSDK.ConstraintItem) -> Swift.Bool
+public struct PhoneNumber : Swift.Codable {
+  public let numberString: Swift.String
+  public let countryCode: Swift.UInt64
+  public let leadingZero: Swift.Bool
+  public let nationalNumber: Swift.UInt64
+  public let numberExtension: Swift.String?
+  public let type: ElkycCoreSDK.PhoneNumberType
+  public let regionID: Swift.String?
+  public func encode(to encoder: Swift.Encoder) throws
+  public init(from decoder: Swift.Decoder) throws
+}
+extension ElkycCoreSDK.PhoneNumber : Swift.Equatable {
+  public static func == (lhs: ElkycCoreSDK.PhoneNumber, rhs: ElkycCoreSDK.PhoneNumber) -> Swift.Bool
+}
+extension ElkycCoreSDK.PhoneNumber : Swift.Hashable {
+  public func hash(into hasher: inout Swift.Hasher)
+  public var hashValue: Swift.Int {
+    get
+  }
+}
+extension ElkycCoreSDK.PhoneNumber {
+  public static func notPhoneNumber() -> ElkycCoreSDK.PhoneNumber
+  public func notParsed() -> Swift.Bool
+}
+extension ElkycCoreSDK.PhoneNumber {
+  @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
+  public init(rawNumber: Swift.String) throws
+  @available(*, unavailable, message: "use PhoneNumberKit instead to produce PhoneNumbers")
+  public init(rawNumber: Swift.String, region: Swift.String) throws
+}
+extension ElkycCoreSDK.PhoneNumberError : Swift.Equatable {}
+extension ElkycCoreSDK.PhoneNumberError : Swift.Hashable {}
+extension ElkycCoreSDK.PhoneNumberFormat : Swift.Equatable {}
+extension ElkycCoreSDK.PhoneNumberFormat : Swift.Hashable {}
+extension ElkycCoreSDK.PhoneNumberType : Swift.Equatable {}
+extension ElkycCoreSDK.PhoneNumberType : Swift.Hashable {}
+extension ElkycCoreSDK.PhoneNumberType : Swift.RawRepresentable {}
+extension ElkycCoreSDK.PossibleLengthType : Swift.Equatable {}
+extension ElkycCoreSDK.PossibleLengthType : Swift.Hashable {}
+extension ElkycCoreSDK.PossibleLengthType : Swift.RawRepresentable {}
+extension ElkycCoreSDK.URLEncoding.Destination : Swift.Equatable {}
+extension ElkycCoreSDK.URLEncoding.Destination : Swift.Hashable {}
+extension ElkycCoreSDK.URLEncoding.ArrayEncoding : Swift.Equatable {}
+extension ElkycCoreSDK.URLEncoding.ArrayEncoding : Swift.Hashable {}
+extension ElkycCoreSDK.URLEncoding.BoolEncoding : Swift.Equatable {}
+extension ElkycCoreSDK.URLEncoding.BoolEncoding : Swift.Hashable {}
+extension ElkycCoreSDK.CMAC.Error : Swift.Equatable {}
+extension ElkycCoreSDK.CMAC.Error : Swift.Hashable {}
+extension ElkycCoreSDK.HKDF.Error : Swift.Equatable {}
+extension ElkycCoreSDK.HKDF.Error : Swift.Hashable {}
+extension ElkycCoreSDK.PCBC.Error : Swift.Equatable {}
+extension ElkycCoreSDK.PCBC.Error : Swift.Hashable {}
+extension ElkycCoreSDK.Padding : Swift.Equatable {}
+extension ElkycCoreSDK.Padding : Swift.Hashable {}
+extension ElkycCoreSDK.Confirm.Response : Swift.Equatable {}
+extension ElkycCoreSDK.Confirm.Response : Swift.Hashable {}
+extension ElkycCoreSDK.Confirm.Response : Swift.Sendable {}
+extension ElkycCoreSDK.FlowResultType : Swift.Equatable {}
+extension ElkycCoreSDK.FlowResultType : Swift.Hashable {}
+extension ElkycCoreSDK.PKCS5.PBKDF1.Error : Swift.Equatable {}
+extension ElkycCoreSDK.PKCS5.PBKDF1.Error : Swift.Hashable {}
+extension ElkycCoreSDK.PKCS5.PBKDF1.Variant : Swift.Equatable {}
+extension ElkycCoreSDK.PKCS5.PBKDF1.Variant : Swift.Hashable {}
+extension ElkycCoreSDK.CFB.Error : Swift.Equatable {}
+extension ElkycCoreSDK.CFB.Error : Swift.Hashable {}
+extension ElkycCoreSDK.BCrypt.SaltPrefixType : Swift.Equatable {}
+extension ElkycCoreSDK.BCrypt.SaltPrefixType : Swift.Hashable {}
+extension ElkycCoreSDK.BCrypt.SaltPrefixType : Swift.RawRepresentable {}
+extension ElkycCoreSDK.BCrypt.Exception : Swift.Equatable {}
+extension ElkycCoreSDK.BCrypt.Exception : Swift.Hashable {}
+extension ElkycCoreSDK.DocumentConfirm.StepResult : Swift.Equatable {}
+extension ElkycCoreSDK.DocumentConfirm.StepResult : Swift.Hashable {}
+extension ElkycCoreSDK.DocumentConfirm.StepResult : Swift.Sendable {}
+extension ElkycCoreSDK.SHA2.Variant : Swift.Equatable {}
+extension ElkycCoreSDK.SHA2.Variant : Swift.Hashable {}
+extension ElkycCoreSDK.ZVIndicatorView.AnimationType : Swift.Equatable {}
+extension ElkycCoreSDK.ZVIndicatorView.AnimationType : Swift.Hashable {}
+extension ElkycCoreSDK.CTR : ElkycCoreSDK.BlockMode {}
+extension ElkycCoreSDK.CTR.Error : Swift.Equatable {}
+extension ElkycCoreSDK.CTR.Error : Swift.Hashable {}
+extension ElkycCoreSDK.ElkycStepId.StepType : Swift.Equatable {}
+extension ElkycCoreSDK.ElkycStepId.StepType : Swift.Hashable {}
+extension ElkycCoreSDK.BannerStyle : Swift.Equatable {}
+extension ElkycCoreSDK.BannerStyle : Swift.Hashable {}
+extension ElkycCoreSDK.BannerStyle : Swift.RawRepresentable {}
+extension ElkycCoreSDK.Rabbit.Error : Swift.Equatable {}
+extension ElkycCoreSDK.Rabbit.Error : Swift.Hashable {}
+extension ElkycCoreSDK.WorkplaceImageType : Swift.Equatable {}
+extension ElkycCoreSDK.WorkplaceImageType : Swift.Hashable {}
+extension ElkycCoreSDK.WorkplaceImageType : Swift.RawRepresentable {}
+extension ElkycCoreSDK.OFB.Error : Swift.Equatable {}
+extension ElkycCoreSDK.OFB.Error : Swift.Hashable {}
+extension ElkycCoreSDK.ChaCha20.Error : Swift.Equatable {}
+extension ElkycCoreSDK.ChaCha20.Error : Swift.Hashable {}
+extension ElkycCoreSDK.HMAC.Error : Swift.Equatable {}
+extension ElkycCoreSDK.HMAC.Error : Swift.Hashable {}
+extension ElkycCoreSDK.HMAC.Variant : Swift.Equatable {}
+extension ElkycCoreSDK.HMAC.Variant : Swift.Hashable {}
+extension ElkycCoreSDK.MetadataTerritory.CodingKeys : Swift.Equatable {}
+extension ElkycCoreSDK.MetadataTerritory.CodingKeys : Swift.Hashable {}
+extension ElkycCoreSDK.MetadataTerritory.CodingKeys : Swift.RawRepresentable {}
+extension ElkycCoreSDK.MetadataPhoneNumberFormat.CodingKeys : Swift.Equatable {}
+extension ElkycCoreSDK.MetadataPhoneNumberFormat.CodingKeys : Swift.Hashable {}
+extension ElkycCoreSDK.MetadataPhoneNumberFormat.CodingKeys : Swift.RawRepresentable {}
+extension ElkycCoreSDK.CoreSDKError : Swift.Equatable {}
+extension ElkycCoreSDK.CoreSDKError : Swift.Hashable {}
+extension ElkycCoreSDK.DocumentIntro.StepResult : Swift.Sendable {}
+extension ElkycCoreSDK.Blowfish.Error : Swift.Equatable {}
+extension ElkycCoreSDK.Blowfish.Error : Swift.Hashable {}
+extension ElkycCoreSDK.CCM : ElkycCoreSDK.BlockMode {}
+extension ElkycCoreSDK.CCM.Error : Swift.Equatable {}
+extension ElkycCoreSDK.CCM.Error : Swift.Hashable {}
+extension ElkycCoreSDK.QueuePosition : Swift.Equatable {}
+extension ElkycCoreSDK.QueuePosition : Swift.Hashable {}
+extension ElkycCoreSDK.QueuePosition : Swift.RawRepresentable {}
+extension ElkycCoreSDK.MarqueeLabel.MarqueeType : Swift.Equatable {}
+extension ElkycCoreSDK.MarqueeLabel.MarqueeType : Swift.Hashable {}
+extension ElkycCoreSDK.PKCS5.PBKDF2.Error : Swift.Equatable {}
+extension ElkycCoreSDK.PKCS5.PBKDF2.Error : Swift.Hashable {}
+extension ElkycCoreSDK.AES.Error : Swift.Equatable {}
+extension ElkycCoreSDK.AES.Error : Swift.Hashable {}
+extension ElkycCoreSDK.AES.Variant : Swift.Equatable {}
+extension ElkycCoreSDK.AES.Variant : Swift.Hashable {}
+extension ElkycCoreSDK.AES.Variant : Swift.RawRepresentable {}
+extension ElkycCoreSDK.SHA3.Variant : Swift.Equatable {}
+extension ElkycCoreSDK.SHA3.Variant : Swift.Hashable {}
+extension ElkycCoreSDK.KeychainItemAccessibility : Swift.Equatable {}
+extension ElkycCoreSDK.KeychainItemAccessibility : Swift.Hashable {}
+extension ElkycCoreSDK.GCM.Mode : Swift.Equatable {}
+extension ElkycCoreSDK.GCM.Mode : Swift.Hashable {}
+extension ElkycCoreSDK.GCM.Error : Swift.Equatable {}
+extension ElkycCoreSDK.GCM.Error : Swift.Hashable {}
+extension ElkycCoreSDK.GrowingNotificationBanner.IconPosition : Swift.Equatable {}
+extension ElkycCoreSDK.GrowingNotificationBanner.IconPosition : Swift.Hashable {}
+extension ElkycCoreSDK.OCB.Mode : Swift.Equatable {}
+extension ElkycCoreSDK.OCB.Mode : Swift.Hashable {}
+extension ElkycCoreSDK.OCB.Error : Swift.Equatable {}
+extension ElkycCoreSDK.OCB.Error : Swift.Hashable {}
+extension ElkycCoreSDK.ZVProgressHUD.Position : Swift.Equatable {}
+extension ElkycCoreSDK.ZVProgressHUD.Position : Swift.Hashable {}
+extension ElkycCoreSDK.BannerHaptic : Swift.Equatable {}
+extension ElkycCoreSDK.BannerHaptic : Swift.Hashable {}
+extension ElkycCoreSDK.Bit : Swift.Equatable {}
+extension ElkycCoreSDK.Bit : Swift.Hashable {}
+extension ElkycCoreSDK.Bit : Swift.RawRepresentable {}
+extension ElkycCoreSDK.Poly1305.Error : Swift.Equatable {}
+extension ElkycCoreSDK.Poly1305.Error : Swift.Hashable {}
+extension ElkycCoreSDK.CBC.Error : Swift.Equatable {}
+extension ElkycCoreSDK.CBC.Error : Swift.Hashable {}
+extension ElkycCoreSDK.CipherError : Swift.Equatable {}
+extension ElkycCoreSDK.CipherError : Swift.Hashable {}
+extension ElkycCoreSDK.BannerPosition : Swift.Equatable {}
+extension ElkycCoreSDK.BannerPosition : Swift.Hashable {}
+extension ElkycCoreSDK.BannerPosition : Swift.RawRepresentable {}

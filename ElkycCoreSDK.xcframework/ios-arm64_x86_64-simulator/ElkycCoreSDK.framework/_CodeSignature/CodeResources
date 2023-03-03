@@ -6,7 +6,7 @@
 	<dict>
 		<key>Assets.car</key>
 		<data>
-		J9gH3sbjVuSV/63M5Mvbgc5rwRw=
+		SRq417rEjibVF7QUUoVf5F0UZfA=
 		</data>
 		<key>Confirmation.storyboardc/ConfirmationViewControler.nib</key>
 		<data>
@@ -14,7 +14,7 @@
 		</data>
 		<key>Confirmation.storyboardc/IlS-4M-0sR-view-tvd-TO-FZx.nib</key>
 		<data>
-		2nmcJJgTIQ8Upw+siVRFYUKE5l4=
+		MjKT3j3HPqKFta8K25+9SGy31Lk=
 		</data>
 		<key>Confirmation.storyboardc/Info.plist</key>
 		<data>
@@ -22,7 +22,7 @@
 		</data>
 		<key>Demo.storyboardc/6Ph-eb-k8Y-view-ccF-xm-86M.nib</key>
 		<data>
-		VV8IXgxh/26NsMtSZMApbczEzGA=
+		UL2KikGM2xslot9RPAnsuUAGmTs=
 		</data>
 		<key>Demo.storyboardc/AuthorizationViewController.nib</key>
 		<data>
@@ -38,7 +38,7 @@
 		</data>
 		<key>Demo.storyboardc/J6J-ay-kZj-view-ulL-Wh-bcS.nib</key>
 		<data>
-		E1/Rt8jKYIAqjczmRpkNUjU6SY8=
+		98VNPW6nBidVNMWib9BxOAz/HaY=
 		</data>
 		<key>Demo.storyboardc/Qpt-8e-QLe-view-i70-Va-BIp.nib</key>
 		<data>
@@ -54,23 +54,23 @@
 		</data>
 		<key>Demo.storyboardc/tmS-pS-JdN-view-pFD-Dq-Arc.nib</key>
 		<data>
-		HO3j8W/rpVgbSCYbYknt6Z4ml7k=
+		EZmC/Bwi/MUG/i2jVGrbXTUpPkQ=
 		</data>
 		<key>DocumentConfirmHintView.nib</key>
 		<data>
-		NeYFHZrPxnqea4kG5T1BmQN7IcI=
+		n9SMNiY3kOzLPTY03IfciGiayhw=
 		</data>
 		<key>DocumentTypeView.nib</key>
 		<data>
-		5fAVD60E0sW4Scx7P9v278op75s=
+		LQRm6MQPDbbQkhwEVwL+cVHHc5k=
 		</data>
 		<key>Documents.storyboardc/3VY-WN-7Qf-view-lYs-Rx-Cw0.nib</key>
 		<data>
-		Zt3QEL2m75ZHld+MFfUjh+mhfQc=
+		TbVYaykgQGPtlfFo7z5BsbfVMuc=
 		</data>
 		<key>Documents.storyboardc/4Z0-Su-gt0-view-xZ4-rB-wEv.nib</key>
 		<data>
-		S9ln2ZsryQnYCRAgZuSv8QwgeM8=
+		JO9kqnS0hqsg4qHPYeF22CJQqKk=
 		</data>
 		<key>Documents.storyboardc/DocumentConfirmViewController.nib</key>
 		<data>
@@ -94,11 +94,11 @@
 		</data>
 		<key>Documents.storyboardc/n4y-4n-WEX-view-jLc-xN-iTy.nib</key>
 		<data>
-		iqOy0xnyqVTWmJ7PLZuEdN+YKpc=
+		NHytg1lP1Ibm88uLuwRim71RExM=
 		</data>
 		<key>Documents.storyboardc/sos-kf-jlx-view-3k1-x1-KSu.nib</key>
 		<data>
-		cdzsYMGC8a5icy+UXcPM1qzz5/k=
+		XMDrkq+70GAuBtYMzyqOL0lIg/4=
 		</data>
 		<key>Face.storyboardc/Info.plist</key>
 		<data>
@@ -110,11 +110,11 @@
 		</data>
 		<key>Face.storyboardc/XTU-kd-5pt-view-ORh-sG-nA9.nib</key>
 		<data>
-		NGZEs2QEHL9YtGeVcBTHoPc+yPU=
+		jJmRszaa1Wk2QuObozhDcz7eaRs=
 		</data>
 		<key>Headers/ElkycCoreSDK-Swift.h</key>
 		<data>
-		G31aWhnYHdd2k6PE2bUl8gL32PE=
+		bBZq3MY1OVQ06xIGukzcaiYInU8=
 		</data>
 		<key>Headers/ElkycCoreSDK.h</key>
 		<data>
@@ -138,15 +138,15 @@
 		</data>
 		<key>HintView.nib</key>
 		<data>
-		OyA/raeGsVAJoNfvT2KDwcjSxQM=
+		5V9G2fymGGuRN7285cBExDcAi54=
 		</data>
 		<key>Info.plist</key>
 		<data>
-		7Tjs76UMr2PTPreIQ/xrtp9Kg3g=
+		eH8U3YfJmIv7BrYiJ+9pS1mB734=
 		</data>
 		<key>Intro.storyboardc/4WW-Ga-zRF-view-9Sl-nm-1wD.nib</key>
 		<data>
-		/BAepPpVzkCIXnezscEuiC8Nn8o=
+		02VS+OOkKMYr7t0RzrUNMqTzFGA=
 		</data>
 		<key>Intro.storyboardc/AcceptTermsViewController.nib</key>
 		<data>
@@ -162,35 +162,51 @@
 		</data>
 		<key>Intro.storyboardc/tMX-L5-O6X-view-ect-9j-bk6.nib</key>
 		<data>
-		qqrHAYqO4vZkaIyYrF+sJH2t2Iw=
+		1qUH80pg9A48FFoaIYN7T+zGL1k=
+		</data>
+		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<data>
+		nhe7dpJYonxhObEe45UfHnmcEXY=
+		</data>
+		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		DZ61Vvzhd9OC9ncDP1WssHEtuVE=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		XEUuDhftpFq1GQsDzHRzjv0yvuY=
+		zIg11XWdvm/xpKFa5zh5GHaYVL4=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		1fNFU3s5eSeEnCPalRZf4Qnx6uc=
+		DZ61Vvzhd9OC9ncDP1WssHEtuVE=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		sXrnzZnAD8knx8nHLglydaHLjDs=
+		oQlrIxXOBjXzee+kw8NwD7Mx0xI=
+		</data>
+		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<data>
+		nhe7dpJYonxhObEe45UfHnmcEXY=
+		</data>
+		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<data>
+		mpCvRTH/1XgBnQEZVTb5qOAVlTg=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<data>
-		1wlagqOCQy07KkTjUlL/eZPWoOU=
+		MFpwLlPi/KvINuTiDrFeT4nQPyU=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<data>
-		cFUBJRXkLZwtLE+GKrJ/+5/erHw=
+		mpCvRTH/1XgBnQEZVTb5qOAVlTg=
 		</data>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<data>
-		PwNAuc8+GQvlqIgK7x4tgMs3RMk=
+		8IjOgt5IDhD/HC5Oc75hS2fygdQ=
 		</data>
 		<key>Modules/module.modulemap</key>
 		<data>
-		wxq6cbxDuBz4i5Laekhh9LqAd2o=
+		ZCA0CXUq4ItOzhl2GSNMooA2a8U=
 		</data>
 		<key>PhoneNumberMetadata.json</key>
 		<data>
@@ -218,13 +234,13 @@
 		</data>
 		<key>ServiceTypeView.nib</key>
 		<data>
-		quyDklyiRE2gBSUo+fRbKcN3OW0=
+		zBfGY97c/aJrLU5avpcOcQiVjlM=
 		</data>
 		<key>en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash</key>
 			<data>
-			C9JRdr2gNAZAU8nx4W4aYI8D9cI=
+			LB8ybMms7aysWfqAOkUe5HZKMdo=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -233,7 +249,7 @@
 		<dict>
 			<key>hash</key>
 			<data>
-			sONisxls6oN7b+0MXvHC9VVPcdI=
+			KnsgRNlxJ/BpOt1sQcc6CUMN3Pk=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -245,7 +261,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			w9IIuCFP/n40uvneO/XYF4nUgmtZFV+XxH0l+CRKlBQ=
+			baVn+8gG9C6iUkRNu2EzTyQTcCFkF9hDccydU1xq/EI=
 			</data>
 		</dict>
 		<key>Confirmation.storyboardc/ConfirmationViewControler.nib</key>
@@ -259,7 +275,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			Gr7TboQp6LVXEpsiTr/g/7syzjiXfrVKnYYBGjK3R18=
+			nZlkKDqnzkUEimQlB7HG0/n0AkaKLzOsOEhkbEWnuvQ=
 			</data>
 		</dict>
 		<key>Confirmation.storyboardc/Info.plist</key>
@@ -273,7 +289,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			4G3Uhm8ahDFsaRF0VRifHlSJydYU0SWK7J25+4e11Nc=
+			B/HO9wDcA2V/CBvd6tRmqIZvMih8hRvtA1EM5qiWRKo=
 			</data>
 		</dict>
 		<key>Demo.storyboardc/AuthorizationViewController.nib</key>
@@ -301,7 +317,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			mHyMPuzv1lhhm2+AociM3IKm6qZRyDZWG2507wD3X8A=
+			4y2kmIWzLPYAQpEnI7bZMrAoMjhqUjnixDZg3LN73W8=
 			</data>
 		</dict>
 		<key>Demo.storyboardc/Qpt-8e-QLe-view-i70-Va-BIp.nib</key>
@@ -329,35 +345,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			p8pkTW5sEvN1M3dfpgSgBrdFcPXYkMkLtY99HpADoHA=
+			xNudBp7aF2VauMRLU97kOT4KV+PwWP3nE/tpTQdl18o=
 			</data>
 		</dict>
 		<key>DocumentConfirmHintView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			KJJsxFiBo3Oe4+ZJ/ZCEcoNJH3bOXnWwyYFr0cNm8QM=
+			QzptH7qJe3SAM+IjCgg6Yo7+JEtjy7vbhcJtCkWCpC4=
 			</data>
 		</dict>
 		<key>DocumentTypeView.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			Gy9TI+EPxPMDo586fOLp8xmT5+ekfOfTfNwAFFPFUYI=
+			D8gYDO1Y3ByRIzp2k0L59cG1Z7fBs7OBtR3O3vTjbsw=
 			</data>
 		</dict>
 		<key>Documents.storyboardc/3VY-WN-7Qf-view-lYs-Rx-Cw0.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			WG89cAuLz4bcN84evIfFt3sKPq2GBHLdAWJnv2eOW5Q=
+			iy4fGBvbUlyoj4hEficTnIsK6P0E8csjTyJIWFERfhQ=
 			</data>
 		</dict>
 		<key>Documents.storyboardc/4Z0-Su-gt0-view-xZ4-rB-wEv.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			P2Meo53FSnWS7rFbZKCP/rdT+SMpLEbGurL0rqb50eo=
+			relxTLVMDfktPzq56SN72147JCs11H/yFWqbXHRV62Q=
 			</data>
 		</dict>
 		<key>Documents.storyboardc/DocumentConfirmViewController.nib</key>
@@ -399,14 +415,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			WtSmcEl8pTBk2PcgQgR/VWdWXN7fD5djtKZm9SEyyv8=
+			BvpkTGzzS+8gx3KrYbFzG9+uzzTISHJ/rErFRVRnP3s=
 			</data>
 		</dict>
 		<key>Documents.storyboardc/sos-kf-jlx-view-3k1-x1-KSu.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			QpGICi5R6wFALmVkVqH6tE91jtuQCQH5WveNSKmVLLw=
+			SVoaBIRZtCALyTKM/l1rSXTK99O+FQoGCAL1pTdqcQQ=
 			</data>
 		</dict>
 		<key>Face.storyboardc/Info.plist</key>
@@ -427,14 +443,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			gckN8lcswJ0AVN22twQsOQlegXvZ6mQc0qdn1FydkV0=
+			d5GQU2bDfDIWTEovHqpbOReWQ6GHLLQQOOYBLFpA4cM=
 			</data>
 		</dict>
 		<key>Headers/ElkycCoreSDK-Swift.h</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			0cwu4N/1WilEsZMWbNQlrxuxS/elMcDhpdyYAUORQpc=
+			RUE3bsoh6HiKRJuc0j1132j9n7TzLgehfb9UDWiwSzM=
 			</data>
 		</dict>
 		<key>Headers/ElkycCoreSDK.h</key>
@@ -476,14 +492,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			ecAplZ6/Gb8SI+sbHogYuQWnHy8+e/KseFrmy8VnPGY=
+			n9U+uxYo0Iy2v4Gqodx+/QWEWV+gXEtryljvg3fSLcg=
 			</data>
 		</dict>
 		<key>Intro.storyboardc/4WW-Ga-zRF-view-9Sl-nm-1wD.nib</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			4S2ebxw++kpM0gHNt0T+vGDjKI536OJxBasmvQdHVNc=
+			PmXs28UJI5zodDkyeBMHtkz5m5CsS2IjAb9sNkWmK5k=
 			</data>
 		</dict>
 		<key>Intro.storyboardc/AcceptTermsViewController.nib</key>
@@ -511,56 +527,84 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			SYu93tkBiKo5GskpsdooP635fmNQ5cPhcBUPmT2cFCc=
+			2MeSnNKAjQWboOSmBhQnhUqyTWR/mRqDwneyJRq9864=
+			</data>
+		</dict>
+		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MUsLmRwF7yUTcNeQ+eiU+4TJRb9vXIjly9P8Lmv+UlM=
+			</data>
+		</dict>
+		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			/akfYvVEaeMfSHqwux+gPyT48JEsGIsvxtMS/J8YPfQ=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			aHmQMr9xNGh7OPSnd2mNcNis3oF4y41oy6KKUbG/PFg=
+			7OYAiz+U5HPWWdHXvRqt5NLWMqdvYTM8MVcpYb2fE+Q=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bWHsPxokPSXYHfaZ+8mTU57AXj969E4qg6ZUaCxgeVU=
+			/akfYvVEaeMfSHqwux+gPyT48JEsGIsvxtMS/J8YPfQ=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/arm64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			PJh8FNRbhxHHYAbGDqgH0F6wwBo45Ee/2qP8jpfxW2E=
+			pOtK63hGBCBAJbu/I25QM7iKEuZ9gDhdLkl5qhuXSDo=
+			</data>
+		</dict>
+		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.abi.json</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MUsLmRwF7yUTcNeQ+eiU+4TJRb9vXIjly9P8Lmv+UlM=
+			</data>
+		</dict>
+		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.private.swiftinterface</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			BBR8ZAWaKKD/Ba5YnuquJf1II4RpDH2Fviqv9X9v+GM=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftdoc</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			n8FBytEVCYgM2WiWRasRlCoflJToKrVNToMJYl4mwh0=
+			e8fcOd4CqyTNcGf/VUr+49rR2DUc5QlpiE3Fggv12wo=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftinterface</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			rbI7rqYs89Ha6EO9+T6vZxJt1/bVhbVOOBzQ+RS0N58=
+			BBR8ZAWaKKD/Ba5YnuquJf1II4RpDH2Fviqv9X9v+GM=
 			</data>
 		</dict>
 		<key>Modules/ElkycCoreSDK.swiftmodule/x86_64-apple-ios-simulator.swiftmodule</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			bPO+A2YLOxexYHb5bnKqebssbyFE+LV1x9acxfRHHJQ=
+			2JmwmhN7eWRfvfphDXsHae7LASaStlci7Nk/8bDgAFY=
 			</data>
 		</dict>
 		<key>Modules/module.modulemap</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			FkJdP1pLK4jRf7ToSiIGiglvd4CLisVJ+TLpfzrWDZg=
+			nNws+wC/TvceVBh9m0qfZcmuHehd/PnSNm/hmKDOWY4=
 			</data>
 		</dict>
 		<key>PhoneNumberMetadata.json</key>
@@ -609,14 +653,14 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			J3FLzimuaqAYJYhNrxttX4LT9umeYUjlIaIUXfxVAuE=
+			ZkEH1e5GBMPnpaLXFNxl3iIKPEfyWaNWI/Snb7vi7/M=
 			</data>
 		</dict>
 		<key>en.lproj/Localizable.strings</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			jC1r1mc8g51SihiKM5FfZPn6lQc90VKEu4h0sD2+mXY=
+			PJorXWyQEKpIJAZc0lAJuSNAHOjbYMPC44/U0IO23o8=
 			</data>
 			<key>optional</key>
 			<true/>
@@ -625,7 +669,7 @@
 		<dict>
 			<key>hash2</key>
 			<data>
-			tpO64VmgB8jGaEPQ1zu1M9kY84ugM4AQ881I0ihKEYo=
+			iT7xZmQz/c1qG0s1wUEH+2VnCierEQNf/oXJjkr4LGQ=
 			</data>
 			<key>optional</key>
 			<true/>
