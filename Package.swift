@@ -1,8 +1,8 @@
 // swift-tools-version:5.3
 import PackageDescription
 
-let version = "2.1.5"
-let checksum = "837c307a632106e70a6d832a17fe1d3f7bc3c235228a700f20f2c90f994517ae"
+let version = "2.2.0"
+let checksum = "46ba5263703ef20fdf4943e2d623f45a2b6515ded409222202122ff35f9d17e9"
 
 let package = Package(
     name: "ElkycCoreSDK",

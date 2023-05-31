@@ -99247,7 +99247,7 @@
       "kind": "StringLiteral",
       "offset": 167,
       "length": 7,
-      "value": "\"2.1.5\""
+      "value": "\"2.2.0\""
     },
     {
       "filePath": "\/Users\/chausov\/Developer\/elkyc\/elkycSDK\/ElkycCoreSDK\/Network Layer\/ParameterEncoding.swift",
@@ -103585,6 +103585,13 @@
     {
       "filePath": "\/Users\/chausov\/Developer\/elkyc\/elkycSDK\/ElkycCoreSDK\/ElkycSDK.swift",
       "kind": "StringLiteral",
+      "offset": 2843,
+      "length": 22,
+      "value": "\"CurrentTransactionId\""
+    },
+    {
+      "filePath": "\/Users\/chausov\/Developer\/elkyc\/elkycSDK\/ElkycCoreSDK\/ElkycSDK.swift",
+      "kind": "StringLiteral",
       "offset": 2754,
       "length": 2,
       "value": "\"\""
@@ -103592,21 +103599,21 @@
     {
       "filePath": "\/Users\/chausov\/Developer\/elkyc\/elkycSDK\/ElkycCoreSDK\/ElkycSDK.swift",
       "kind": "Array",
-      "offset": 2795,
+      "offset": 2921,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/chausov\/Developer\/elkyc\/elkycSDK\/ElkycCoreSDK\/ElkycSDK.swift",
       "kind": "Array",
-      "offset": 2834,
+      "offset": 2960,
       "length": 2,
       "value": "[]"
     },
     {
       "filePath": "\/Users\/chausov\/Developer\/elkyc\/elkycSDK\/ElkycCoreSDK\/ElkycSDK.swift",
       "kind": "Array",
-      "offset": 2873,
+      "offset": 2999,
       "length": 2,
       "value": "[]"
     },
